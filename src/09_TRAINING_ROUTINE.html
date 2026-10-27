@@ -1,0 +1,265 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>Training routine · ICPC roadmap</title><style>:root { color-scheme: light; font-family: "Segoe UI", Arial, sans-serif; color: #172b43; background: #fff; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { max-width: 1160px; padding: 64px 40px 32px; margin: auto; }
+h1, h2, p { margin: 0; }
+h1 { font-size: clamp(30px, 4vw, 44px); font-weight: 600; letter-spacing: -1px; margin: 12px 0 18px; }
+h2 { font-size: 28px; font-weight: 600; margin: 8px 0 10px; }
+p { color: #526579; line-height: 1.7; }
+.eyebrow { color: #326186; font-size: 12px; letter-spacing: 1.5px; font-weight: 700; }
+.document-heading > p:not(.eyebrow) { max-width: 850px; }
+.stage-sequence { display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin: 32px 0 24px; gap: 12px; font-size: 14px; font-weight: 600; }
+.stage-sequence li:not(:last-child)::after { content: "→"; margin-left: 12px; color: #8193a7; }
+.reading-note { font-size: 13px; }
+section { border-top: 1px solid #dce3eb; margin-top: 48px; padding-top: 32px; }
+.stage-heading { margin-bottom: 22px; }
+.diagram-frame { margin-top: 12px; }
+.diagram { position: relative; touch-action: pan-y; }
+.diagram svg { display: block; width: 100%; height: auto; max-height: 75vh; }
+.diagram.is-pannable { cursor: grab; touch-action: none; }
+.diagram.is-dragging { cursor: grabbing; user-select: none; }
+.diagram:focus-visible { outline: 1px dashed #8193a7; outline-offset: 3px; }
+.diagram-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 20px; padding: 0 0 10px; font-size: 11px; color: #6a7d90; }
+.diagram-toolbar[hidden] { display: none; }
+.zoom-controls { display: flex; align-items: center; gap: 8px; }
+.zoom-controls button { font: inherit; font-size: 14px; color: #244f74; background: transparent; border: 0; border-radius: 4px; min-width: 34px; min-height: 34px; padding: 5px 10px; cursor: pointer; }
+.zoom-controls button:hover { background: #f1f5f9; }
+.zoom-controls button:disabled { opacity: .4; cursor: default; }
+.zoom-controls button:focus-visible { outline: 2px solid #326186; outline-offset: 2px; }
+.zoom-controls output { min-width: 44px; text-align: center; font-variant-numeric: tabular-nums; }
+.references { margin-top: 12px; font-size: 13px; }
+a { color: #326186; text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid #326186; outline-offset: 4px; }
+footer { margin-top: 48px; border-top: 1px solid #dce3eb; padding-top: 24px; font-size: 12px; }
+footer p + p { margin-top: 8px; }
+.overview-links { display: flex; flex-wrap: wrap; gap: 20px; font-size: 13px; margin-bottom: 22px; }
+.skip-link { position: absolute; left: -9999px; }
+.skip-link:focus { left: 20px; top: 10px; background: white; padding: 12px; z-index: 5; }
+.guide-layout { max-width: 1500px; margin: auto; display: grid; grid-template-columns: 240px minmax(0, 1fr); }
+.guide-sidebar { position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto; padding: 44px 22px; border-right: 1px solid #e2e8ef; background: #f8fafc; }
+.guide-brand { display: block; font-weight: 700; font-size: 17px; text-decoration: none; margin-bottom: 40px; letter-spacing: 1px; }
+.guide-sidebar nav { margin-top: 14px; display: grid; gap: 5px; }
+.guide-sidebar nav a { padding: 10px 12px; font-size: 13px; line-height: 1.4; text-decoration: none; border-radius: 4px; color: #526579; }
+.guide-sidebar nav a[aria-current] { background: #e7eff7; color: #244f74; font-weight: 600; }
+main.guide-main { min-width: 0; width: 100%; max-width: 1120px; padding: 48px 48px 36px; }
+.guide-heading { padding-bottom: 30px; border-bottom: 1px solid #dce3eb; }
+.guide-heading h1 { font-size: clamp(28px, 3vw, 38px); line-height: 1.2; }
+.guide-heading > p:last-child { font-size: 13px; }
+.contents { margin: 28px 0 36px; padding: 24px 28px; border: 1px solid #dce3eb; border-radius: 5px; background: #fbfcfe; }
+.contents h2 { font-size: 14px; margin: 0 0 14px; }
+.contents ol { columns: 2; column-gap: 36px; padding: 0; margin: 0; list-style: none; }
+.contents li { break-inside: avoid; margin-bottom: 8px; font-size: 13px; line-height: 1.5; }
+.contents a { text-decoration: none; }
+.prose { font-size: 15px; line-height: 1.8; overflow-wrap: anywhere; }
+.prose p { margin: 16px 0; }
+.prose h2 { font-size: 23px; margin: 44px 0 18px; padding-top: 24px; border-top: 1px solid #dce3eb; line-height: 1.4; letter-spacing: -.3px; }
+.prose h3 { font-size: 18px; margin: 28px 0 12px; }
+.prose li { margin-bottom: 8px; color: #526579; }
+.prose strong { color: #243c55; font-weight: 600; }
+.prose .module-note { padding-left: 16px; border-left: 3px solid #dce7f2; }
+.table-scroll { max-width: 100%; overflow-x: auto; margin: 24px 0; border: 1px solid #dce3eb; border-radius: 5px; }
+.prose table { width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.65; }
+.prose th { background: #f1f5f9; color: #243c55; text-align: left; font-weight: 600; }
+.prose th, .prose td { padding: 12px 14px; border-bottom: 1px solid #e2e8ef; vertical-align: top; min-width: 90px; }
+.prose tr:last-child td { border-bottom: 0; }
+.prose tbody tr:nth-child(even) { background: #fbfcfe; }
+.prose code { font-size: .9em; background: #f0f4f8; border-radius: 3px; padding: 2px 4px; }
+.prose pre { padding: 20px; background: #f1f5f9; overflow: auto; }
+.prose blockquote { margin: 20px 0; padding: 8px 20px; border-left: 3px solid #b7ccdf; background: #f8fafc; }
+.source-note { margin: 28px 0; padding: 4px 22px 18px; border: 1px solid #dce3eb; border-radius: 5px; background: #fbfcfe; }
+.topic-stages { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 24px 0; font-size: 14px; }
+.topic-list { list-style: none; padding: 0; margin: 24px 0 0; }
+.topic-list li { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 16px; padding: 22px 0; border-bottom: 1px solid #e2e8ef; }
+.topic-code { color: #326186; font-size: 12px; font-weight: 600; padding-top: 3px; }
+.topic-list h3 { font-size: 17px; margin: 0 0 8px; line-height: 1.4; font-weight: 600; }
+.topic-list h3 a { text-decoration: none; }
+.topic-list p { font-size: 14px; }
+.topic-list .topic-prerequisites { font-size: 12px; color: #6a7d90; margin-bottom: 8px; }
+.guide-pagination { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid #dce3eb; padding-top: 28px; margin-top: 48px; }
+.guide-pagination a { text-decoration: none; font-weight: 600; font-size: 14px; }
+.guide-pagination span { display: block; color: #6a7d90; font-size: 11px; font-weight: 400; margin-bottom: 8px; }
+@media (max-width: 900px) {
+  .guide-layout { grid-template-columns: 1fr; }
+  .guide-sidebar { position: static; height: auto; overflow-y: visible; padding: 24px; border-right: 0; border-bottom: 1px solid #e2e8ef; }
+  .guide-brand { margin-bottom: 18px; }
+  .guide-sidebar nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  main.guide-main { padding: 30px 24px; }
+}
+@media (max-width: 600px) {
+  .guide-sidebar nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .contents ol { columns: 1; }
+  .contents { padding: 20px; }
+  main.guide-main { padding: 28px 18px; }
+  .prose th, .prose td { min-width: 125px; }
+}
+@media (max-width: 600px) { main { padding: 32px 18px; } section { margin-top: 32px; } }
+@media print {
+  @page { size: A3 portrait; margin: 12mm; }
+  main { max-width: none; padding: 0; }
+  .document-heading { break-after: page; }
+  section { break-before: page; border: 0; margin: 0; padding: 0; }
+  .diagram { overflow: visible; height: auto; }
+  .diagram-frame { border: 0; overflow: visible; }
+  .diagram-toolbar { display: none; }
+  .diagram svg { min-width: 0; width: 100%; max-height: 340mm; }
+  .references { display: none; }
+  footer { break-before: page; }
+  .guide-sidebar, .guide-pagination, .skip-link { display: none; }
+  .guide-layout { display: block; }
+  main.guide-main { max-width: none; padding: 0; }
+  .guide-page footer { break-before: auto; }
+  .table-scroll { overflow: visible; }
+  .prose h2 { break-after: avoid; }
+}
+</style></head>
+<body class="guide-page"><a class="skip-link" href="#content">Skip to guide</a><div class="guide-layout">
+<aside class="guide-sidebar"><a class="guide-brand" href="../index.html">ICPC ROADMAP</a><p class="eyebrow">STUDY GUIDES</p><nav aria-label="Roadmap library"><a href="../index.html">Roadmap overview</a><a href="topics.html">All topics</a><a href="01_PRELIMINARIES.html">Preliminaries</a><a href="02_REGIONALS.html">Regionals</a><a href="03_CHAMPIONSHIP.html">Championship</a><a href="04_WORLD_FINALS.html">World Finals</a><a href="06_PAST_PAPERS.html">Past papers</a><a href="09_TRAINING_ROUTINE.html" aria-current="page">Training routine</a><a href="README.html">About this roadmap</a></nav></aside>
+<main class="guide-main" id="content"><header class="guide-heading"><p class="eyebrow">ICPC PREPARATION / TRAINING ROUTINE</p><h1>Training routine</h1><p>Structured study guide · Reference edition</p></header>
+<nav class="contents" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#a-preliminary-first-twelve-week-plan">A preliminary-first twelve-week plan</a></li><li><a href="#regional-blocks">Regional blocks</a></li><li><a href="#weekly-allocation">Weekly allocation</a></li><li><a href="#a-problem-solving-loop">A problem-solving loop</a></li><li><a href="#team-practice">Team practice</a></li><li><a href="#reference-library-readiness">Reference library readiness</a></li></ol></nav>
+<article class="prose">
+<p>This schedule is a starting assumption, not a deadline. Advance when your error log shows mastery. If a contest is close, prioritize the preliminary/regional core and full-set practice rather than compressing the specialist modules into a few weeks.</p>
+<h2 id="a-preliminary-first-twelve-week-plan">A preliminary-first twelve-week plan</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Week</th>
+<th>Main focus</th>
+<th>Practice outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>P01–P02</td>
+<td>Reliable input/output, arithmetic bounds, and simulation</td>
+</tr>
+<tr>
+<td>2</td>
+<td>P03–P04</td>
+<td>Strings, comparators, sorting; short untagged practice</td>
+</tr>
+<tr>
+<td>3</td>
+<td>P05–P06</td>
+<td>Frequency transformations and prefix sums</td>
+</tr>
+<tr>
+<td>4</td>
+<td>P07–P08</td>
+<td>Window invariants and binary-search proofs; first timed mixed set</td>
+</tr>
+<tr>
+<td>5</td>
+<td>P09</td>
+<td>Enumeration, recursion, bit operations; build a tiny brute-force checker</td>
+</tr>
+<tr>
+<td>6</td>
+<td>P10</td>
+<td>Exchange arguments, constructions, invariants; analyze a failed greedy idea</td>
+</tr>
+<tr>
+<td>7</td>
+<td>P11</td>
+<td>GCD, sieve, divisors, modular power, counting</td>
+</tr>
+<tr>
+<td>8</td>
+<td>P12</td>
+<td>DP state design and order; contrast the two coin-counting tasks</td>
+</tr>
+<tr>
+<td>9</td>
+<td>P13</td>
+<td>BFS/DFS, path reconstruction, forest depth, bipartiteness</td>
+</tr>
+<tr>
+<td>10</td>
+<td>P14–P15</td>
+<td>Geometry predicates, basic games, probability</td>
+</tr>
+<tr>
+<td>11</td>
+<td>P16 plus weak modules</td>
+<td>Full qualifier-style practice and delayed re-solves</td>
+</tr>
+<tr>
+<td>12</td>
+<td>P16 plus early regional tools</td>
+<td>Second/third unseen set as time permits; begin R01/R02/R06/R08/R09</td>
+</tr>
+</tbody>
+</table></div>
+<p>If weeks 1–3 are already comfortable, compress them according to your existing proficiency. If week 8 is difficult, repeat it with different DP problems before advancing. Learning time varies substantially.</p>
+<h2 id="regional-blocks">Regional blocks</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Block</th>
+<th>Modules</th>
+<th>Suggested emphasis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>R01, R02, R06</td>
+<td>Ordered structures, DP variety, and range-query foundations</td>
+</tr>
+<tr>
+<td>B</td>
+<td>R08, R09, R04, R05</td>
+<td>Connectivity, weighted paths, trees, lifting/flattening</td>
+</tr>
+<tr>
+<td>C</td>
+<td>R10, R15, R03</td>
+<td>SCC/2-SAT, deterministic strings, small exponential states</td>
+</tr>
+<tr>
+<td>D</td>
+<td>R14, R07</td>
+<td>Combinatorial algebra, recurrences, lazy propagation</td>
+</tr>
+<tr>
+<td>E</td>
+<td>R11–R13</td>
+<td>Low-link structure, Euler trails, matching/flow modeling</td>
+</tr>
+<tr>
+<td>F</td>
+<td>R16–R19</td>
+<td>Geometry, offline methods, numerical/algebraic methods, probability/games</td>
+</tr>
+<tr>
+<td>Continuous</td>
+<td>R20 and P16</td>
+<td>Virtuals, triage, upsolving, and repairing basic mistakes</td>
+</tr>
+</tbody>
+</table></div>
+<p>Budget roughly 2–4 weeks per block according to readiness. Do not interpret a block as “read all articles, then begin solving.” Alternate theory and problems immediately. Postpone stretch exercises when they block progress on broad fundamentals.</p>
+<h2 id="weekly-allocation">Weekly allocation</h2>
+<p>For an ordinary 10-hour week, try 2 hours of learning/proof work, 4 hours of independent problem solving, 2 hours of delayed re-solves/testing, and 2 hours of mixed timed work. A full five-hour mock replaces part of this allocation; it is not five extra hours automatically. On mock weeks, reserve time afterward for upsolving.</p>
+<p>Keep three kinds of work separate in the log: independent AC, hint-assisted AC, and editorial-assisted AC. All are useful. Only the first demonstrates independent recognition; the other two should generate a re-solve appointment.</p>
+<h2 id="a-problem-solving-loop">A problem-solving loop</h2>
+<ol>
+<li>Restate the required output and constraints. Identify whether objects are ordered, distinct, reusable, directed, weighted, or allowed to repeat.</li>
+<li>Solve tiny cases manually. Write a brute-force algorithm, even if it is far too slow.</li>
+<li>Look for an invariant, a sufficient state, or a monotone predicate. Derive the target complexity from the input size.</li>
+<li>Explain the correctness argument before coding. For advanced optimizations, state every precondition explicitly.</li>
+<li>Implement and test minimum sizes, equal values, impossible instances, disconnected graphs, large intermediates, and adversarial shapes that apply to this problem.</li>
+<li>If stuck, record what failed before reading a hint. After understanding the editorial, close it and implement from the proof.</li>
+<li>Re-solve several days later, then test the same concept in an untagged mixed session.</li>
+</ol>
+<p>A useful stopping rule in practice is to seek a small hint after a substantial focused attempt that produces no new idea; there is no universal minute limit. Distinguish productive exploration from repeatedly rewriting the same failed approach.</p>
+<h2 id="team-practice">Team practice</h2>
+<p>During the initial reading pass, distribute statements so the whole set is covered. Each person reports a short model, likely complexity, confidence, and estimated implementation cost. Before taking the keyboard for a difficult solution, have another teammate challenge the proof and edge cases.</p>
+<p>Maintain a visible queue: ready to implement; needs proof; debugging; low-confidence exploration. Reassess opportunity cost when a task stalls. Rotate coder/reviewer roles between contests. Practice with the number of computers, allowed references, language versions, and communication rules of the target contest; do not assume preliminary and onsite formats match.</p>
+<p>Afterward, compare with the actual set's standings and solution material. Record which missed tasks were reachable with your existing skills. Turn each recurring error into one concrete drill, rather than adding ten unrelated advanced topics.</p>
+<h2 id="reference-library-readiness">Reference library readiness</h2>
+<p>Use <a href="https://github.com/kth-competitive-programming/kactl">KACTL</a> as a model for a concise, tested reference. Your regional library should cover modular power/GCD, BFS/DFS, DSU, Dijkstra, Fenwick/segment tree, LCA, SCC/2-SAT, low-link, matching/flow, KMP/Z, and robust 2D predicates. Add advanced templates only after solving appropriate tasks with them.</p>
+<p>For each template, record its invariant, complexity, index convention, numeric type, invalid inputs/preconditions, and one known verification task. Stress-test against a brute-force implementation on random small inputs. Keep deterministic failing seeds and minimize counterexamples. For geometry and floating routines, include degenerate configurations and tolerance checks.</p>
+<p>Do not carry a template you cannot adapt or review. Confirm the target event's reference-document restrictions before preparing the final document; the roadmap is training material, not a substitute for current event rules.</p>
+</article><nav class="guide-pagination" aria-label="Adjacent guides"><a href="06_PAST_PAPERS.html"><span>Previous guide</span>Past papers</a><a href="README.html"><span>Next guide</span>About this roadmap</a></nav>
+<footer><a href="../index.html">Back to the connected roadmap</a></footer></main></div></body></html>

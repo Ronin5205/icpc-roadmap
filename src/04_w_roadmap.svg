@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="765pt" height="579pt" viewBox="0.00 0.00 765.00 579.00" role="group" aria-label="World Finals prerequisite roadmap">
+<style>a { cursor: pointer; } a:hover text, a:focus text { fill: #244f74; text-decoration: underline; }</style><g id="W-graph0" class="graph" transform="scale(1 1) rotate(0) translate(21.6 557.36)">
+<title>World Finals prerequisite roadmap</title>
+<polygon fill="white" stroke="none" points="-21.6,21.6 -21.6,-557.36 743.7,-557.36 743.7,21.6 -21.6,21.6" />
+
+<g id="W-edge4" class="edge">
+<title>W07-&gt;W08</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M576.74,-140.21C576.74,-140.21 576.74,-91.08 576.74,-91.08" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="579.02,-91.08 576.74,-84.58 574.47,-91.08 579.02,-91.08" />
+</g>
+
+
+
+
+<g id="W-node1" class="node">
+<title>W01</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M223.49,-530.56C223.49,-530.56 12,-530.56 12,-530.56 6,-530.56 0,-524.56 0,-518.56 0,-518.56 0,-459.92 0,-459.92 0,-453.92 6,-447.92 12,-447.92 12,-447.92 223.49,-447.92 223.49,-447.92 229.49,-447.92 235.49,-453.92 235.49,-459.92 235.49,-459.92 235.49,-518.56 235.49,-518.56 235.49,-524.56 229.49,-530.56 223.49,-530.56" />
+<a href="04_WORLD_FINALS.html#w01" aria-label="W01 Dynamic sequences and forests study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="18.4" y="-507.04" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">W01</text>
+<text xml:space="preserve" text-anchor="start" x="18.4" y="-486.34" font-family="Arial" font-weight="bold" font-size="13.00">Dynamic sequences and forests</text>
+<text xml:space="preserve" text-anchor="start" x="18.4" y="-465.44" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: C01,C03</text>
+</a></g>
+
+<g id="W-node2" class="node">
+<title>W02</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M469.65,-535.76C469.65,-535.76 287.84,-535.76 287.84,-535.76 281.84,-535.76 275.84,-529.76 275.84,-523.76 275.84,-523.76 275.84,-454.72 275.84,-454.72 275.84,-448.72 281.84,-442.72 287.84,-442.72 287.84,-442.72 469.65,-442.72 469.65,-442.72 475.65,-442.72 481.65,-448.72 481.65,-454.72 481.65,-454.72 481.65,-523.76 481.65,-523.76 481.65,-529.76 475.65,-535.76 469.65,-535.76" />
+<a href="04_WORLD_FINALS.html#w02" aria-label="W02 Advanced optimization and algebraic DP study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="294.24" y="-512.24" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">W02</text>
+<text xml:space="preserve" text-anchor="start" x="294.24" y="-491.54" font-family="Arial" font-weight="bold" font-size="13.00">Advanced optimization and</text>
+<text xml:space="preserve" text-anchor="start" x="339.37" y="-478.54" font-family="Arial" font-weight="bold" font-size="13.00">algebraic DP</text>
+<text xml:space="preserve" text-anchor="start" x="294.24" y="-460.24" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: C04,C08</text>
+</a></g>
+
+<g id="W-node3" class="node">
+<title>W03</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M669.56,-530.56C669.56,-530.56 533.93,-530.56 533.93,-530.56 527.93,-530.56 521.93,-524.56 521.93,-518.56 521.93,-518.56 521.93,-459.92 521.93,-459.92 521.93,-453.92 527.93,-447.92 533.93,-447.92 533.93,-447.92 669.56,-447.92 669.56,-447.92 675.56,-447.92 681.56,-453.92 681.56,-459.92 681.56,-459.92 681.56,-518.56 681.56,-518.56 681.56,-524.56 675.56,-530.56 669.56,-530.56" />
+<a href="04_WORLD_FINALS.html#w03" aria-label="W03 Specialist geometry study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="540.33" y="-507.04" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">W03</text>
+<text xml:space="preserve" text-anchor="start" x="540.33" y="-486.34" font-family="Arial" font-weight="bold" font-size="13.00">Specialist geometry</text>
+<text xml:space="preserve" text-anchor="start" x="540.33" y="-465.44" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: C10</text>
+</a></g>
+
+<g id="W-node4" class="node">
+<title>W04</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M191.33,-384.72C191.33,-384.72 44.16,-384.72 44.16,-384.72 38.16,-384.72 32.16,-378.72 32.16,-372.72 32.16,-372.72 32.16,-303.68 32.16,-303.68 32.16,-297.68 38.16,-291.68 44.16,-291.68 44.16,-291.68 191.33,-291.68 191.33,-291.68 197.33,-291.68 203.33,-297.68 203.33,-303.68 203.33,-303.68 203.33,-372.72 203.33,-372.72 203.33,-378.72 197.33,-384.72 191.33,-384.72" />
+<a href="04_WORLD_FINALS.html#w04" aria-label="W04 Specialist graphs and optimization study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="50.56" y="-361.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">W04</text>
+<text xml:space="preserve" text-anchor="start" x="50.56" y="-340.5" font-family="Arial" font-weight="bold" font-size="13.00">Specialist graphs and</text>
+<text xml:space="preserve" text-anchor="start" x="79.47" y="-327.5" font-family="Arial" font-weight="bold" font-size="13.00">optimization</text>
+<text xml:space="preserve" text-anchor="start" x="50.56" y="-309.2" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: C07,R11</text>
+</a></g>
+
+<g id="W-node5" class="node">
+<title>W05</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M377.69,-379.52C377.69,-379.52 255.8,-379.52 255.8,-379.52 249.8,-379.52 243.8,-373.52 243.8,-367.52 243.8,-367.52 243.8,-308.88 243.8,-308.88 243.8,-302.88 249.8,-296.88 255.8,-296.88 255.8,-296.88 377.69,-296.88 377.69,-296.88 383.69,-296.88 389.69,-302.88 389.69,-308.88 389.69,-308.88 389.69,-367.52 389.69,-367.52 389.69,-373.52 383.69,-379.52 377.69,-379.52" />
+<a href="04_WORLD_FINALS.html#w05" aria-label="W05 Advanced strings study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="262.2" y="-356" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">W05</text>
+<text xml:space="preserve" text-anchor="start" x="262.2" y="-335.3" font-family="Arial" font-weight="bold" font-size="13.00">Advanced strings</text>
+<text xml:space="preserve" text-anchor="start" x="262.2" y="-314.4" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: C06</text>
+</a></g>
+
+<g id="W-node6" class="node">
+<title>W06</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M669.8,-379.52C669.8,-379.52 441.69,-379.52 441.69,-379.52 435.69,-379.52 429.69,-373.52 429.69,-367.52 429.69,-367.52 429.69,-308.88 429.69,-308.88 429.69,-302.88 435.69,-296.88 441.69,-296.88 441.69,-296.88 669.8,-296.88 669.8,-296.88 675.8,-296.88 681.8,-302.88 681.8,-308.88 681.8,-308.88 681.8,-367.52 681.8,-367.52 681.8,-373.52 675.8,-379.52 669.8,-379.52" />
+<a href="04_WORLD_FINALS.html#w06" aria-label="W06 Specialist mathematics and games study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="448.09" y="-356" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">W06</text>
+<text xml:space="preserve" text-anchor="start" x="448.09" y="-335.3" font-family="Arial" font-weight="bold" font-size="13.00">Specialist mathematics and games</text>
+<text xml:space="preserve" text-anchor="start" x="448.09" y="-314.4" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: C08,C09,R19</text>
+</a></g>
+
+<g id="W-node7" class="node">
+<title>W07</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M669.02,-233.68C669.02,-233.68 460.46,-233.68 460.46,-233.68 454.46,-233.68 448.46,-227.68 448.46,-221.68 448.46,-221.68 448.46,-152.64 448.46,-152.64 448.46,-146.64 454.46,-140.64 460.46,-140.64 460.46,-140.64 669.02,-140.64 669.02,-140.64 675.02,-140.64 681.02,-146.64 681.02,-152.64 681.02,-152.64 681.02,-221.68 681.02,-221.68 681.02,-227.68 675.02,-233.68 669.02,-233.68" />
+<a href="04_WORLD_FINALS.html#w07" aria-label="W07 Interactive and output-sensitive work study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="466.86" y="-210.16" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">W07</text>
+<text xml:space="preserve" text-anchor="start" x="466.86" y="-189.46" font-family="Arial" font-weight="bold" font-size="13.00">Interactive and output-sensitive</text>
+<text xml:space="preserve" text-anchor="start" x="549.57" y="-176.46" font-family="Arial" font-weight="bold" font-size="13.00">work</text>
+<text xml:space="preserve" text-anchor="start" x="466.86" y="-158.16" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P16,R20</text>
+</a></g>
+
+<g id="W-node8" class="node">
+<title>W08</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M657.53,-82.64C657.53,-82.64 495.96,-82.64 495.96,-82.64 489.96,-82.64 483.96,-76.64 483.96,-70.64 483.96,-70.64 483.96,-12 483.96,-12 483.96,-6 489.96,0 495.96,0 495.96,0 657.53,0 657.53,0 663.53,0 669.53,-6 669.53,-12 669.53,-12 669.53,-70.64 669.53,-70.64 669.53,-76.64 663.53,-82.64 657.53,-82.64" />
+<a href="04_WORLD_FINALS.html#w08" aria-label="W08 World Finals integration study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="502.36" y="-59.12" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">W08</text>
+<text xml:space="preserve" text-anchor="start" x="502.36" y="-38.42" font-family="Arial" font-weight="bold" font-size="13.00">World Finals integration</text>
+<text xml:space="preserve" text-anchor="start" x="502.36" y="-17.52" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: C12,W07</text>
+</a></g>
+
+
+
+
+</g>
+</svg>

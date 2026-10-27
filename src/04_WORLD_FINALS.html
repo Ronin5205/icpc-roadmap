@@ -1,0 +1,483 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>World Finals preparation · ICPC roadmap</title><style>:root { color-scheme: light; font-family: "Segoe UI", Arial, sans-serif; color: #172b43; background: #fff; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { max-width: 1160px; padding: 64px 40px 32px; margin: auto; }
+h1, h2, p { margin: 0; }
+h1 { font-size: clamp(30px, 4vw, 44px); font-weight: 600; letter-spacing: -1px; margin: 12px 0 18px; }
+h2 { font-size: 28px; font-weight: 600; margin: 8px 0 10px; }
+p { color: #526579; line-height: 1.7; }
+.eyebrow { color: #326186; font-size: 12px; letter-spacing: 1.5px; font-weight: 700; }
+.document-heading > p:not(.eyebrow) { max-width: 850px; }
+.stage-sequence { display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin: 32px 0 24px; gap: 12px; font-size: 14px; font-weight: 600; }
+.stage-sequence li:not(:last-child)::after { content: "→"; margin-left: 12px; color: #8193a7; }
+.reading-note { font-size: 13px; }
+section { border-top: 1px solid #dce3eb; margin-top: 48px; padding-top: 32px; }
+.stage-heading { margin-bottom: 22px; }
+.diagram-frame { margin-top: 12px; }
+.diagram { position: relative; touch-action: pan-y; }
+.diagram svg { display: block; width: 100%; height: auto; max-height: 75vh; }
+.diagram.is-pannable { cursor: grab; touch-action: none; }
+.diagram.is-dragging { cursor: grabbing; user-select: none; }
+.diagram:focus-visible { outline: 1px dashed #8193a7; outline-offset: 3px; }
+.diagram-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 20px; padding: 0 0 10px; font-size: 11px; color: #6a7d90; }
+.diagram-toolbar[hidden] { display: none; }
+.zoom-controls { display: flex; align-items: center; gap: 8px; }
+.zoom-controls button { font: inherit; font-size: 14px; color: #244f74; background: transparent; border: 0; border-radius: 4px; min-width: 34px; min-height: 34px; padding: 5px 10px; cursor: pointer; }
+.zoom-controls button:hover { background: #f1f5f9; }
+.zoom-controls button:disabled { opacity: .4; cursor: default; }
+.zoom-controls button:focus-visible { outline: 2px solid #326186; outline-offset: 2px; }
+.zoom-controls output { min-width: 44px; text-align: center; font-variant-numeric: tabular-nums; }
+.references { margin-top: 12px; font-size: 13px; }
+a { color: #326186; text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid #326186; outline-offset: 4px; }
+footer { margin-top: 48px; border-top: 1px solid #dce3eb; padding-top: 24px; font-size: 12px; }
+footer p + p { margin-top: 8px; }
+.overview-links { display: flex; flex-wrap: wrap; gap: 20px; font-size: 13px; margin-bottom: 22px; }
+.skip-link { position: absolute; left: -9999px; }
+.skip-link:focus { left: 20px; top: 10px; background: white; padding: 12px; z-index: 5; }
+.guide-layout { max-width: 1500px; margin: auto; display: grid; grid-template-columns: 240px minmax(0, 1fr); }
+.guide-sidebar { position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto; padding: 44px 22px; border-right: 1px solid #e2e8ef; background: #f8fafc; }
+.guide-brand { display: block; font-weight: 700; font-size: 17px; text-decoration: none; margin-bottom: 40px; letter-spacing: 1px; }
+.guide-sidebar nav { margin-top: 14px; display: grid; gap: 5px; }
+.guide-sidebar nav a { padding: 10px 12px; font-size: 13px; line-height: 1.4; text-decoration: none; border-radius: 4px; color: #526579; }
+.guide-sidebar nav a[aria-current] { background: #e7eff7; color: #244f74; font-weight: 600; }
+main.guide-main { min-width: 0; width: 100%; max-width: 1120px; padding: 48px 48px 36px; }
+.guide-heading { padding-bottom: 30px; border-bottom: 1px solid #dce3eb; }
+.guide-heading h1 { font-size: clamp(28px, 3vw, 38px); line-height: 1.2; }
+.guide-heading > p:last-child { font-size: 13px; }
+.contents { margin: 28px 0 36px; padding: 24px 28px; border: 1px solid #dce3eb; border-radius: 5px; background: #fbfcfe; }
+.contents h2 { font-size: 14px; margin: 0 0 14px; }
+.contents ol { columns: 2; column-gap: 36px; padding: 0; margin: 0; list-style: none; }
+.contents li { break-inside: avoid; margin-bottom: 8px; font-size: 13px; line-height: 1.5; }
+.contents a { text-decoration: none; }
+.prose { font-size: 15px; line-height: 1.8; overflow-wrap: anywhere; }
+.prose p { margin: 16px 0; }
+.prose h2 { font-size: 23px; margin: 44px 0 18px; padding-top: 24px; border-top: 1px solid #dce3eb; line-height: 1.4; letter-spacing: -.3px; }
+.prose h3 { font-size: 18px; margin: 28px 0 12px; }
+.prose li { margin-bottom: 8px; color: #526579; }
+.prose strong { color: #243c55; font-weight: 600; }
+.prose .module-note { padding-left: 16px; border-left: 3px solid #dce7f2; }
+.table-scroll { max-width: 100%; overflow-x: auto; margin: 24px 0; border: 1px solid #dce3eb; border-radius: 5px; }
+.prose table { width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.65; }
+.prose th { background: #f1f5f9; color: #243c55; text-align: left; font-weight: 600; }
+.prose th, .prose td { padding: 12px 14px; border-bottom: 1px solid #e2e8ef; vertical-align: top; min-width: 90px; }
+.prose tr:last-child td { border-bottom: 0; }
+.prose tbody tr:nth-child(even) { background: #fbfcfe; }
+.prose code { font-size: .9em; background: #f0f4f8; border-radius: 3px; padding: 2px 4px; }
+.prose pre { padding: 20px; background: #f1f5f9; overflow: auto; }
+.prose blockquote { margin: 20px 0; padding: 8px 20px; border-left: 3px solid #b7ccdf; background: #f8fafc; }
+.source-note { margin: 28px 0; padding: 4px 22px 18px; border: 1px solid #dce3eb; border-radius: 5px; background: #fbfcfe; }
+.topic-stages { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 24px 0; font-size: 14px; }
+.topic-list { list-style: none; padding: 0; margin: 24px 0 0; }
+.topic-list li { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 16px; padding: 22px 0; border-bottom: 1px solid #e2e8ef; }
+.topic-code { color: #326186; font-size: 12px; font-weight: 600; padding-top: 3px; }
+.topic-list h3 { font-size: 17px; margin: 0 0 8px; line-height: 1.4; font-weight: 600; }
+.topic-list h3 a { text-decoration: none; }
+.topic-list p { font-size: 14px; }
+.topic-list .topic-prerequisites { font-size: 12px; color: #6a7d90; margin-bottom: 8px; }
+.guide-pagination { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid #dce3eb; padding-top: 28px; margin-top: 48px; }
+.guide-pagination a { text-decoration: none; font-weight: 600; font-size: 14px; }
+.guide-pagination span { display: block; color: #6a7d90; font-size: 11px; font-weight: 400; margin-bottom: 8px; }
+@media (max-width: 900px) {
+  .guide-layout { grid-template-columns: 1fr; }
+  .guide-sidebar { position: static; height: auto; overflow-y: visible; padding: 24px; border-right: 0; border-bottom: 1px solid #e2e8ef; }
+  .guide-brand { margin-bottom: 18px; }
+  .guide-sidebar nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  main.guide-main { padding: 30px 24px; }
+}
+@media (max-width: 600px) {
+  .guide-sidebar nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .contents ol { columns: 1; }
+  .contents { padding: 20px; }
+  main.guide-main { padding: 28px 18px; }
+  .prose th, .prose td { min-width: 125px; }
+}
+@media (max-width: 600px) { main { padding: 32px 18px; } section { margin-top: 32px; } }
+@media print {
+  @page { size: A3 portrait; margin: 12mm; }
+  main { max-width: none; padding: 0; }
+  .document-heading { break-after: page; }
+  section { break-before: page; border: 0; margin: 0; padding: 0; }
+  .diagram { overflow: visible; height: auto; }
+  .diagram-frame { border: 0; overflow: visible; }
+  .diagram-toolbar { display: none; }
+  .diagram svg { min-width: 0; width: 100%; max-height: 340mm; }
+  .references { display: none; }
+  footer { break-before: page; }
+  .guide-sidebar, .guide-pagination, .skip-link { display: none; }
+  .guide-layout { display: block; }
+  main.guide-main { max-width: none; padding: 0; }
+  .guide-page footer { break-before: auto; }
+  .table-scroll { overflow: visible; }
+  .prose h2 { break-after: avoid; }
+}
+</style><!-- enrichment-style:start --><style>
+.worked-example { padding: 2px 20px; border-left: 3px solid #b7ccdf; background: #f8fafc; margin: 22px 0; }
+.worked-example h3 { font-size: 16px; margin-top: 16px; }
+.learning-resources { padding-left: 22px; }
+.learning-resources li { margin-bottom: 17px; }
+.learning-resources p { margin: 4px 0 0; font-size: 13px; line-height: 1.65; }
+.resource-provenance, .prose .resource-scope { font-size: 13px; }
+.resource-kind { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; color: #526579; background: #edf2f7; border-radius: 3px; padding: 2px 6px; margin-right: 6px; }
+.prose .resource-date { font-size: 11px; color: #6a7d90; }
+@media print { .worked-example { break-inside: avoid; } .learning-resources li { break-inside: avoid; } }
+</style><!-- enrichment-style:end --></head>
+<body class="guide-page"><a class="skip-link" href="#content">Skip to guide</a><div class="guide-layout">
+<aside class="guide-sidebar"><a class="guide-brand" href="../index.html">ICPC ROADMAP</a><p class="eyebrow">STUDY GUIDES</p><nav aria-label="Roadmap library"><a href="../index.html">Roadmap overview</a><a href="topics.html">All topics</a><a href="01_PRELIMINARIES.html">Preliminaries</a><a href="02_REGIONALS.html">Regionals</a><a href="03_CHAMPIONSHIP.html">Championship</a><a href="04_WORLD_FINALS.html" aria-current="page">World Finals</a><a href="06_PAST_PAPERS.html">Past papers</a><a href="09_TRAINING_ROUTINE.html">Training routine</a><a href="README.html">About this roadmap</a></nav></aside>
+<main class="guide-main" id="content"><header class="guide-heading"><p class="eyebrow">ICPC PREPARATION / WORLD FINALS</p><h1>World Finals preparation</h1><p>Structured study guide · Reference edition</p></header>
+<nav class="contents" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#how-to-use-each-module">How to use each module</a></li><li><a href="#w01-dynamic-sequences-and-forests">W01 · Dynamic sequences and forests</a></li><li><a href="#w02-advanced-optimization-and-algebraic-dp">W02 · Advanced optimization and algebraic DP</a></li><li><a href="#w03-specialist-geometry">W03 · Specialist geometry</a></li><li><a href="#w04-specialist-graphs-and-optimization">W04 · Specialist graphs and optimization</a></li><li><a href="#w05-advanced-strings">W05 · Advanced strings</a></li><li><a href="#w06-specialist-mathematics-and-games">W06 · Specialist mathematics and games</a></li><li><a href="#w07-interactive-and-output-sensitive-work">W07 · Interactive and output-sensitive work</a></li><li><a href="#w08-world-finals-integration">W08 · World Finals integration</a></li></ol></nav>
+<article class="prose">
+<p>8 modules · 16 selected practice problems · researched 2026-10-26</p>
+<p>World Finals preparation is the regional and championship core plus selective specialist depth and much stronger integration. W01-W06 are an elective menu: do not make every item a prerequisite for attempting finals sets. W07 and W08 are practical training skills; protocol knowledge can also be needed much earlier.</p>
+<p><strong>Priority:</strong> first repair weaknesses exposed by full sets. Add an advanced structure only when the team can explain when it is useful and maintain a tested implementation. A verified basic drill under a specialist module validates a prerequisite, not the whole module.</p>
+<p><strong>Extra laboratories:</strong> for half-plane intersection, compare the fast algorithm with repeated convex clipping on small bounded instances; test empty and unbounded intersections separately. For suffix trees, use the distinct-substring and repeated-substring tasks from C06 as alternative implementations. For Markov hitting times, construct small chains with known expectations and unreachable absorbing states. These are explicitly self-authored validation exercises, not invented online-judge problems.</p>
+<p><strong>Specialist problems:</strong> see <a href="06_PAST_PAPERS.html">Past papers</a> for NEERC 2010 J (half-plane intersection), IOI 2016 Aliens (penalty optimization; not an ICPC problem), and World Finals 2025 C/G/I. The other finals selections show how fundamentals still matter.</p>
+<p><strong>Exit evidence:</strong> improvement across unseen full sets, reliable code under contest conditions, and clear team decisions about which hard tasks to pursue. There is no fixed syllabus or problem quota that guarantees a finals result.</p>
+<h2 id="how-to-use-each-module">How to use each module</h2>
+<p>Work in prerequisite order. Attempt <strong>starter</strong>, then <strong>core</strong>, then <strong>stretch</strong>. These labels are relative to the module, not official platform difficulties. The “why it fits” notes contain hints: skip that column if you want a blind attempt. A listed technique is a suitable approach, not necessarily the unique or simplest one. CF ratings are reference values and may change; a dash means no rating is listed.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Focus</th>
+<th>Prerequisites</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#w01">W01</a></td>
+<td>Dynamic sequences and forests</td>
+<td>C01,C03</td>
+</tr>
+<tr>
+<td><a href="#w02">W02</a></td>
+<td>Advanced optimization and algebraic DP</td>
+<td>C04,C08</td>
+</tr>
+<tr>
+<td><a href="#w03">W03</a></td>
+<td>Specialist geometry</td>
+<td>C10</td>
+</tr>
+<tr>
+<td><a href="#w04">W04</a></td>
+<td>Specialist graphs and optimization</td>
+<td>C07,R11</td>
+</tr>
+<tr>
+<td><a href="#w05">W05</a></td>
+<td>Advanced strings</td>
+<td>C06</td>
+</tr>
+<tr>
+<td><a href="#w06">W06</a></td>
+<td>Specialist mathematics and games</td>
+<td>C08,C09,R19</td>
+</tr>
+<tr>
+<td><a href="#w07">W07</a></td>
+<td>Interactive and output-sensitive work</td>
+<td>P16,R20</td>
+</tr>
+<tr>
+<td><a href="#w08">W08</a></td>
+<td>World Finals integration</td>
+<td>C12,W07; W01-W06 are electives</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="w01"></a></p>
+<h2 id="w01-dynamic-sequences-and-forests">W01 · Dynamic sequences and forests</h2>
+<p class="module-note"><strong>Prerequisites:</strong> C01,C03.</p>
+<p class="module-note"><strong>Learn:</strong> Implicit treap split/merge and lazy reversal; link-cut trees; preferred paths; dynamic path queries; randomized balancing.</p>
+<p class="module-note"><strong>Mastery check:</strong> Stress-test every operation against a vector or small explicit forest, including cut/relink and reversed paths.</p>
+<p class="module-note"><strong>Watch for:</strong> Implementing a dynamic tree without a verified invariant; stale lazy tags during rotations.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/data_structures/treap.html">Treap</a>; <a href="https://github.com/kth-competitive-programming/kactl">KACTL reference and testing guidance</a>.</p>
+<!-- enriched:W01:start -->
+<div class="topic-expansion" aria-label="W01 detailed study content"><h3>Understand the idea</h3><p>Implicit treaps store a sequence by subtree sizes rather than explicit keys. Split and merge support insertion, deletion, reversal, and interval aggregates in expected logarithmic time under randomized priorities. Push lazy tags before descending and pull aggregates after structural changes. Link-cut trees maintain changing forests through preferred paths and splay operations, supporting link, cut, reroot, and path queries. Dynamic subtree aggregates require additional bookkeeping beyond a basic path implementation.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>To reverse [l,r), split the sequence at l and again at r-l, toggle the middle tree&#x27;s reversal tag, and merge the pieces. For a dynamic forest, reject a link that would create a cycle. A cut operation must confirm the requested vertices form the intended edge after exposing the path.</p></div>
+<h3>Learning sequence</h3><ol><li>Stress-test treap operations against a vector with retained random seeds.</li><li>Learn splay invariants and lazy propagation before using a link-cut template.</li><li>Compare every dynamic-forest operation with BFS and explicit adjacency sets on tiny forests.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Treap sequence operations plus link-cut/heavy-light lecture notes for changing forests.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=erKlLEXLKyY">Algorithms Live! Episode 30 - Treaps</a> <span class="resource-provenance">(<a href="https://algorithms-live.blogspot.com/2018/01/episode-30-treaps.html">source page</a>)</span></li><li><span class="resource-kind">Lecture notes PDF</span> <a href="https://courses.csail.mit.edu/6.851/spring12/scribe/L19.pdf">MIT 6.851: Dynamic trees and heavy-light decomposition</a></li><li><span class="resource-kind">Paper</span> <a href="https://www.cs.cmu.edu/~sleator/papers/dynamic-trees.pdf">A Data Structure for Dynamic Trees</a><p>Sleator and Tarjan; original dynamic-tree analysis, optional after an implementation tutorial.</p></li><li><span class="resource-kind">Tutorial</span> <a href="https://usaco.guide/adv/link-cut-tree">USACO Guide: link-cut trees</a><p>Preferred-path operations, connectivity, and path/subtree variants.</p></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:W01:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://cses.fi/problemset/task/2074">Reversals and Sums</a></td>
+<td style="text-align:right">—</td>
+<td>Implicit treap with lazy reversal and subtree sums.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_path_sum">Dynamic Tree Vertex Add Path Sum</a></td>
+<td style="text-align:right">—</td>
+<td>Dynamic link/cut forest with vertex additions and path sums; use link-cut trees.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="w02"></a></p>
+<h2 id="w02-advanced-optimization-and-algebraic-dp">W02 · Advanced optimization and algebraic DP</h2>
+<p class="module-note"><strong>Prerequisites:</strong> C04,C08.</p>
+<p class="module-note"><strong>Learn:</strong> Lagrangian/Alien trick and tie handling; discrete convexity; slope trick; generating-function manipulations; formal power series; linear recurrence techniques.</p>
+<p class="module-note"><strong>Mastery check:</strong> Explain which optimum a penalty search returns and why the target count is recoverable.</p>
+<p class="module-note"><strong>Watch for:</strong> Assuming any cardinality-constrained DP supports Alien trick; confusing coefficient truncation with evaluation.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/algebra/polynomial.html">Operations on polynomials and series</a>; <a href="https://github.com/kth-competitive-programming/kactl">KACTL reference and testing guidance</a>.</p>
+<!-- enriched:W02:start -->
+<div class="topic-expansion" aria-label="W02 detailed study content"><h3>Understand the idea</h3><p>Algebraic DP optimization requires proving structure in the value function. Alien optimization adds a penalty per chosen group and searches for a penalty producing the required count; convexity and tie handling determine whether the original value can be recovered. Slope trick maintains breakpoints of a convex piecewise-linear function through DP transitions. Formal power series work with coefficients only up to a required degree and impose invertibility conditions on operations such as reciprocal, logarithm, and exponential.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>Penalizing every partition by lambda often makes the optimal number of parts decrease as lambda increases. Store both penalized cost and count with an explicit tie policy; a jump over the desired count needs a structural argument, not arbitrary interpolation. For a series inverse, the constant coefficient must be invertible in the coefficient field.</p></div>
+<h3>Learning sequence</h3><ol><li>Derive the unoptimized recurrence and prove the convexity needed by the selected technique.</li><li>Plot a small piecewise-linear DP function and track its breakpoints manually.</li><li>Compare truncated polynomial operations and recurrence acceleration with direct computation.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Companion lectures on advanced DP and polynomial multiplication; dedicated Alien/slope/FPS resources below provide specialist coverage.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=Tw1k46ywN6E">Lecture 10: Dynamic Programming: Advanced DP</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/resources/lecture-10-dynamic-programming-advanced-dp/">source page</a>)</span></li><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=iTMn0Kt18tg">Lecture 3: Divide &amp; Conquer: FFT</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/resources/lecture-3-divide-conquer-fft/">source page</a>)</span></li><li><span class="resource-kind">Handout PDF</span> <a href="https://jeffe.cs.illinois.edu/teaching/algorithms/notes/D-faster-dynprog.pdf">Jeff Erickson: Advanced Dynamic Programming</a></li><li><span class="resource-kind">Tutorial</span> <a href="https://soi.ch/wiki/alien-optimization/">Swiss Olympiad: Alien optimization</a><p>Penalty formulation, convexity, and degeneracy/tie handling.</p></li><li><span class="resource-kind">Tutorial</span> <a href="https://usaco.guide/adv/slope-trick">USACO Guide: slope trick</a><p>Piecewise-linear convex functions and DP applications.</p></li><li><span class="resource-kind">Tutorial</span> <a href="https://cp-algorithms.com/algebra/polynomial.html">Formal power series</a><p>Coefficient-field assumptions for inverse, logarithm, exponential, and related operations.</p></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:W02:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>core</td>
+<td><a href="https://judge.yosupo.jp/problem/exp_of_formal_power_series">Exp of Formal Power Series</a></td>
+<td style="text-align:right">—</td>
+<td>Formal-series exponential modulo a specified NTT-friendly prime.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://cses.fi/problemset/task/2086">Subarray Squares</a></td>
+<td style="text-align:right">—</td>
+<td>Constrained partition optimization; D&amp;C DP is a baseline, penalty optimization requires a separate proof.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="w03"></a></p>
+<h2 id="w03-specialist-geometry">W03 · Specialist geometry</h2>
+<p class="module-note"><strong>Prerequisites:</strong> C10.</p>
+<p class="module-note"><strong>Learn:</strong> Half-plane intersection; Minkowski sums; polygon clipping; minimum enclosing circle; 3D vector/plane geometry; planar duality; Voronoi/Delaunay awareness.</p>
+<p class="module-note"><strong>Mastery check:</strong> Specify boundedness and degeneracy behavior; compare small cases against slower geometric checks.</p>
+<p class="module-note"><strong>Watch for:</strong> Treating all geometry as epsilon comparisons; using a 2D formula unchanged in 3D.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/geometry/halfplane-intersection.html">Half-plane intersection - S&amp;I Algorithm in O(N log N)</a>; <a href="https://cp-algorithms.com/geometry/minkowski.html">Minkowski sum of convex polygons</a>; <a href="https://cp-algorithms.com/geometry/enclosing-circle.html">Minimum Enclosing Circle</a>.</p>
+<!-- enriched:W03:start -->
+<div class="topic-expansion" aria-label="W03 detailed study content"><h3>Understand the idea</h3><p>Specialist geometry combines sophisticated structures with reliable elementary predicates. Half-plane intersection tracks the boundary of a convex feasible region and must handle parallel constraints and unbounded cases. Minkowski sums merge edge directions of convex polygons. Minimum enclosing circle uses randomized incremental constraints and needs correct one-, two-, and three-point boundary solvers. In three dimensions, distinguish point, line, and plane degeneracies. Voronoi and Delaunay structures are useful to recognize even when a simpler reduction is preferable.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>The Minkowski sum A+B consists of all a+b with a in A and b in B. For convex polygons listed consistently, their edge direction sequences can be merged in linear time after normalization. To test whether two convex polygons intersect, reasoning about A+(-B) reduces the question to whether the origin belongs to that sum.</p></div>
+<h3>Learning sequence</h3><ol><li>Implement clipping or half-plane intersection with a documented empty/unbounded representation.</li><li>Test minimum enclosing circle against exhaustive small boundary candidates.</li><li>Practice 3D dot/cross products on parallel, coplanar, and nearly degenerate inputs.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Convex-hull and planar-predicate prerequisites; use the specialist references for half-planes, Minkowski sums, and enclosing circles.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=EzeYI7p9MjU">Lecture 2: Divide &amp; Conquer: Convex Hull, Median Finding</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/resources/lecture-2-divide-conquer-convex-hull-median-finding/">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/09-computational-geometry.pdf">Stanford CS97SI: Computational Geometry</a></li><li><span class="resource-kind">Tutorial</span> <a href="https://cp-algorithms.com/geometry/halfplane-intersection.html">Half-plane intersection</a><p>Angle ordering, deque processing, and parallel constraints.</p></li><li><span class="resource-kind">Tutorial</span> <a href="https://cp-algorithms.com/geometry/minkowski.html">Minkowski sum of convex polygons</a><p>Edge merging and convex-distance modeling.</p></li><li><span class="resource-kind">Tutorial</span> <a href="https://cp-algorithms.com/geometry/enclosing-circle.html">Minimum enclosing circle</a><p>Randomized incremental construction and boundary cases.</p></li><li><span class="resource-kind">Tutorial</span> <a href="https://cp-algorithms.com/geometry/delaunay.html">Delaunay and Voronoi structures</a><p>Optional specialist awareness after robust planar primitives.</p></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:W03:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/87/E">CF 87E — Mogohu-Rea Idol</a></td>
+<td style="text-align:right">2600</td>
+<td>Minkowski sum of three convex polygons, followed by scaled point membership queries.</td>
+</tr>
+<tr>
+<td>starter</td>
+<td><a href="https://judge.yosupo.jp/problem/static_convex_hull">Static Convex Hull</a></td>
+<td style="text-align:right">—</td>
+<td>Verify a reusable convex hull implementation before specialist geometry.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="w04"></a></p>
+<h2 id="w04-specialist-graphs-and-optimization">W04 · Specialist graphs and optimization</h2>
+<p class="module-note"><strong>Prerequisites:</strong> C07,R11.</p>
+<p class="module-note"><strong>Learn:</strong> General matching/blossom; global min-cut; dominators; directed MST; flow with demands; linear programming and duality; recognize when a smaller special case suffices.</p>
+<p class="module-note"><strong>Mastery check:</strong> Translate the combinatorial constraints into an exact optimization model and justify the reduction.</p>
+<p class="module-note"><strong>Watch for:</strong> Using bipartite matching on a non-bipartite graph; inferring ordinary max flow from a story about pipes.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/graph/stoer_wagner_mincut.html">Minimum cut - Stoer-Wagner algorithm</a>; <a href="https://github.com/kth-competitive-programming/kactl">KACTL reference and testing guidance</a>.</p>
+<!-- enriched:W04:start -->
+<div class="topic-expansion" aria-label="W04 detailed study content"><h3>Understand the idea</h3><p>Specialist graph problems often differ from familiar ones by one decisive assumption. General matching needs blossom contraction because odd cycles break bipartite augmenting-path logic. Directed MST seeks a rooted arborescence and cannot use undirected cut reasoning unchanged. Dominators capture vertices unavoidable on paths from a fixed root. Global minimum cut differs from a chosen source-sink cut. Linear programming models continuous variables and gives dual certificates, but integrality requires an additional theorem or formulation property.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>In a triangle, the bipartite alternating-layer viewpoint encounters an odd cycle; blossom contraction preserves the ability to search for augmenting paths through it. For optimization modeling, a fractional assignment or flow may be integral because of the structure of its constraint matrix, while an arbitrary linear relaxation of a discrete problem need not be.</p></div>
+<h3>Learning sequence</h3><ol><li>Identify which assumption prevents a standard bipartite or undirected algorithm from applying.</li><li>Validate a specialist implementation on exhaustive tiny graphs.</li><li>Write both primal and dual constraints for a small optimization model and interpret a certificate.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Matching and LP foundations; general blossoms, dominators, and directed MST are separate specialist algorithms.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=8C_T4iTzPCU">Lecture 14: Incremental Improvement: Matching</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/resources/lecture-14-incremental-improvement-matching/">source page</a>)</span></li><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=WwMz2fJwUCg">Lecture 15: Linear Programming: LP, reductions, Simplex</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/resources/lecture-15-linear-programming-lp-reductions-simplex/">source page</a>)</span></li><li><span class="resource-kind">Handout PDF</span> <a href="https://jeffe.cs.illinois.edu/teaching/algorithms/notes/H-lp.pdf">Jeff Erickson: Linear Programming</a></li><li><span class="resource-kind">Lecture notes</span> <a href="https://jeffe.cs.illinois.edu/teaching/algorithms/notes/I-simplex.pdf">Erickson: linear-programming algorithms</a><p>Simplex and optimization context; supplement the LP modeling handout.</p></li><li><span class="resource-kind">Reference library</span> <a href="https://github.com/kth-competitive-programming/kactl/tree/main/content/graph">KACTL graph implementations</a><p>Inspect GeneralMatching, DirectedMST, GlobalMinCut, and related specialist routines; these are code references, not full tutorials.</p></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:W04:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>core</td>
+<td><a href="https://judge.yosupo.jp/problem/general_matching">Matching on General Graph</a></td>
+<td style="text-align:right">—</td>
+<td>Maximum matching in a general undirected graph, requiring blossom or an equivalent general method.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://judge.yosupo.jp/problem/directedmst">Directed MST</a></td>
+<td style="text-align:right">—</td>
+<td>Minimum-cost directed spanning arborescence.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://judge.yosupo.jp/problem/dominatortree">Dominator Tree</a></td>
+<td style="text-align:right">—</td>
+<td>Immediate dominators in a directed graph.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="w05"></a></p>
+<h2 id="w05-advanced-strings">W05 · Advanced strings</h2>
+<p class="module-note"><strong>Prerequisites:</strong> C06.</p>
+<p class="module-note"><strong>Learn:</strong> Lyndon factorization; minimal rotation; suffix trees as an optional alternative; palindromic trees; runs and periodicity; advanced string DP.</p>
+<p class="module-note"><strong>Mastery check:</strong> Explain when suffix array/automaton already suffices and justify the extra machinery before implementing it.</p>
+<p class="module-note"><strong>Watch for:</strong> Learning multiple complex structures without a use case; incorrect sentinel/alphabet assumptions.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/string/lyndon_factorization.html">Lyndon factorization</a>; <a href="https://cp-algorithms.com/string/suffix-tree-ukkonen.html">Suffix Tree</a>.</p>
+<!-- enriched:W05:start -->
+<div class="topic-expansion" aria-label="W05 detailed study content"><h3>Understand the idea</h3><p>Advanced string methods expose periodicity and repeated structure without enumerating every substring. Lyndon factorization decomposes a string into a canonical ordered sequence of primitive factors and supports minimal-rotation reasoning. A palindromic tree has one node per distinct palindrome and suffix links between palindromic suffixes; it complements Manacher&#x27;s position-centered radii. Runs describe maximal periodic regions, while suffix trees offer an alternative index with substantial implementation complexity. Choose a structure according to the actual query rather than its generality.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>For ababa, the distinct nonempty palindromes are a, b, aba, bab, and ababa. A palindromic tree represents these five objects, whereas Manacher stores a radius for each center. Appending one character can create at most one new distinct palindrome, which explains the linear node bound behind the palindromic tree.</p></div>
+<h3>Learning sequence</h3><ol><li>Implement minimal rotation and compare it with sorting all rotations for small strings.</li><li>Build an eertree and verify distinct palindromes and occurrence propagation.</li><li>Study periodicity proofs before attempting run enumeration or advanced string DP.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Suffix-indexing prerequisites; use the Lyndon and eertree sources for advanced periodic and palindromic structure.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=zqKlL3ZpTqs">William Fiset: Suffix Array</a> <span class="resource-provenance">(<a href="https://github.com/williamfiset/Algorithms">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/suffix-array.pdf">Stanford CS97SI: Array</a></li><li><span class="resource-kind">Tutorial</span> <a href="https://cp-algorithms.com/string/lyndon_factorization.html">Lyndon factorization</a><p>Duval&#x27;s algorithm and smallest cyclic shift.</p></li><li><span class="resource-kind">Paper</span> <a href="https://arxiv.org/abs/1506.04862">EERTREE: An Efficient Data Structure for Processing Palindromes in Strings</a><p>Rubinchik and Shur; abstract page with PDF access and the distinct-palindrome structure.</p></li><li><span class="resource-kind">Tutorial</span> <a href="https://cp-algorithms.com/string/main_lorentz.html">Finding repetitions</a><p>Periodic structure and repetition algorithms; advanced follow-up.</p></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:W05:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>core</td>
+<td><a href="https://judge.yosupo.jp/problem/lyndon_factorization">Lyndon Factorization</a></td>
+<td style="text-align:right">—</td>
+<td>Compute the Lyndon factorization directly with Duval's algorithm.</td>
+</tr>
+<tr>
+<td>starter</td>
+<td><a href="https://cses.fi/problemset/task/1110">Minimal Rotation</a></td>
+<td style="text-align:right">—</td>
+<td>Minimal rotation using Lyndon/Duval or Booth; compare periodic cases.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://judge.yosupo.jp/problem/enumerate_palindromes">Enumerate Palindromes</a></td>
+<td style="text-align:right">—</td>
+<td>All palindrome lengths/radii; a foundation before palindromic-tree extensions.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="w06"></a></p>
+<h2 id="w06-specialist-mathematics-and-games">W06 · Specialist mathematics and games</h2>
+<p class="module-note"><strong>Prerequisites:</strong> C08,C09,R19.</p>
+<p class="module-note"><strong>Learn:</strong> Miller-Rabin/Pollard rho; discrete logarithm; Burnside; interpolation; determinants and Matrix-Tree theorem; impartial games combined with structural graph arguments.</p>
+<p class="module-note"><strong>Mastery check:</strong> State algebraic preconditions, overflow bounds, and randomized failure assumptions; prove structural game reductions.</p>
+<p class="module-note"><strong>Watch for:</strong> Treating a probabilistic primality result as deterministic without appropriate bases and bounds.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/algebra/primality_tests.html">Primality tests</a>; <a href="https://cp-algorithms.com/algebra/factorization.html">Integer factorization</a>; <a href="https://cp-algorithms.com/algebra/discrete-log.html">Discrete Log</a>; <a href="https://cp-algorithms.com/combinatorics/burnside.html">Burnside's lemma / Pólya enumeration theorem</a>; <a href="https://cp-algorithms.com/graph/kirchhoff-theorem.html">Kirchhoff Theorem</a>.</p>
+<!-- enriched:W06:start -->
+<div class="topic-expansion" aria-label="W06 detailed study content"><h3>Understand the idea</h3><p>Specialist mathematics demands attention to theorem conditions and arithmetic scale. Miller-Rabin bases determine the range of a deterministic primality test; Pollard rho is randomized factorization and requires safe modular multiplication. Discrete logarithms have coprimality and subgroup issues. Burnside averages fixed objects over a group action. Interpolation depends on the coefficient field, and Matrix-Tree turns a graph-counting problem into a determinant of a Laplacian minor. Game reductions still require legal-move and termination proofs.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>To count colorings of a cycle up to rotation, sum the colorings fixed by each rotation and divide by the number of rotations under Burnside&#x27;s lemma. Modular division requires that group size be invertible, or a different arithmetic strategy. For a connected undirected graph, deleting one row and matching column from its Laplacian gives a determinant equal to the number of spanning trees.</p></div>
+<h3>Learning sequence</h3><ol><li>Verify primality and factorization routines against a sieve on a large small-number range.</li><li>Enumerate tiny group actions and compare orbit counts with Burnside.</li><li>Check Matrix-Tree determinants against exhaustive spanning-tree subsets on small graphs.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Arithmetic and polynomial-transform prerequisites; use the specialist references for factorization, group actions, determinants, and discrete logarithms.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=XX7ePR21Ook">Lecture 5: Number Theory II</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/resources/lecture-5-number-theory-ii/">source page</a>)</span></li><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=iTMn0Kt18tg">Lecture 3: Divide &amp; Conquer: FFT</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/resources/lecture-3-divide-conquer-fft/">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/02-mathematics.pdf">Stanford CS97SI: Mathematics</a></li><li><span class="resource-kind">Tutorial</span> <a href="https://cp-algorithms.com/algebra/primality_tests.html">Primality testing</a><p>Miller-Rabin conditions and bounded-integer bases.</p></li><li><span class="resource-kind">Tutorial</span> <a href="https://cp-algorithms.com/algebra/factorization.html">Integer factorization</a><p>Pollard rho and safe modular arithmetic.</p></li><li><span class="resource-kind">Tutorial</span> <a href="https://cp-algorithms.com/combinatorics/burnside.html">Burnside and Polya enumeration</a><p>Group actions and counting fixed objects.</p></li><li><span class="resource-kind">Tutorial</span> <a href="https://cp-algorithms.com/graph/kirchhoff-theorem.html">Kirchhoff / Matrix-Tree theorem</a><p>Laplacian minors and spanning-tree counts.</p></li><li><span class="resource-kind">Tutorial</span> <a href="https://cp-algorithms.com/algebra/discrete-log.html">Discrete logarithm</a><p>Baby-step giant-step and noncoprime handling.</p></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:W06:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://cses.fi/problemset/task/2209">Counting Necklaces</a></td>
+<td style="text-align:right">—</td>
+<td>Burnside counting under rotations.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://judge.yosupo.jp/problem/factorize">Factorize</a></td>
+<td style="text-align:right">—</td>
+<td>64-bit integer factorization; Miller-Rabin plus Pollard rho is a standard approach.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://judge.yosupo.jp/problem/discrete_logarithm_mod">Discrete Logarithm</a></td>
+<td style="text-align:right">—</td>
+<td>Discrete logarithms including noncoprime complications under the statement's conditions.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="w07"></a></p>
+<h2 id="w07-interactive-and-output-sensitive-work">W07 · Interactive and output-sensitive work</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P16,R20.</p>
+<p class="module-note"><strong>Learn:</strong> Interactive protocols; flushing; query budgets; local mock judges; adaptive adversaries; constructive output validation; numerical tolerances.</p>
+<p class="module-note"><strong>Mastery check:</strong> Write a protocol simulator and prove both query budget and correctness; validate constructed answers independently.</p>
+<p class="module-note"><strong>Watch for:</strong> Continuing after an error sentinel; forgetting to flush; a correct idea that exceeds output or query limits.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://github.com/kth-competitive-programming/kactl">KACTL reference and testing guidance</a>.</p>
+<!-- enriched:W07:start -->
+<div class="topic-expansion" aria-label="W07 detailed study content"><h3>Understand the idea</h3><p>Interactive tasks are useful specialist training, although they should not be assumed to appear in a particular ICPC event. Treat the judge interface as a protocol: legal queries, response interpretation, termination signals, flush behavior, and a strict query budget. A mock judge makes these properties testable. Output-sensitive algorithms express cost in terms of both input and produced output. For constructive and numerical tasks, validate the output by the specification rather than comparing with one sample answer.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>In a hidden-number comparison task, maintain the set of numbers consistent with every response and choose queries that reduce the worst-case remaining set. If the judge returns an error or termination marker, stop according to the protocol. For a construction with many valid answers, check structure, range, uniqueness, and objective value rather than expecting a particular sequence.</p></div>
+<h3>Learning sequence</h3><ol><li>Build a local judge that tests every small hidden instance and counts queries.</li><li>Exercise early termination, invalid responses, and boundary query budgets.</li><li>Write an independent checker for a construction and a scale-aware numerical comparator.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Adaptive search and adversary reasoning; implement protocol handling and a local checker independently.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=EG_HfFMM0lE">Algorithms Live! Episode 32 - Fracturing Search</a> <span class="resource-provenance">(<a href="https://algorithms-live.blogspot.com/2018/08/episode-32-fracturing-search.html">source page</a>)</span></li><li><span class="resource-kind">Handout PDF</span> <a href="https://jeffe.cs.illinois.edu/teaching/algorithms/notes/13-adversary.pdf">Jeff Erickson: Adversary Arguments</a></li><li><span class="resource-kind">Training article</span> <a href="https://usaco.guide/adv/interactive">USACO Guide: interactive problems</a><p>Protocol, query strategy, and practical interactive tasks.</p></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:W07:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://cses.fi/problemset/task/3112">Hidden Integer</a></td>
+<td style="text-align:right">—</td>
+<td>Interactive search under an explicit query protocol and limit.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="w08"></a></p>
+<h2 id="w08-world-finals-integration">W08 · World Finals integration</h2>
+<p class="module-note"><strong>Prerequisites:</strong> C12,W07; W01-W06 are electives.</p>
+<p class="module-note"><strong>Learn:</strong> Read all problems; locate approachable tasks; combine fundamentals with structural insight; choose specialist depth by team coverage; rehearse the full environment.</p>
+<p class="module-note"><strong>Mastery check:</strong> Work through several unseen World Finals sets, retain a clear postmortem, and stress-test the reference library.</p>
+<p class="module-note"><strong>Watch for:</strong> Assuming every finals problem needs an advanced named algorithm or that ratings predict a team's score.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://github.com/kth-competitive-programming/kactl">KACTL reference and testing guidance</a>.</p>
+<!-- enriched:W08:start -->
+<div class="topic-expansion" aria-label="W08 detailed study content"><h3>Understand the idea</h3><p>World Finals integration means selecting useful work across the entire set and maintaining correctness over a long session. Specialist topics are electives for team coverage; strong fundamentals remain essential for approachable problems and for the components of hard reductions. Rehearse the actual environment, reference access, compiler behavior, and communication rules for the target event. Analyze official solution material only after an honest attempt, and distinguish multiple valid methods from a single prescribed editorial path.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>After reading a set, maintain a short list of solution hypotheses, unresolved proof obligations, likely implementation cost, and a named owner. If a specialist route stalls, recheck the constraints for a smaller special case or a simpler structural observation. Afterward, compare the team&#x27;s decisions with what was realistically solvable at each point, not only with hindsight.</p></div>
+<h3>Learning sequence</h3><ol><li>Run a complete unseen final-style set and preserve a decision timeline.</li><li>Upsolve an approachable miss and one problem requiring a new structural idea.</li><li>Rotate explanation duties so every team member can audit shared reference code and major reductions.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Challenge and contest discussion; pair with official final problem/solution materials and a full timed rehearsal.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=pOv4LRNt0jo">Algorithms Live! Episode 35 - Looking for a Challenge?</a> <span class="resource-provenance">(<a href="https://algorithms-live.blogspot.com/2019/01/episode-35-looking-for-challenge.html">source page</a>)</span></li><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=97ovVAJBbkA">Algorithms Live! Episode 37 - Venture Cup</a> <span class="resource-provenance">(<a href="https://algorithms-live.blogspot.com/2019/01/episode-37-venture-cup.html">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/01-introduction.pdf">Stanford CS97SI: Introduction</a></li><li><span class="resource-kind">Solutions PDF</span> <a href="https://icpc.global/worldfinals/problems/2025-ICPC-World-Finals/2025-ICPC-Solutions.pdf">2025 ICPC World Finals solution analysis</a><p>Hosted by ICPC; the document labels itself an unofficial analysis of possible solutions. Spoilers: open after a timed attempt.</p></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:W08:end -->
+<p>Use the full contest sets in <a href="06_PAST_PAPERS.html">Past papers</a> for this integration module.</p>
+</article><nav class="guide-pagination" aria-label="Adjacent guides"><a href="03_CHAMPIONSHIP.html"><span>Previous guide</span>Championship</a><a href="06_PAST_PAPERS.html"><span>Next guide</span>Past papers</a></nav>
+<footer><a href="../index.html">Back to the connected roadmap</a></footer></main></div></body></html>

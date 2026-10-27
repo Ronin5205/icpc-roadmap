@@ -1,0 +1,466 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>Past papers and contest ladder · ICPC roadmap</title><style>:root { color-scheme: light; font-family: "Segoe UI", Arial, sans-serif; color: #172b43; background: #fff; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { max-width: 1160px; padding: 64px 40px 32px; margin: auto; }
+h1, h2, p { margin: 0; }
+h1 { font-size: clamp(30px, 4vw, 44px); font-weight: 600; letter-spacing: -1px; margin: 12px 0 18px; }
+h2 { font-size: 28px; font-weight: 600; margin: 8px 0 10px; }
+p { color: #526579; line-height: 1.7; }
+.eyebrow { color: #326186; font-size: 12px; letter-spacing: 1.5px; font-weight: 700; }
+.document-heading > p:not(.eyebrow) { max-width: 850px; }
+.stage-sequence { display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin: 32px 0 24px; gap: 12px; font-size: 14px; font-weight: 600; }
+.stage-sequence li:not(:last-child)::after { content: "→"; margin-left: 12px; color: #8193a7; }
+.reading-note { font-size: 13px; }
+section { border-top: 1px solid #dce3eb; margin-top: 48px; padding-top: 32px; }
+.stage-heading { margin-bottom: 22px; }
+.diagram-frame { margin-top: 12px; }
+.diagram { position: relative; touch-action: pan-y; }
+.diagram svg { display: block; width: 100%; height: auto; max-height: 75vh; }
+.diagram.is-pannable { cursor: grab; touch-action: none; }
+.diagram.is-dragging { cursor: grabbing; user-select: none; }
+.diagram:focus-visible { outline: 1px dashed #8193a7; outline-offset: 3px; }
+.diagram-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 20px; padding: 0 0 10px; font-size: 11px; color: #6a7d90; }
+.diagram-toolbar[hidden] { display: none; }
+.zoom-controls { display: flex; align-items: center; gap: 8px; }
+.zoom-controls button { font: inherit; font-size: 14px; color: #244f74; background: transparent; border: 0; border-radius: 4px; min-width: 34px; min-height: 34px; padding: 5px 10px; cursor: pointer; }
+.zoom-controls button:hover { background: #f1f5f9; }
+.zoom-controls button:disabled { opacity: .4; cursor: default; }
+.zoom-controls button:focus-visible { outline: 2px solid #326186; outline-offset: 2px; }
+.zoom-controls output { min-width: 44px; text-align: center; font-variant-numeric: tabular-nums; }
+.references { margin-top: 12px; font-size: 13px; }
+a { color: #326186; text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid #326186; outline-offset: 4px; }
+footer { margin-top: 48px; border-top: 1px solid #dce3eb; padding-top: 24px; font-size: 12px; }
+footer p + p { margin-top: 8px; }
+.overview-links { display: flex; flex-wrap: wrap; gap: 20px; font-size: 13px; margin-bottom: 22px; }
+.skip-link { position: absolute; left: -9999px; }
+.skip-link:focus { left: 20px; top: 10px; background: white; padding: 12px; z-index: 5; }
+.guide-layout { max-width: 1500px; margin: auto; display: grid; grid-template-columns: 240px minmax(0, 1fr); }
+.guide-sidebar { position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto; padding: 44px 22px; border-right: 1px solid #e2e8ef; background: #f8fafc; }
+.guide-brand { display: block; font-weight: 700; font-size: 17px; text-decoration: none; margin-bottom: 40px; letter-spacing: 1px; }
+.guide-sidebar nav { margin-top: 14px; display: grid; gap: 5px; }
+.guide-sidebar nav a { padding: 10px 12px; font-size: 13px; line-height: 1.4; text-decoration: none; border-radius: 4px; color: #526579; }
+.guide-sidebar nav a[aria-current] { background: #e7eff7; color: #244f74; font-weight: 600; }
+main.guide-main { min-width: 0; width: 100%; max-width: 1120px; padding: 48px 48px 36px; }
+.guide-heading { padding-bottom: 30px; border-bottom: 1px solid #dce3eb; }
+.guide-heading h1 { font-size: clamp(28px, 3vw, 38px); line-height: 1.2; }
+.guide-heading > p:last-child { font-size: 13px; }
+.contents { margin: 28px 0 36px; padding: 24px 28px; border: 1px solid #dce3eb; border-radius: 5px; background: #fbfcfe; }
+.contents h2 { font-size: 14px; margin: 0 0 14px; }
+.contents ol { columns: 2; column-gap: 36px; padding: 0; margin: 0; list-style: none; }
+.contents li { break-inside: avoid; margin-bottom: 8px; font-size: 13px; line-height: 1.5; }
+.contents a { text-decoration: none; }
+.prose { font-size: 15px; line-height: 1.8; overflow-wrap: anywhere; }
+.prose p { margin: 16px 0; }
+.prose h2 { font-size: 23px; margin: 44px 0 18px; padding-top: 24px; border-top: 1px solid #dce3eb; line-height: 1.4; letter-spacing: -.3px; }
+.prose h3 { font-size: 18px; margin: 28px 0 12px; }
+.prose li { margin-bottom: 8px; color: #526579; }
+.prose strong { color: #243c55; font-weight: 600; }
+.prose .module-note { padding-left: 16px; border-left: 3px solid #dce7f2; }
+.table-scroll { max-width: 100%; overflow-x: auto; margin: 24px 0; border: 1px solid #dce3eb; border-radius: 5px; }
+.prose table { width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.65; }
+.prose th { background: #f1f5f9; color: #243c55; text-align: left; font-weight: 600; }
+.prose th, .prose td { padding: 12px 14px; border-bottom: 1px solid #e2e8ef; vertical-align: top; min-width: 90px; }
+.prose tr:last-child td { border-bottom: 0; }
+.prose tbody tr:nth-child(even) { background: #fbfcfe; }
+.prose code { font-size: .9em; background: #f0f4f8; border-radius: 3px; padding: 2px 4px; }
+.prose pre { padding: 20px; background: #f1f5f9; overflow: auto; }
+.prose blockquote { margin: 20px 0; padding: 8px 20px; border-left: 3px solid #b7ccdf; background: #f8fafc; }
+.source-note { margin: 28px 0; padding: 4px 22px 18px; border: 1px solid #dce3eb; border-radius: 5px; background: #fbfcfe; }
+.topic-stages { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 24px 0; font-size: 14px; }
+.topic-list { list-style: none; padding: 0; margin: 24px 0 0; }
+.topic-list li { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 16px; padding: 22px 0; border-bottom: 1px solid #e2e8ef; }
+.topic-code { color: #326186; font-size: 12px; font-weight: 600; padding-top: 3px; }
+.topic-list h3 { font-size: 17px; margin: 0 0 8px; line-height: 1.4; font-weight: 600; }
+.topic-list h3 a { text-decoration: none; }
+.topic-list p { font-size: 14px; }
+.topic-list .topic-prerequisites { font-size: 12px; color: #6a7d90; margin-bottom: 8px; }
+.guide-pagination { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid #dce3eb; padding-top: 28px; margin-top: 48px; }
+.guide-pagination a { text-decoration: none; font-weight: 600; font-size: 14px; }
+.guide-pagination span { display: block; color: #6a7d90; font-size: 11px; font-weight: 400; margin-bottom: 8px; }
+@media (max-width: 900px) {
+  .guide-layout { grid-template-columns: 1fr; }
+  .guide-sidebar { position: static; height: auto; overflow-y: visible; padding: 24px; border-right: 0; border-bottom: 1px solid #e2e8ef; }
+  .guide-brand { margin-bottom: 18px; }
+  .guide-sidebar nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  main.guide-main { padding: 30px 24px; }
+}
+@media (max-width: 600px) {
+  .guide-sidebar nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .contents ol { columns: 1; }
+  .contents { padding: 20px; }
+  main.guide-main { padding: 28px 18px; }
+  .prose th, .prose td { min-width: 125px; }
+}
+@media (max-width: 600px) { main { padding: 32px 18px; } section { margin-top: 32px; } }
+@media print {
+  @page { size: A3 portrait; margin: 12mm; }
+  main { max-width: none; padding: 0; }
+  .document-heading { break-after: page; }
+  section { break-before: page; border: 0; margin: 0; padding: 0; }
+  .diagram { overflow: visible; height: auto; }
+  .diagram-frame { border: 0; overflow: visible; }
+  .diagram-toolbar { display: none; }
+  .diagram svg { min-width: 0; width: 100%; max-height: 340mm; }
+  .references { display: none; }
+  footer { break-before: page; }
+  .guide-sidebar, .guide-pagination, .skip-link { display: none; }
+  .guide-layout { display: block; }
+  main.guide-main { max-width: none; padding: 0; }
+  .guide-page footer { break-before: auto; }
+  .table-scroll { overflow: visible; }
+  .prose h2 { break-after: avoid; }
+}
+</style><!-- paper-assets:start --><style>
+.prose .paper-gallery { margin-top: 32px; padding-top: 0; border-top: 0; }
+.paper-controls { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 12px; padding: 20px; background: #f8fafc; border: 1px solid #dce3eb; border-radius: 6px; margin-top: 22px; }
+.paper-controls[hidden], .paper-card[hidden], #paper-empty[hidden] { display: none; }
+.paper-controls label { font-size: 12px; color: #526579; display: grid; gap: 6px; align-content: start; }
+.paper-controls input, .paper-controls select, .paper-controls button { font: inherit; min-width: 0; width: 100%; min-height: 42px; padding: 8px 10px; border: 1px solid #b7c7d8; border-radius: 4px; background: #fff; color: #243c55; }
+.paper-controls input:focus-visible, .paper-controls select:focus-visible, .paper-controls button:focus-visible { outline: 2px solid #326186; outline-offset: 2px; }
+.paper-controls button { grid-column: 1 / -1; width: auto; justify-self: start; cursor: pointer; }
+.prose .paper-count { font-size: 13px; color: #6a7d90; margin: 18px 0; }
+.paper-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
+.paper-card { border: 1px solid #dce3eb; border-radius: 6px; padding: 22px; display: flex; flex-direction: column; min-width: 0; }
+.prose .paper-card h3 { margin: 6px 0 12px; font-size: 19px; line-height: 1.4; }
+.prose .paper-card .paper-meta { margin: 0; font-size: 11px; letter-spacing: .6px; text-transform: uppercase; color: #326186; }
+.paper-type { align-self: start; font-size: 11px; color: #526579; background: #edf2f7; border-radius: 3px; padding: 2px 7px; }
+.prose .paper-description { font-size: 13px; line-height: 1.7; margin: 14px 0 20px; flex-grow: 1; }
+.paper-links { display: flex; flex-wrap: wrap; gap: 10px 20px; font-size: 13px; }
+.paper-analysis { margin-top: 18px; font-size: 12px; border-top: 1px solid #e2e8ef; padding-top: 12px; }
+.paper-analysis summary, .paper-mappings > summary { cursor: pointer; color: #326186; }
+.prose .paper-analysis p { margin: 10px 0 0; font-size: 12px; }
+.prose .paper-no-analysis { font-size: 12px; color: #6a7d90; margin-bottom: 0; }
+.prose .paper-source-note { font-size: 12px; margin-top: 22px; }
+.paper-mappings { margin-top: 40px; border-top: 1px solid #dce3eb; padding-top: 22px; }
+.paper-mappings > summary { font-weight: 600; font-size: 17px; }
+@media (max-width: 1100px) { .paper-controls { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media (max-width: 600px) { .paper-grid, .paper-controls { grid-template-columns: 1fr; } .paper-card { padding: 18px; } }
+@media print { .paper-controls, .paper-count { display: none; } .paper-grid { display: block; } .paper-card { break-inside: avoid; margin-bottom: 16px; } .paper-card[hidden] { display: flex; } }
+</style><script defer src="paper-gallery.js"></script><!-- paper-assets:end --></head>
+<body class="guide-page"><a class="skip-link" href="#content">Skip to guide</a><div class="guide-layout">
+<aside class="guide-sidebar"><a class="guide-brand" href="../index.html">ICPC ROADMAP</a><p class="eyebrow">STUDY GUIDES</p><nav aria-label="Roadmap library"><a href="../index.html">Roadmap overview</a><a href="topics.html">All topics</a><a href="01_PRELIMINARIES.html">Preliminaries</a><a href="02_REGIONALS.html">Regionals</a><a href="03_CHAMPIONSHIP.html">Championship</a><a href="04_WORLD_FINALS.html">World Finals</a><a href="06_PAST_PAPERS.html" aria-current="page">Past papers</a><a href="09_TRAINING_ROUTINE.html">Training routine</a><a href="README.html">About this roadmap</a></nav></aside>
+<main class="guide-main" id="content"><header class="guide-heading"><p class="eyebrow">ICPC PREPARATION / PAST PAPERS</p><h1>Past papers and contest ladder</h1><p>Structured study guide · Reference edition</p></header>
+<nav class="contents" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#past-paper-gallery">Search the past-paper gallery</a></li><li><a href="#full-sets-choose-before-opening-spoilers">Full sets: choose before opening spoilers</a></li><li><a href="#suggested-virtual-progression">Suggested virtual progression</a></li><li><a href="#selected-problem-mappings-spoilers">Selected problem mappings — spoilers</a></li></ol></nav>
+<article class="prose">
+<p>Use full sets as well as topic drills. The links below are actual contest documents, not guessed Gym IDs. “Statement verified” means the problem and its requirements were checked. “Analysis-backed” means the technique was also checked against the linked analysis. A statement alone does not certify an inferred algorithm or its implementation.</p>
+<!-- paper-gallery:start --><section class="paper-gallery" id="past-paper-gallery" aria-labelledby="gallery-title"><h2 id="gallery-title">Past-paper gallery</h2><p>31 contest and practice packets, from local preliminaries to World Finals. Open the statement first; reveal solution links after your attempt. Short test sessions are labeled separately from full contests.</p><div class="paper-controls" id="paper-controls" hidden><label>Search papers<input id="paper-search" type="search" placeholder="Contest, year, or country" autocomplete="off"></label><label>Preparation stage<select id="paper-stage"><option value="">All</option><option>Preliminaries</option><option>Regionals</option><option>Championship</option><option>World Finals</option></select></label><label>Region<select id="paper-region"><option value="">All</option><option>Asia</option><option>Europe</option><option>Global</option><option>North America</option></select></label><label>Packet type<select id="paper-kind"><option value="">All</option><option>Full contest</option><option>Short practice</option><option>Specialist supplement</option></select></label><button type="button" id="paper-reset">Clear filters</button></div><p class="paper-count" id="paper-count" role="status" aria-live="polite">Showing all 31 packets</p><div class="paper-grid"><article class="paper-card" id="paper-topi-2025" data-stage="Preliminaries" data-region="Asia" data-kind="Full contest" data-search="asia topi 2025 ? february 2026 packet 2026 preliminaries asia full contest pakistan-focused practice. the packet is dated 1 february 2026 but names the 2025 onsite preliminary contest; keep both dates in your training log."><p class="paper-meta">Preliminaries / Asia</p><h3>Asia Topi 2025 ? February 2026 packet</h3><span class="paper-type">Full contest</span><p class="paper-description">Pakistan-focused practice. The packet is dated 1 February 2026 but names the 2025 onsite preliminary contest; keep both dates in your training log.</p><div class="paper-links"><a href="https://giki.edu.pk/wp-content/uploads/2026/02/1-ICPC_Feb12026_Compiled_Final.pdf">Statement PDF</a><a href="https://giki.edu.pk/wp-content/uploads/2026/02/1-ICPC_Feb12026_Compiled_Final.pdf">Publisher / event</a></div><p class="paper-no-analysis">No analysis linked</p></article><article class="paper-card" id="paper-asia-west-2025" data-stage="Championship" data-region="Asia" data-kind="Full contest" data-search="asia west finals 2025 2025 championship asia full contest a complete a?k host-provided packet for an asia west rehearsal. no solution analysis is linked here."><p class="paper-meta">Championship / Asia</p><h3>Asia West Finals 2025</h3><span class="paper-type">Full contest</span><p class="paper-description">A complete A?K host-provided packet for an Asia West rehearsal. No solution analysis is linked here.</p><div class="paper-links"><a href="https://wc.indiaicpc.in/problem_set_2024_25.pdf">Statement PDF</a><a href="https://wc.indiaicpc.in/">Publisher / event</a></div><p class="paper-no-analysis">No analysis linked</p></article><article class="paper-card" id="paper-euc-2025" data-stage="Championship" data-region="Europe" data-kind="Full contest" data-search="europe championship 2025 2025 championship europe full contest a championship benchmark after regional core practice. selected analysis-backed mappings are below."><p class="paper-meta">Championship / Europe</p><h3>Europe Championship 2025</h3><span class="paper-type">Full contest</span><p class="paper-description">A championship benchmark after regional core practice. Selected analysis-backed mappings are below.</p><div class="paper-links"><a href="https://euc.icpc.global/wp-content/uploads/2025/03/euc2025-official.pdf">Statement PDF</a><a href="https://euc.icpc.global/home-2025/">Publisher / event</a></div><details class="paper-analysis"><summary>Reveal solution links (spoilers)</summary><p><a href="https://euc.icpc.global/wp-content/uploads/2025/03/analysis.pdf">Solution slides / analysis</a></p></details></article><article class="paper-card" id="paper-gcpc-2025" data-stage="Regionals" data-region="Europe" data-kind="Full contest" data-search="gcpc 2025 2025 regionals europe full contest german collegiate programming contest material. use the jury slides after attempting the complete statement packet."><p class="paper-meta">Regionals / Europe</p><h3>GCPC 2025</h3><span class="paper-type">Full contest</span><p class="paper-description">German Collegiate Programming Contest material. Use the jury slides after attempting the complete statement packet.</p><div class="paper-links"><a href="https://2025.gcpc.nwerc.eu/contest.pdf">Statement PDF</a><a href="https://2025.gcpc.nwerc.eu/materials">Publisher / event</a></div><details class="paper-analysis"><summary>Reveal solution links (spoilers)</summary><p><a href="https://2025.gcpc.nwerc.eu/solutions.pdf">Solution slides / analysis</a></p></details></article><article class="paper-card" id="paper-nwerc-2025" data-stage="Regionals" data-region="Europe" data-kind="Full contest" data-search="nwerc 2025 2025 regionals europe full contest a complete northwestern europe regional set. attempt it blind, then compare your reasoning with the jury slides."><p class="paper-meta">Regionals / Europe</p><h3>NWERC 2025</h3><span class="paper-type">Full contest</span><p class="paper-description">A complete Northwestern Europe regional set. Attempt it blind, then compare your reasoning with the jury slides.</p><div class="paper-links"><a href="https://2025.nwerc.eu/problem-set.pdf">Statement PDF</a><a href="https://2025.nwerc.eu/">Publisher / event</a></div><details class="paper-analysis"><summary>Reveal solution links (spoilers)</summary><p><a href="https://2025.nwerc.eu/solutions.pdf">Solution slides / analysis</a></p></details></article><article class="paper-card" id="paper-nwerc-2025-practice" data-stage="Regionals" data-region="Europe" data-kind="Short practice" data-search="nwerc 2025 ? test session 2025 regionals europe short practice a separate warm-up packet for a shorter session or checking the contest workflow. it is not the main regional contest."><p class="paper-meta">Regionals / Europe</p><h3>NWERC 2025 ? test session</h3><span class="paper-type">Short practice</span><p class="paper-description">A separate warm-up packet for a shorter session or checking the contest workflow. It is not the main regional contest.</p><div class="paper-links"><a href="https://2025.nwerc.eu/nwerc2025-practice.pdf">Statement PDF</a><a href="https://2025.nwerc.eu/">Publisher / event</a></div><details class="paper-analysis"><summary>Reveal solution links (spoilers)</summary><p><a href="https://2025.nwerc.eu/nwerc2025-practice-slides.pdf">Solution slides / analysis</a></p></details></article><article class="paper-card" id="paper-wf-2025" data-stage="World Finals" data-region="Global" data-kind="Full contest" data-search="world finals 2025 ? baku 2025 world finals global full contest use for full-set reading and finals rehearsal; a topic map is retained below. the icpc-hosted sketches explicitly label themselves unofficial."><p class="paper-meta">World Finals / Global</p><h3>World Finals 2025 ? Baku</h3><span class="paper-type">Full contest</span><p class="paper-description">Use for full-set reading and finals rehearsal; a topic map is retained below. The ICPC-hosted sketches explicitly label themselves unofficial.</p><div class="paper-links"><a href="https://worldfinals.icpc.global/problems/2025/finals/problems/problemset.pdf">Statement PDF</a><a href="https://worldfinals.icpc.global/problems/">Publisher / event</a></div><details class="paper-analysis"><summary>Reveal solution links (spoilers)</summary><p><a href="https://icpc.global/worldfinals/problems/2025-ICPC-World-Finals/2025-ICPC-Solutions.pdf">ICPC-hosted unofficial solution sketches</a></p></details></article><article class="paper-card" id="paper-bapc-2024" data-stage="Regionals" data-region="Europe" data-kind="Full contest" data-search="bapc 2024 2024 regionals europe full contest benelux contest practice to broaden your regional preparation. official solution slides support the postmortem."><p class="paper-meta">Regionals / Europe</p><h3>BAPC 2024</h3><span class="paper-type">Full contest</span><p class="paper-description">Benelux contest practice to broaden your regional preparation. Official solution slides support the postmortem.</p><div class="paper-links"><a href="https://2024.bapc.eu/bapc/problemset.pdf">Statement PDF</a><a href="https://2024.bapc.eu/">Publisher / event</a></div><details class="paper-analysis"><summary>Reveal solution links (spoilers)</summary><p><a href="https://2024.bapc.eu/bapc/solutions.pdf">Solution slides / analysis</a></p></details></article><article class="paper-card" id="paper-bapc-2024-prelims" data-stage="Preliminaries" data-region="Europe" data-kind="Full contest" data-search="bapc 2024 ? preliminaries 2024 preliminaries europe full contest a distinct preliminary packet for mixed practice before moving to the main bapc set. contest names do not guarantee a particular difficulty."><p class="paper-meta">Preliminaries / Europe</p><h3>BAPC 2024 ? preliminaries</h3><span class="paper-type">Full contest</span><p class="paper-description">A distinct preliminary packet for mixed practice before moving to the main BAPC set. Contest names do not guarantee a particular difficulty.</p><div class="paper-links"><a href="https://2024.bapc.eu/prelims/contest.pdf">Statement PDF</a><a href="https://2024.bapc.eu/">Publisher / event</a></div><details class="paper-analysis"><summary>Reveal solution links (spoilers)</summary><p><a href="https://2024.bapc.eu/prelims/solutions.pdf">Solution slides / analysis</a></p></details></article><article class="paper-card" id="paper-gcpc-2024" data-stage="Regionals" data-region="Europe" data-kind="Full contest" data-search="gcpc 2024 2024 regionals europe full contest german collegiate programming contest material. use the jury slides after attempting the complete statement packet."><p class="paper-meta">Regionals / Europe</p><h3>GCPC 2024</h3><span class="paper-type">Full contest</span><p class="paper-description">German Collegiate Programming Contest material. Use the jury slides after attempting the complete statement packet.</p><div class="paper-links"><a href="https://2024.gcpc.nwerc.eu/problemset.pdf">Statement PDF</a><a href="https://2024.gcpc.nwerc.eu/materials">Publisher / event</a></div><details class="paper-analysis"><summary>Reveal solution links (spoilers)</summary><p><a href="https://2024.gcpc.nwerc.eu/solutions.pdf">Solution slides / analysis</a></p></details></article><article class="paper-card" id="paper-nwerc-2024" data-stage="Regionals" data-region="Europe" data-kind="Full contest" data-search="nwerc 2024 2024 regionals europe full contest a complete northwestern europe regional set. attempt it blind, then compare your reasoning with the jury slides. selected reviewed mappings are retained below."><p class="paper-meta">Regionals / Europe</p><h3>NWERC 2024</h3><span class="paper-type">Full contest</span><p class="paper-description">A complete Northwestern Europe regional set. Attempt it blind, then compare your reasoning with the jury slides. Selected reviewed mappings are retained below.</p><div class="paper-links"><a href="https://2024.nwerc.eu/main/problem-set.pdf">Statement PDF</a><a href="https://2024.nwerc.eu/">Publisher / event</a></div><details class="paper-analysis"><summary>Reveal solution links (spoilers)</summary><p><a href="https://2024.nwerc.eu/main/solutions.pdf">Solution slides / analysis</a></p></details></article><article class="paper-card" id="paper-nwerc-2024-practice" data-stage="Regionals" data-region="Europe" data-kind="Short practice" data-search="nwerc 2024 ? test session 2024 regionals europe short practice a separate warm-up packet for a shorter session or checking the contest workflow. it is not the main regional contest."><p class="paper-meta">Regionals / Europe</p><h3>NWERC 2024 ? test session</h3><span class="paper-type">Short practice</span><p class="paper-description">A separate warm-up packet for a shorter session or checking the contest workflow. It is not the main regional contest.</p><div class="paper-links"><a href="https://2024.nwerc.eu/test-session/problem-set.pdf">Statement PDF</a><a href="https://2024.nwerc.eu/">Publisher / event</a></div><details class="paper-analysis"><summary>Reveal solution links (spoilers)</summary><p><a href="https://2024.nwerc.eu/test-session/solutions.pdf">Solution slides / analysis</a></p></details></article><article class="paper-card" id="paper-wf-2024" data-stage="World Finals" data-region="Global" data-kind="Full contest" data-search="world finals 2024 ? astana 2024 world finals global full contest an additional finals set for practicing problem selection and proof-first teamwork. use the event page for historical context."><p class="paper-meta">World Finals / Global</p><h3>World Finals 2024 ? Astana</h3><span class="paper-type">Full contest</span><p class="paper-description">An additional finals set for practicing problem selection and proof-first teamwork. Use the event page for historical context.</p><div class="paper-links"><a href="https://icpc.global/worldfinals/problems/2024-ICPC-World-Finals/icpc2024.pdf">Statement PDF</a><a href="https://news.icpc.global/wf2024/">Publisher / event</a></div><p class="paper-no-analysis">No analysis linked</p></article><article class="paper-card" id="paper-bapc-2023" data-stage="Regionals" data-region="Europe" data-kind="Full contest" data-search="bapc 2023 2023 regionals europe full contest benelux contest practice to broaden your regional preparation. official solution slides support the postmortem."><p class="paper-meta">Regionals / Europe</p><h3>BAPC 2023</h3><span class="paper-type">Full contest</span><p class="paper-description">Benelux contest practice to broaden your regional preparation. Official solution slides support the postmortem.</p><div class="paper-links"><a href="https://2023.bapc.eu/static/contest-web.pdf">Statement PDF</a><a href="https://2023.bapc.eu/">Publisher / event</a></div><details class="paper-analysis"><summary>Reveal solution links (spoilers)</summary><p><a href="https://2023.bapc.eu/static/solutions-web.pdf">Solution slides / analysis</a></p></details></article><article class="paper-card" id="paper-bapc-2023-prelims" data-stage="Preliminaries" data-region="Europe" data-kind="Full contest" data-search="bapc 2023 ? preliminaries 2023 preliminaries europe full contest a distinct preliminary packet for mixed practice before moving to the main bapc set. contest names do not guarantee a particular difficulty."><p class="paper-meta">Preliminaries / Europe</p><h3>BAPC 2023 ? preliminaries</h3><span class="paper-type">Full contest</span><p class="paper-description">A distinct preliminary packet for mixed practice before moving to the main BAPC set. Contest names do not guarantee a particular difficulty.</p><div class="paper-links"><a href="https://2023.bapc.eu/static/prelims-contest-web.pdf">Statement PDF</a><a href="https://2023.bapc.eu/">Publisher / event</a></div><details class="paper-analysis"><summary>Reveal solution links (spoilers)</summary><p><a href="https://2023.bapc.eu/static/prelims-solutions-web.pdf">Solution slides / analysis</a></p></details></article><article class="paper-card" id="paper-gcpc-2023" data-stage="Regionals" data-region="Europe" data-kind="Full contest" data-search="gcpc 2023 2023 regionals europe full contest german collegiate programming contest material. use the jury slides after attempting the complete statement packet."><p class="paper-meta">Regionals / Europe</p><h3>GCPC 2023</h3><span class="paper-type">Full contest</span><p class="paper-description">German Collegiate Programming Contest material. Use the jury slides after attempting the complete statement packet.</p><div class="paper-links"><a href="https://2023.gcpc.nwerc.eu/problemset.pdf">Statement PDF</a><a href="https://2023.gcpc.nwerc.eu/materials">Publisher / event</a></div><details class="paper-analysis"><summary>Reveal solution links (spoilers)</summary><p><a href="https://2023.gcpc.nwerc.eu/solutions.pdf">Solution slides / analysis</a></p></details></article><article class="paper-card" id="paper-nwerc-2023" data-stage="Regionals" data-region="Europe" data-kind="Full contest" data-search="nwerc 2023 2023 regionals europe full contest a complete northwestern europe regional set. attempt it blind, then compare your reasoning with the jury slides."><p class="paper-meta">Regionals / Europe</p><h3>NWERC 2023</h3><span class="paper-type">Full contest</span><p class="paper-description">A complete Northwestern Europe regional set. Attempt it blind, then compare your reasoning with the jury slides.</p><div class="paper-links"><a href="https://2023.nwerc.eu/main/problem-set.pdf">Statement PDF</a><a href="https://2023.nwerc.eu/">Publisher / event</a></div><details class="paper-analysis"><summary>Reveal solution links (spoilers)</summary><p><a href="https://2023.nwerc.eu/main/solutions.pdf">Solution slides / analysis</a></p></details></article><article class="paper-card" id="paper-nwerc-2023-practice" data-stage="Regionals" data-region="Europe" data-kind="Short practice" data-search="nwerc 2023 ? test session 2023 regionals europe short practice a separate warm-up packet for a shorter session or checking the contest workflow. it is not the main regional contest."><p class="paper-meta">Regionals / Europe</p><h3>NWERC 2023 ? test session</h3><span class="paper-type">Short practice</span><p class="paper-description">A separate warm-up packet for a shorter session or checking the contest workflow. It is not the main regional contest.</p><div class="paper-links"><a href="https://2023.nwerc.eu/test-session/problem-set.pdf">Statement PDF</a><a href="https://2023.nwerc.eu/">Publisher / event</a></div><details class="paper-analysis"><summary>Reveal solution links (spoilers)</summary><p><a href="https://2023.nwerc.eu/test-session/solutions.pdf">Solution slides / analysis</a></p></details></article><article class="paper-card" id="paper-gcpc-2022" data-stage="Regionals" data-region="Europe" data-kind="Full contest" data-search="gcpc 2022 2022 regionals europe full contest german collegiate programming contest material. use the jury slides after attempting the complete statement packet."><p class="paper-meta">Regionals / Europe</p><h3>GCPC 2022</h3><span class="paper-type">Full contest</span><p class="paper-description">German Collegiate Programming Contest material. Use the jury slides after attempting the complete statement packet.</p><div class="paper-links"><a href="https://2022.gcpc.nwerc.eu/problemset.pdf">Statement PDF</a><a href="https://2022.gcpc.nwerc.eu/materials">Publisher / event</a></div><details class="paper-analysis"><summary>Reveal solution links (spoilers)</summary><p><a href="https://2022.gcpc.nwerc.eu/solutions.pdf">Solution slides / analysis</a></p></details></article><article class="paper-card" id="paper-naq-2022" data-stage="Preliminaries" data-region="North America" data-kind="Full contest" data-search="naq 2022?23 2022 preliminaries north america full contest qualifier-style mixed practice with regional stretch tasks. selected topic mappings are available below."><p class="paper-meta">Preliminaries / North America</p><h3>NAQ 2022?23</h3><span class="paper-type">Full contest</span><p class="paper-description">Qualifier-style mixed practice with regional stretch tasks. Selected topic mappings are available below.</p><div class="paper-links"><a href="https://na.icpc.global/wp-content/uploads/2023/02/NAQ-Problems.pdf">Statement PDF</a><a href="https://na.icpc.global/naq/">Publisher / event</a></div><p class="paper-no-analysis">No analysis linked</p></article><article class="paper-card" id="paper-nwerc-2022" data-stage="Regionals" data-region="Europe" data-kind="Full contest" data-search="nwerc 2022 2022 regionals europe full contest a complete northwestern europe regional set. attempt it blind, then compare your reasoning with the jury slides."><p class="paper-meta">Regionals / Europe</p><h3>NWERC 2022</h3><span class="paper-type">Full contest</span><p class="paper-description">A complete Northwestern Europe regional set. Attempt it blind, then compare your reasoning with the jury slides.</p><div class="paper-links"><a href="https://2022.nwerc.eu/main/problem-set.pdf">Statement PDF</a><a href="https://2022.nwerc.eu/">Publisher / event</a></div><details class="paper-analysis"><summary>Reveal solution links (spoilers)</summary><p><a href="https://2022.nwerc.eu/main/solutions.pdf">Solution slides / analysis</a></p></details></article><article class="paper-card" id="paper-nwerc-2022-practice" data-stage="Regionals" data-region="Europe" data-kind="Short practice" data-search="nwerc 2022 ? test session 2022 regionals europe short practice a separate warm-up packet for a shorter session or checking the contest workflow. it is not the main regional contest."><p class="paper-meta">Regionals / Europe</p><h3>NWERC 2022 ? test session</h3><span class="paper-type">Short practice</span><p class="paper-description">A separate warm-up packet for a shorter session or checking the contest workflow. It is not the main regional contest.</p><div class="paper-links"><a href="https://2022.nwerc.eu/test-session/problem-set.pdf">Statement PDF</a><a href="https://2022.nwerc.eu/">Publisher / event</a></div><details class="paper-analysis"><summary>Reveal solution links (spoilers)</summary><p><a href="https://2022.nwerc.eu/test-session/solutions.pdf">Solution slides / analysis</a></p></details></article><article class="paper-card" id="paper-swerc-2022" data-stage="Regionals" data-region="Europe" data-kind="Full contest" data-search="swerc 2022?2023 2022 regionals europe full contest southwestern europe regional practice. the season label follows the organizer; the directory year is not necessarily the calendar date of the contest."><p class="paper-meta">Regionals / Europe</p><h3>SWERC 2022?2023</h3><span class="paper-type">Full contest</span><p class="paper-description">Southwestern Europe regional practice. The season label follows the organizer; the directory year is not necessarily the calendar date of the contest.</p><div class="paper-links"><a href="https://swerc.eu/2022/problemset/problemset_swerc2022_2023.pdf">Statement PDF</a><a href="https://swerc.eu/2022/problems/">Publisher / event</a></div><details class="paper-analysis"><summary>Reveal solution links (spoilers)</summary><p><a href="https://swerc.eu/2022/problemset/solutions_swerc2022_2023.pdf">Solution slides / analysis</a></p></details></article><article class="paper-card" id="paper-nwerc-2021" data-stage="Regionals" data-region="Europe" data-kind="Full contest" data-search="nwerc 2021 2021 regionals europe full contest a complete northwestern europe regional set. attempt it blind, then compare your reasoning with the jury slides."><p class="paper-meta">Regionals / Europe</p><h3>NWERC 2021</h3><span class="paper-type">Full contest</span><p class="paper-description">A complete Northwestern Europe regional set. Attempt it blind, then compare your reasoning with the jury slides.</p><div class="paper-links"><a href="https://2021.nwerc.eu/files/nwerc2021problems.pdf">Statement PDF</a><a href="https://2021.nwerc.eu/">Publisher / event</a></div><details class="paper-analysis"><summary>Reveal solution links (spoilers)</summary><p><a href="https://2021.nwerc.eu/files/nwerc2021slides.pdf">Solution slides / analysis</a></p></details></article><article class="paper-card" id="paper-nwerc-2021-practice" data-stage="Regionals" data-region="Europe" data-kind="Short practice" data-search="nwerc 2021 ? test session 2021 regionals europe short practice a separate warm-up packet for a shorter session or checking the contest workflow. it is not the main regional contest."><p class="paper-meta">Regionals / Europe</p><h3>NWERC 2021 ? test session</h3><span class="paper-type">Short practice</span><p class="paper-description">A separate warm-up packet for a shorter session or checking the contest workflow. It is not the main regional contest.</p><div class="paper-links"><a href="https://2021.nwerc.eu/files/nwerc2021practice.pdf">Statement PDF</a><a href="https://2021.nwerc.eu/">Publisher / event</a></div><details class="paper-analysis"><summary>Reveal solution links (spoilers)</summary><p><a href="https://2021.nwerc.eu/files/nwerc2021practice-slides.pdf">Solution slides / analysis</a></p></details></article><article class="paper-card" id="paper-swerc-2021" data-stage="Regionals" data-region="Europe" data-kind="Full contest" data-search="swerc 2021?2022 2021 regionals europe full contest southwestern europe regional practice. the season label follows the organizer; the directory year is not necessarily the calendar date of the contest."><p class="paper-meta">Regionals / Europe</p><h3>SWERC 2021?2022</h3><span class="paper-type">Full contest</span><p class="paper-description">Southwestern Europe regional practice. The season label follows the organizer; the directory year is not necessarily the calendar date of the contest.</p><div class="paper-links"><a href="https://swerc.eu/2021/problemset/problemset_swerc2021_2022.pdf">Statement PDF</a><a href="https://swerc.eu/2021/problems/">Publisher / event</a></div><details class="paper-analysis"><summary>Reveal solution links (spoilers)</summary><p><a href="https://swerc.eu/2021/problemset/solutions_swerc2021_2022.pdf">Solution slides / analysis</a></p></details></article><article class="paper-card" id="paper-nwerc-2020" data-stage="Regionals" data-region="Europe" data-kind="Full contest" data-search="nwerc 2020 2020 regionals europe full contest a complete northwestern europe regional set. attempt it blind, then compare your reasoning with the jury slides."><p class="paper-meta">Regionals / Europe</p><h3>NWERC 2020</h3><span class="paper-type">Full contest</span><p class="paper-description">A complete Northwestern Europe regional set. Attempt it blind, then compare your reasoning with the jury slides.</p><div class="paper-links"><a href="https://2020.nwerc.eu/files/nwerc2020problems.pdf">Statement PDF</a><a href="https://2020.nwerc.eu/">Publisher / event</a></div><details class="paper-analysis"><summary>Reveal solution links (spoilers)</summary><p><a href="https://2020.nwerc.eu/files/nwerc2020slides.pdf">Solution slides / analysis</a></p></details></article><article class="paper-card" id="paper-nwerc-2020-practice" data-stage="Regionals" data-region="Europe" data-kind="Short practice" data-search="nwerc 2020 ? test session 2020 regionals europe short practice a separate warm-up packet for a shorter session or checking the contest workflow. it is not the main regional contest."><p class="paper-meta">Regionals / Europe</p><h3>NWERC 2020 ? test session</h3><span class="paper-type">Short practice</span><p class="paper-description">A separate warm-up packet for a shorter session or checking the contest workflow. It is not the main regional contest.</p><div class="paper-links"><a href="https://2020.nwerc.eu/files/nwerc2020practice.pdf">Statement PDF</a><a href="https://2020.nwerc.eu/">Publisher / event</a></div><details class="paper-analysis"><summary>Reveal solution links (spoilers)</summary><p><a href="https://2020.nwerc.eu/files/nwerc2020practice-slides.pdf">Solution slides / analysis</a></p></details></article><article class="paper-card" id="paper-swerc-2019" data-stage="Regionals" data-region="Europe" data-kind="Full contest" data-search="swerc 2019?2020 2019 regionals europe full contest southwestern europe regional practice. the season label follows the organizer; the directory year is not necessarily the calendar date of the contest."><p class="paper-meta">Regionals / Europe</p><h3>SWERC 2019?2020</h3><span class="paper-type">Full contest</span><p class="paper-description">Southwestern Europe regional practice. The season label follows the organizer; the directory year is not necessarily the calendar date of the contest.</p><div class="paper-links"><a href="https://swerc.eu/2019/theme/problems/swerc.pdf">Statement PDF</a><a href="https://swerc.eu/2019/problems/">Publisher / event</a></div><details class="paper-analysis"><summary>Reveal solution links (spoilers)</summary><p><a href="https://swerc.eu/2019/theme/problems/swerc-analysis.pdf">Solution slides / analysis</a></p></details></article><article class="paper-card" id="paper-swerc-2019-practice" data-stage="Regionals" data-region="Europe" data-kind="Short practice" data-search="swerc 2019?2020 ? practice 2019 regionals europe short practice a separate short warm-up packet, useful for a timed team workflow check before the main swerc set."><p class="paper-meta">Regionals / Europe</p><h3>SWERC 2019?2020 ? practice</h3><span class="paper-type">Short practice</span><p class="paper-description">A separate short warm-up packet, useful for a timed team workflow check before the main SWERC set.</p><div class="paper-links"><a href="https://swerc.eu/2019/theme/problems/practice.pdf">Statement PDF</a><a href="https://swerc.eu/2019/problems/">Publisher / event</a></div><details class="paper-analysis"><summary>Reveal solution links (spoilers)</summary><p><a href="https://swerc.eu/2019/theme/problems/practice-analysis.pdf">Solution slides / analysis</a></p></details></article><article class="paper-card" id="paper-neerc-2010" data-stage="World Finals" data-region="Europe" data-kind="Specialist supplement" data-search="neerc 2010 ? jungle outpost supplement 2010 world finals europe specialist supplement the full historical packet is linked, with problem j used as a specialist geometry drill below. original file-i/o rules may differ from a modern judge."><p class="paper-meta">World Finals / Europe</p><h3>NEERC 2010 ? Jungle Outpost supplement</h3><span class="paper-type">Specialist supplement</span><p class="paper-description">The full historical packet is linked, with problem J used as a specialist geometry drill below. Original file-I/O rules may differ from a modern judge.</p><div class="paper-links"><a href="https://codeforces.com/gym/101309/attachments/download/5564/20102011-acmicpc-northeastern-european-regional-contest-neerc-10-en.pdf">Statement PDF</a><a href="https://codeforces.com/gym/101309/attachments?mobile=false">Publisher / event</a></div><p class="paper-no-analysis">No analysis linked</p></article></div><p id="paper-empty" hidden>No papers match these filters. Try another contest, stage, or region.</p><p class="paper-source-note">Collected 27 October 2026 from organizer materials. Stage filters suggest training use, not a guaranteed difficulty. New packets are catalogued by source; the reviewed problem-by-problem mappings remain below. <a href="research/past_papers.json">Browse the source catalogue</a>.</p></section><!-- paper-gallery:end -->
+<h2 id="full-sets-choose-before-opening-spoilers">Full sets: choose before opening spoilers</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Suggested use</th>
+<th>Contest / document</th>
+<th>Statements</th>
+<th>Analysis / context</th>
+<th>Verification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Preliminary practice, with regional-level stretch tasks</td>
+<td>NAQ 2022, linked by ICPC NA under its 2022–23 archive</td>
+<td><a href="https://na.icpc.global/wp-content/uploads/2023/02/NAQ-Problems.pdf">26-page packet</a></td>
+<td><a href="https://na.icpc.global/naq/">Organizer archive</a></td>
+<td>Packet inspected; selected mappings below are reasoned from statements</td>
+</tr>
+<tr>
+<td>Pakistan-specific preparation</td>
+<td>GIKI-hosted Topi paper, dated 1 February 2026</td>
+<td><a href="https://giki.edu.pk/wp-content/uploads/2026/02/1-ICPC_Feb12026_Compiled_Final.pdf">22-page packet</a></td>
+<td>Title inside is “The 2025 ICPC Asia Topi On-Site Preliminary Programming Contest”; preserve that naming rather than silently relabeling the event</td>
+<td>Packet inspected; selected mappings are reasoned from statements</td>
+</tr>
+<tr>
+<td>Regional benchmark</td>
+<td>NWERC 2024</td>
+<td><a href="https://2024.nwerc.eu/main/problem-set.pdf">28-page packet</a></td>
+<td><a href="https://2024.nwerc.eu/main/solutions.pdf">Jury solution slides</a>, <a href="https://2024.nwerc.eu/">event page</a></td>
+<td>Statements and relevant jury analysis inspected</td>
+</tr>
+<tr>
+<td>Continental championship</td>
+<td>Europe Championship 2025</td>
+<td><a href="https://euc.icpc.global/wp-content/uploads/2025/03/euc2025-official.pdf">28-page packet</a></td>
+<td><a href="https://euc.icpc.global/wp-content/uploads/2025/03/analysis.pdf">217-page analysis slides</a>, <a href="https://euc.icpc.global/home-2025/">event page</a></td>
+<td>Statements and selected analysis inspected</td>
+</tr>
+<tr>
+<td>Asia West championship</td>
+<td>Asia West Finals 2025</td>
+<td><a href="https://wc.indiaicpc.in/problem_set_2024_25.pdf">22-page packet</a></td>
+<td>Host-provided statement packet</td>
+<td>Statement verified; no judge-endorsed topic map claimed</td>
+</tr>
+<tr>
+<td>World Finals benchmark</td>
+<td>World Finals 2025, Baku</td>
+<td><a href="https://worldfinals.icpc.global/problems/2025/finals/problems/problemset.pdf">24-page packet</a></td>
+<td><a href="https://icpc.global/worldfinals/problems/2025-ICPC-World-Finals/2025-ICPC-Solutions.pdf">Solution sketches</a></td>
+<td>Both inspected; the sketches explicitly describe themselves as <strong>unofficial</strong>, despite ICPC hosting</td>
+</tr>
+<tr>
+<td>Specialist geometry supplement</td>
+<td>NEERC 2010, problem J</td>
+<td><a href="https://codeforces.com/gym/101309/attachments/download/5564/20102011-acmicpc-northeastern-european-regional-contest-neerc-10-en.pdf">Contest packet</a></td>
+<td><a href="https://codeforces.com/gym/101309/attachments?mobile=false">Gym attachment page</a></td>
+<td>Statement verified; topic association corroborated below</td>
+</tr>
+</tbody>
+</table></div>
+<p>The Asia West packet contains A–K: Construct uwu; Counting Distance Arrays; Counting is Fun; Deletable Subarrays; Greedy Prices; Jagged Operations; LCM on Range; Majority Graph; Suffix Array; Tri-Knight; Unique Subsequences Counting. Use it intact for a virtual. Titles such as “Suffix Array” or “Greedy Prices” are not sufficient evidence of the required solution technique.</p>
+<p>For more unseen sets, use the <a href="https://foundation.icpc.global/archive/">ICPC Foundation archive</a>, <a href="https://www.acmicpc-pacnw.org/results.htm">Pacific Northwest results archive</a>, <a href="https://nc.na.icpc.global/archive/">North Central archive</a>, and <a href="https://ne.na.icpc.global/archive/">Northeast archive</a>. These archive entry pages were checked; every linked season and judge mirror was <strong>not</strong> individually audited. Pick a set with an accessible statement and analysis before scheduling it.</p>
+<h2 id="suggested-virtual-progression">Suggested virtual progression</h2>
+<ol>
+<li>After P01–P13, use selected approachable NAQ tasks for a short practice. If you read the mappings below, do not later count this same set as an unseen benchmark.</li>
+<li>Do a complete unseen qualifier-style set. Match its actual duration and rules; preliminary rounds are not universally five hours or one-computer contests.</li>
+<li>After the regional core, use a full regional such as NWERC. Keep the scoreboard hidden during the first pass; reveal it for postmortem calibration.</li>
+<li>Alternate your local/Asia West style with other regions. This broadens exposure without pretending their qualification thresholds are interchangeable.</li>
+<li>Attempt championships while still studying C modules; upsolve reachable hard problems rather than waiting to learn every technique.</li>
+<li>At the finals stage, alternate full World Finals virtuals with specialist drills and easier mixed contests for execution speed.</li>
+</ol>
+<p>For historical PDFs, input/output conventions and judge limits may differ from modern mirrors. In particular, NEERC 2010 uses file names in its original packet. Follow the judge version you actually submit to. A statement link is not a promise of an active online judge.</p>
+<details class="paper-mappings" id="selected-problem-mappings-spoilers"><summary>Open reviewed problem mappings (spoilers)</summary><h2>Selected problem mappings — spoilers</h2>
+<div class="source-note">
+<h3>NAQ 2022: five selections</h3>
+<p>Source: <a href="https://na.icpc.global/wp-content/uploads/2023/02/NAQ-Problems.pdf">original statement packet</a>. These classifications are deductions from the statements, not a reviewed official editorial.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Preparation</th>
+<th>Why it belongs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C — Class Field Trip</td>
+<td>P03–P04</td>
+<td>Merge already sorted letter strings; concatenation plus sorting also fits the small bounds</td>
+</tr>
+<tr>
+<td>D — Ghost Leg</td>
+<td>P02</td>
+<td>Apply adjacent swaps in the supplied order and report the resulting permutation</td>
+</tr>
+<tr>
+<td>E — MazeMan</td>
+<td>P13</td>
+<td>Grid reachability and component counting; preserve spaces and the special entrance rules</td>
+</tr>
+<tr>
+<td>K — Smallest Calculated Value</td>
+<td>P01, P09</td>
+<td>Enumerate operator pairs, evaluate left-to-right, and allow division only when exact</td>
+</tr>
+<tr>
+<td>M — Toll Roads</td>
+<td>R08, C03</td>
+<td>Bottleneck connectivity queries; DSU/parallel search or a reconstruction structure can also track component size at the threshold; process equal tolls together</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="source-note">
+<h3>Topi paper: two clearly matched local selections</h3>
+<p>Source: <a href="https://giki.edu.pk/wp-content/uploads/2026/02/1-ICPC_Feb12026_Compiled_Final.pdf">GIKI-hosted statement packet</a>. The following methods are deductions from the given requirements.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Preparation</th>
+<th>Why it belongs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>02 — Whirlpool Trap Designer</td>
+<td>P08, P14</td>
+<td>Required energy increases with integer radius; search the first trapping radius and compare with integer arithmetic as the statement recommends</td>
+</tr>
+<tr>
+<td>03 — Air Attack Optimization</td>
+<td>R11</td>
+<td>The requested roads are exactly bridges; handle disconnected graphs and identify parent edges by edge ID</td>
+</tr>
+</tbody>
+</table></div>
+<p>Do not classify problem 01 “FFT” as a Fourier-transform exercise from its title: its described operation uses a maximum, not ordinary sum-product convolution. The local packet contains advanced tasks too, so “preliminary” is not a safe difficulty guarantee. These notes deliberately avoid inventing an editorial for the rest of the set.</p>
+</div>
+<div class="source-note">
+<h3>NWERC 2024: eight selections</h3>
+<p>Source: <a href="https://2024.nwerc.eu/main/problem-set.pdf">statements</a> and <a href="https://2024.nwerc.eu/main/solutions.pdf">jury slides</a>. The following method associations are analysis-backed.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Preparation</th>
+<th>Intended training focus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A — Alphabetical Aristocrats</td>
+<td>P03–P04</td>
+<td>Extract the relevant surname suffix and sort by that key</td>
+</tr>
+<tr>
+<td>E — Evolving Etymology</td>
+<td>P11</td>
+<td>Compose index transformations using modular exponentiation</td>
+</tr>
+<tr>
+<td>L — Limited Library</td>
+<td>P08, P10</td>
+<td>Greedy packing feasibility inside binary search</td>
+</tr>
+<tr>
+<td>D — Dutch Democracy</td>
+<td>R02</td>
+<td>Sort parties and count minimal winning coalitions with subset-sum DP</td>
+</tr>
+<tr>
+<td>F — Flowing Fountain</td>
+<td>R01, R08</td>
+<td>Next-greater stack plus DSU skipping of full levels</td>
+</tr>
+<tr>
+<td>K — Kruidnoten</td>
+<td>R09, R19</td>
+<td>Shortest-path distances combined with ordered probability contributions</td>
+</tr>
+<tr>
+<td>M — Mouse Trap</td>
+<td>P06, R16, R19</td>
+<td>Linearity of expectation, area sums, and overflow-aware geometric algebra</td>
+</tr>
+<tr>
+<td>G — Glued Grid</td>
+<td>R11, C12</td>
+<td>Biconnected structure and permutation parity; a substantial stretch task</td>
+</tr>
+</tbody>
+</table></div>
+<p>This is evidence for maintaining implementation, arithmetic, proof, and modeling throughout training—not a frequency estimate for all regionals.</p>
+</div>
+<div class="source-note">
+<h3>Europe Championship 2025: four selections</h3>
+<p>Source: <a href="https://euc.icpc.global/wp-content/uploads/2025/03/euc2025-official.pdf">official packet</a> and <a href="https://euc.icpc.global/wp-content/uploads/2025/03/analysis.pdf">judge analysis</a>. Associations are analysis-backed.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Preparation</th>
+<th>Intended training focus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A — Condorcet Elections</td>
+<td>P10, C12</td>
+<td>Build vote pairs that influence one required comparison while canceling other pairwise effects</td>
+</tr>
+<tr>
+<td>F — Mascot Naming</td>
+<td>P03, P10, C12</td>
+<td>Subsequence impossibility checks and a greedy construction avoiding the forbidden subsequence</td>
+</tr>
+<tr>
+<td>B — Urban Planning</td>
+<td>P10, R14, C12</td>
+<td>Construct a grid with an exact rectangle count; prove output-size bounds</td>
+</tr>
+<tr>
+<td>G — A Very Long Hike</td>
+<td>R09, R16, W03</td>
+<td>Shortest-path structure on a periodic grid and a convex geometric limiting model</td>
+</tr>
+</tbody>
+</table></div>
+<p>The analysis notes that the online mirror of B has tougher bounds than the onsite version. Match the statement version you solve. Do not transfer a construction's bounds blindly between versions.</p>
+</div>
+<div class="source-note">
+<h3>World Finals 2025: full set topic map</h3>
+<p>Source: <a href="https://worldfinals.icpc.global/problems/2025/finals/problems/problemset.pdf">official statements</a> and <a href="https://icpc.global/worldfinals/problems/2025-ICPC-World-Finals/2025-ICPC-Solutions.pdf">ICPC-hosted unofficial sketches</a>. The associations below follow those sketches; they are not exclusive solution requirements.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Preparation</th>
+<th>Training focus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A — A-Skew-ed Reasoning</td>
+<td>C01, C11</td>
+<td>Recursive reconstruction and small-to-large amortization</td>
+</tr>
+<tr>
+<td>B — Blackboard Game</td>
+<td>R13, W06</td>
+<td>Matching-based game reasoning and prime structure</td>
+</tr>
+<tr>
+<td>C — Bride of Pipe Stream</td>
+<td>R18, W04</td>
+<td>Linear-program duality and low-dimensional convex optimization</td>
+</tr>
+<tr>
+<td>D — Buggy Rover</td>
+<td>P02, P09, P12</td>
+<td>Track the 24 direction orderings, or use small-state DP</td>
+</tr>
+<tr>
+<td>E — Delivery Service</td>
+<td>R08, C01</td>
+<td>Component merging with duplicate-count corrections</td>
+</tr>
+<tr>
+<td>F — Herding Cats</td>
+<td>P05, P10</td>
+<td>Set intersections and prefix feasibility</td>
+</tr>
+<tr>
+<td>G — Lava Moat</td>
+<td>C03, W03</td>
+<td>Geometric sweep and dynamic connectivity</td>
+</tr>
+<tr>
+<td>H — Score Values</td>
+<td>R02, C05</td>
+<td>Knapsack, digit DP, and arithmetic bounds</td>
+</tr>
+<tr>
+<td>I — Slot Machine</td>
+<td>W07</td>
+<td>Interactive querying and relative-order recovery</td>
+</tr>
+<tr>
+<td>J — Stacking Cups</td>
+<td>P09, P10</td>
+<td>Small-case experimentation followed by inductive construction</td>
+</tr>
+<tr>
+<td>K — Treasure Map</td>
+<td>P13, C12</td>
+<td>Additive row/column potentials and component consistency</td>
+</tr>
+<tr>
+<td>L — Walking on Sunshine</td>
+<td>P04, R01</td>
+<td>Reduce to one-dimensional interval union</td>
+</tr>
+</tbody>
+</table></div>
+<p>The presence of foundational methods here is why W08 keeps mixed practice and full-set reading central.</p>
+</div>
+<div class="source-note">
+<h3>Two specialist exercises with explicit provenance</h3>
+<ul>
+<li><strong>NEERC 2010 J — Jungle Outpost:</strong> the <a href="https://codeforces.com/gym/101309/attachments/download/5564/20102011-acmicpc-northeastern-european-regional-contest-neerc-10-en.pdf#page=12">original packet, page 12</a> asks for a most resilient headquarters location within a convex watchtower configuration. Use W03; the <a href="https://cp-algorithms.com/geometry/halfplane-intersection.html">half-plane-intersection reference</a> explicitly lists this task. The statement and topic association are verified; a full judge solution was not audited here.</li>
+<li><strong>IOI 2016 — Aliens:</strong> <a href="https://ioinformatics.org/files/ioi2016problem6.pdf">official statement</a>, for W02 after C04. This is an IOI task, included as a specialist transfer exercise. Study the cardinality-constrained DP, penalty formulation, tie handling, and hull optimization. The <a href="https://usaco.guide/adv/lagrange">USACO Guide's Lagrangian-relaxation module</a> is a supplementary explanation; use the IOI statement as the source of constraints and required interface.</li>
+</ul>
+</div>
+</details></article><nav class="guide-pagination" aria-label="Adjacent guides"><a href="04_WORLD_FINALS.html"><span>Previous guide</span>World Finals</a><a href="09_TRAINING_ROUTINE.html"><span>Next guide</span>Training routine</a></nav>
+<footer><a href="../index.html">Back to the connected roadmap</a></footer></main></div></body></html>

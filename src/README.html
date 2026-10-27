@@ -1,0 +1,180 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>About the roadmap · ICPC roadmap</title><style>:root { color-scheme: light; font-family: "Segoe UI", Arial, sans-serif; color: #172b43; background: #fff; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { max-width: 1160px; padding: 64px 40px 32px; margin: auto; }
+h1, h2, p { margin: 0; }
+h1 { font-size: clamp(30px, 4vw, 44px); font-weight: 600; letter-spacing: -1px; margin: 12px 0 18px; }
+h2 { font-size: 28px; font-weight: 600; margin: 8px 0 10px; }
+p { color: #526579; line-height: 1.7; }
+.eyebrow { color: #326186; font-size: 12px; letter-spacing: 1.5px; font-weight: 700; }
+.document-heading > p:not(.eyebrow) { max-width: 850px; }
+.stage-sequence { display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin: 32px 0 24px; gap: 12px; font-size: 14px; font-weight: 600; }
+.stage-sequence li:not(:last-child)::after { content: "→"; margin-left: 12px; color: #8193a7; }
+.reading-note { font-size: 13px; }
+section { border-top: 1px solid #dce3eb; margin-top: 48px; padding-top: 32px; }
+.stage-heading { margin-bottom: 22px; }
+.diagram-frame { margin-top: 12px; }
+.diagram { position: relative; touch-action: pan-y; }
+.diagram svg { display: block; width: 100%; height: auto; max-height: 75vh; }
+.diagram.is-pannable { cursor: grab; touch-action: none; }
+.diagram.is-dragging { cursor: grabbing; user-select: none; }
+.diagram:focus-visible { outline: 1px dashed #8193a7; outline-offset: 3px; }
+.diagram-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 20px; padding: 0 0 10px; font-size: 11px; color: #6a7d90; }
+.diagram-toolbar[hidden] { display: none; }
+.zoom-controls { display: flex; align-items: center; gap: 8px; }
+.zoom-controls button { font: inherit; font-size: 14px; color: #244f74; background: transparent; border: 0; border-radius: 4px; min-width: 34px; min-height: 34px; padding: 5px 10px; cursor: pointer; }
+.zoom-controls button:hover { background: #f1f5f9; }
+.zoom-controls button:disabled { opacity: .4; cursor: default; }
+.zoom-controls button:focus-visible { outline: 2px solid #326186; outline-offset: 2px; }
+.zoom-controls output { min-width: 44px; text-align: center; font-variant-numeric: tabular-nums; }
+.references { margin-top: 12px; font-size: 13px; }
+a { color: #326186; text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid #326186; outline-offset: 4px; }
+footer { margin-top: 48px; border-top: 1px solid #dce3eb; padding-top: 24px; font-size: 12px; }
+footer p + p { margin-top: 8px; }
+.overview-links { display: flex; flex-wrap: wrap; gap: 20px; font-size: 13px; margin-bottom: 22px; }
+.skip-link { position: absolute; left: -9999px; }
+.skip-link:focus { left: 20px; top: 10px; background: white; padding: 12px; z-index: 5; }
+.guide-layout { max-width: 1500px; margin: auto; display: grid; grid-template-columns: 240px minmax(0, 1fr); }
+.guide-sidebar { position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto; padding: 44px 22px; border-right: 1px solid #e2e8ef; background: #f8fafc; }
+.guide-brand { display: block; font-weight: 700; font-size: 17px; text-decoration: none; margin-bottom: 40px; letter-spacing: 1px; }
+.guide-sidebar nav { margin-top: 14px; display: grid; gap: 5px; }
+.guide-sidebar nav a { padding: 10px 12px; font-size: 13px; line-height: 1.4; text-decoration: none; border-radius: 4px; color: #526579; }
+.guide-sidebar nav a[aria-current] { background: #e7eff7; color: #244f74; font-weight: 600; }
+main.guide-main { min-width: 0; width: 100%; max-width: 1120px; padding: 48px 48px 36px; }
+.guide-heading { padding-bottom: 30px; border-bottom: 1px solid #dce3eb; }
+.guide-heading h1 { font-size: clamp(28px, 3vw, 38px); line-height: 1.2; }
+.guide-heading > p:last-child { font-size: 13px; }
+.contents { margin: 28px 0 36px; padding: 24px 28px; border: 1px solid #dce3eb; border-radius: 5px; background: #fbfcfe; }
+.contents h2 { font-size: 14px; margin: 0 0 14px; }
+.contents ol { columns: 2; column-gap: 36px; padding: 0; margin: 0; list-style: none; }
+.contents li { break-inside: avoid; margin-bottom: 8px; font-size: 13px; line-height: 1.5; }
+.contents a { text-decoration: none; }
+.prose { font-size: 15px; line-height: 1.8; overflow-wrap: anywhere; }
+.prose p { margin: 16px 0; }
+.prose h2 { font-size: 23px; margin: 44px 0 18px; padding-top: 24px; border-top: 1px solid #dce3eb; line-height: 1.4; letter-spacing: -.3px; }
+.prose h3 { font-size: 18px; margin: 28px 0 12px; }
+.prose li { margin-bottom: 8px; color: #526579; }
+.prose strong { color: #243c55; font-weight: 600; }
+.prose .module-note { padding-left: 16px; border-left: 3px solid #dce7f2; }
+.table-scroll { max-width: 100%; overflow-x: auto; margin: 24px 0; border: 1px solid #dce3eb; border-radius: 5px; }
+.prose table { width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.65; }
+.prose th { background: #f1f5f9; color: #243c55; text-align: left; font-weight: 600; }
+.prose th, .prose td { padding: 12px 14px; border-bottom: 1px solid #e2e8ef; vertical-align: top; min-width: 90px; }
+.prose tr:last-child td { border-bottom: 0; }
+.prose tbody tr:nth-child(even) { background: #fbfcfe; }
+.prose code { font-size: .9em; background: #f0f4f8; border-radius: 3px; padding: 2px 4px; }
+.prose pre { padding: 20px; background: #f1f5f9; overflow: auto; }
+.prose blockquote { margin: 20px 0; padding: 8px 20px; border-left: 3px solid #b7ccdf; background: #f8fafc; }
+.source-note { margin: 28px 0; padding: 4px 22px 18px; border: 1px solid #dce3eb; border-radius: 5px; background: #fbfcfe; }
+.topic-stages { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 24px 0; font-size: 14px; }
+.topic-list { list-style: none; padding: 0; margin: 24px 0 0; }
+.topic-list li { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 16px; padding: 22px 0; border-bottom: 1px solid #e2e8ef; }
+.topic-code { color: #326186; font-size: 12px; font-weight: 600; padding-top: 3px; }
+.topic-list h3 { font-size: 17px; margin: 0 0 8px; line-height: 1.4; font-weight: 600; }
+.topic-list h3 a { text-decoration: none; }
+.topic-list p { font-size: 14px; }
+.topic-list .topic-prerequisites { font-size: 12px; color: #6a7d90; margin-bottom: 8px; }
+.guide-pagination { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid #dce3eb; padding-top: 28px; margin-top: 48px; }
+.guide-pagination a { text-decoration: none; font-weight: 600; font-size: 14px; }
+.guide-pagination span { display: block; color: #6a7d90; font-size: 11px; font-weight: 400; margin-bottom: 8px; }
+@media (max-width: 900px) {
+  .guide-layout { grid-template-columns: 1fr; }
+  .guide-sidebar { position: static; height: auto; overflow-y: visible; padding: 24px; border-right: 0; border-bottom: 1px solid #e2e8ef; }
+  .guide-brand { margin-bottom: 18px; }
+  .guide-sidebar nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  main.guide-main { padding: 30px 24px; }
+}
+@media (max-width: 600px) {
+  .guide-sidebar nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .contents ol { columns: 1; }
+  .contents { padding: 20px; }
+  main.guide-main { padding: 28px 18px; }
+  .prose th, .prose td { min-width: 125px; }
+}
+@media (max-width: 600px) { main { padding: 32px 18px; } section { margin-top: 32px; } }
+@media print {
+  @page { size: A3 portrait; margin: 12mm; }
+  main { max-width: none; padding: 0; }
+  .document-heading { break-after: page; }
+  section { break-before: page; border: 0; margin: 0; padding: 0; }
+  .diagram { overflow: visible; height: auto; }
+  .diagram-frame { border: 0; overflow: visible; }
+  .diagram-toolbar { display: none; }
+  .diagram svg { min-width: 0; width: 100%; max-height: 340mm; }
+  .references { display: none; }
+  footer { break-before: page; }
+  .guide-sidebar, .guide-pagination, .skip-link { display: none; }
+  .guide-layout { display: block; }
+  main.guide-main { max-width: none; padding: 0; }
+  .guide-page footer { break-before: auto; }
+  .table-scroll { overflow: visible; }
+  .prose h2 { break-after: avoid; }
+}
+</style></head>
+<body class="guide-page"><a class="skip-link" href="#content">Skip to guide</a><div class="guide-layout">
+<aside class="guide-sidebar"><a class="guide-brand" href="../index.html">ICPC ROADMAP</a><p class="eyebrow">STUDY GUIDES</p><nav aria-label="Roadmap library"><a href="../index.html">Roadmap overview</a><a href="topics.html">All topics</a><a href="01_PRELIMINARIES.html">Preliminaries</a><a href="02_REGIONALS.html">Regionals</a><a href="03_CHAMPIONSHIP.html">Championship</a><a href="04_WORLD_FINALS.html">World Finals</a><a href="06_PAST_PAPERS.html">Past papers</a><a href="09_TRAINING_ROUTINE.html">Training routine</a><a href="README.html" aria-current="page">About this roadmap</a></nav></aside>
+<main class="guide-main" id="content"><header class="guide-heading"><p class="eyebrow">ICPC PREPARATION / ABOUT THIS ROADMAP</p><h1>About the roadmap</h1><p>Structured study guide · Reference edition</p></header>
+<nav class="contents" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#coverage">Coverage</a></li><li><a href="#topic-structure">Topic structure</a></li><li><a href="#practice-collection">Practice collection</a></li><li><a href="#scope-and-assumptions">Scope and assumptions</a></li></ol></nav>
+<article class="prose">
+<p>This roadmap covers ICPC preparation from preliminaries to World Finals through <strong>56 topics</strong> and <strong>198 practice problems</strong>. Preliminaries and Regionals account for 36 topics and 142 problems, forming the largest part of the collection.</p>
+<h2 id="coverage">Coverage</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Stage</th>
+<th style="text-align:right">Topics</th>
+<th style="text-align:right">Practice problems</th>
+<th>Main focus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="01_PRELIMINARIES.html">Preliminaries</a></td>
+<td style="text-align:right">16</td>
+<td style="text-align:right">64</td>
+<td>Implementation, complexity, core algorithms, mathematical reasoning, and contest fundamentals</td>
+</tr>
+<tr>
+<td><a href="02_REGIONALS.html">Regionals</a></td>
+<td style="text-align:right">20</td>
+<td style="text-align:right">78</td>
+<td>Data structures, dynamic programming, graphs, strings, geometry, and combinations of techniques</td>
+</tr>
+<tr>
+<td><a href="03_CHAMPIONSHIP.html">Championship</a></td>
+<td style="text-align:right">12</td>
+<td style="text-align:right">40</td>
+<td>Advanced trees, DP optimization, flow, strings, mathematics, and modeling</td>
+</tr>
+<tr>
+<td><a href="04_WORLD_FINALS.html">World Finals</a></td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">16</td>
+<td>Specialist algorithms, interactive protocols, and full-contest integration</td>
+</tr>
+</tbody>
+</table></div>
+<p>The <a href="topics.html">topic directory</a> contains the full list of topics and prerequisites. <a href="06_PAST_PAPERS.html">Past papers</a> includes contest sets and selected problem mappings. The <a href="09_TRAINING_ROUTINE.html">training routine</a> covers schedules, team practice, and reference-library preparation.</p>
+<!-- gallery-package-note --><p>The <a href="06_PAST_PAPERS.html#past-paper-gallery">past-paper gallery</a> contains 31 full contests, short test sessions, and specialist supplements. Search by name or year and filter by stage, region, or packet type. Solution links and reviewed problem mappings are hidden behind spoiler controls. The website is packaged with <code>index.html</code> at the root and supporting content in <code>src/</code>.</p><h2 id="topic-structure">Topic structure</h2>
+<p>Each topic includes prerequisites, learning objectives, study resources, a mastery check, common pitfalls, and relevant practice problems. The connected diagrams represent dependencies within each stage. Prerequisite IDs also identify dependencies from earlier stages.</p>
+<p>Topic IDs are reference labels, not a strict learning order. For example, R05 depends on R06. W01–W06 are specialist electives; they are not all required for World Finals integration.</p>
+<h2 id="practice-collection">Practice collection</h2>
+<p>The collection contains <strong>79 Codeforces</strong>, <strong>92 CSES</strong>, <strong>17 AtCoder</strong>, and <strong>10 Library Checker</strong> problems. Past-contest examples are additional to these 198 problems.</p>
+<p>Practice roles describe difficulty relative to the topic:</p>
+<ul>
+<li><strong>Starter:</strong> introductory applications and prerequisite drills.</li>
+<li><strong>Core:</strong> the main techniques and reasoning covered by the topic.</li>
+<li><strong>Stretch:</strong> more demanding applications or combinations with other techniques.</li>
+</ul>
+<p>Codeforces ratings are reference values and may change. Problems from other platforms are not assigned equivalent numeric ratings. The “why it fits” notes describe a suitable technique and may reveal solution hints.</p>
+<h2 id="scope-and-assumptions">Scope and assumptions</h2>
+<p>Stage placement reflects preparation priorities and prerequisites; it is not an official ICPC qualification syllabus. A topic may appear at multiple competition levels. The specialist stage emphasizes selective depth and contest integration rather than a mandatory list of advanced algorithms.</p>
+<p>The primary implementation language is C++. Mathematical concepts also apply to Java and Python, subject to differences in libraries, numeric behavior, recursion, and performance.</p>
+<p>Suggested timelines assume roughly <strong>8–12 focused hours per week</strong>. They are estimates rather than qualification requirements. Topic completion, problem counts, and platform ratings do not guarantee advancement in an ICPC contest.</p>
+<!-- research-summary:start --><h2 id="expanded-learning-content">Expanded learning content and sources</h2>
+<p>All 56 modules now include an original explanation, a worked example or reasoning walkthrough, a three-step learning sequence, and annotated learning resources. The original prerequisites, mastery checks, pitfalls, study links, and selected practice problems remain part of the guides.</p>
+<p>Resources were researched on <strong>27 October 2026</strong>. Links identify YouTube recordings, publisher or curriculum pages, downloadable university slides and handouts, tutorials, reference libraries, and selected research papers. Each module states which part its companion lectures cover. Specialist papers are optional depth after the implementation-level material.</p>
+<p>Major collections include <a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/">MIT OpenCourseWare</a>, <a href="https://web.stanford.edu/class/cs97si/">Stanford CS97SI</a>, <a href="https://jeffe.cs.illinois.edu/teaching/algorithms/">Jeff Erickson's algorithms handouts</a>, <a href="https://algorithms-live.blogspot.com/">Algorithms Live!</a>, <a href="https://usaco.guide/">USACO Guide</a>, and <a href="https://cp-algorithms.com/">CP-Algorithms</a>. Sources are linked beside the relevant topic, so no separate bibliography is needed during study.</p>
+<p>The <a href="research/resource_inventory.json">resource inventory</a> records topic-to-source mappings. <a href="research/link_audit.json">Reading-link checks</a> record HTTP responses; a blocked request or a network failure does not establish that a source is unavailable.</p><!-- research-summary:end --></article><nav class="guide-pagination" aria-label="Adjacent guides"><a href="09_TRAINING_ROUTINE.html"><span>Previous guide</span>Training routine</a></nav>
+<footer><a href="../index.html">Back to the connected roadmap</a></footer></main></div></body></html>

@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="935pt" height="730pt" viewBox="0.00 0.00 935.00 730.00" role="group" aria-label="Championship prerequisite roadmap">
+<style>a { cursor: pointer; } a:hover text, a:focus text { fill: #244f74; text-decoration: underline; }</style><g id="C-graph0" class="graph" transform="scale(1 1) rotate(0) translate(21.6 708.4)">
+<title>Championship prerequisite roadmap</title>
+<polygon fill="white" stroke="none" points="-21.6,21.6 -21.6,-708.4 912.95,-708.4 912.95,21.6 -21.6,21.6" />
+
+<g id="C-edge5" class="edge">
+<title>C01-&gt;C11</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M81.16,-593.49C81.16,-593.49 81.16,-242.35 81.16,-242.35" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="83.43,-242.35 81.16,-235.85 78.88,-242.35 83.43,-242.35" />
+</g>
+
+
+
+
+
+<g id="C-edge6" class="edge">
+<title>toolkit_C-&gt;C12</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M741.99,-162.09C741.99,-162.09 741.99,-91.19 741.99,-91.19" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="744.26,-91.19 741.99,-84.69 739.71,-91.19 744.26,-91.19" />
+</g>
+
+<g id="C-node1" class="node">
+<title>C01</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M257.81,-686.8C257.81,-686.8 52.16,-686.8 52.16,-686.8 46.16,-686.8 40.16,-680.8 40.16,-674.8 40.16,-674.8 40.16,-605.76 40.16,-605.76 40.16,-599.76 46.16,-593.76 52.16,-593.76 52.16,-593.76 257.81,-593.76 257.81,-593.76 263.81,-593.76 269.81,-599.76 269.81,-605.76 269.81,-605.76 269.81,-674.8 269.81,-674.8 269.81,-680.8 263.81,-686.8 257.81,-686.8" />
+<a href="03_CHAMPIONSHIP.html#c01" aria-label="C01 Heavy-light decomposition and small-to-large study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="58.56" y="-663.28" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">C01</text>
+<text xml:space="preserve" text-anchor="start" x="58.56" y="-642.58" font-family="Arial" font-weight="bold" font-size="13.00">Heavy-light decomposition and</text>
+<text xml:space="preserve" text-anchor="start" x="112.36" y="-629.58" font-family="Arial" font-weight="bold" font-size="13.00">small-to-large</text>
+<text xml:space="preserve" text-anchor="start" x="58.56" y="-611.28" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: R04,R05,R07</text>
+</a></g>
+
+<g id="C-node2" class="node">
+<title>C02</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M574.23,-686.8C574.23,-686.8 357.74,-686.8 357.74,-686.8 351.74,-686.8 345.74,-680.8 345.74,-674.8 345.74,-674.8 345.74,-605.76 345.74,-605.76 345.74,-599.76 351.74,-593.76 357.74,-593.76 357.74,-593.76 574.23,-593.76 574.23,-593.76 580.23,-593.76 586.23,-599.76 586.23,-605.76 586.23,-605.76 586.23,-674.8 586.23,-674.8 586.23,-680.8 580.23,-686.8 574.23,-686.8" />
+<a href="03_CHAMPIONSHIP.html#c02" aria-label="C02 Centroid decomposition and tree counting study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="364.14" y="-663.28" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">C02</text>
+<text xml:space="preserve" text-anchor="start" x="364.14" y="-642.58" font-family="Arial" font-weight="bold" font-size="13.00">Centroid decomposition and tree</text>
+<text xml:space="preserve" text-anchor="start" x="438.55" y="-629.58" font-family="Arial" font-weight="bold" font-size="13.00">counting</text>
+<text xml:space="preserve" text-anchor="start" x="364.14" y="-611.28" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: R04,R05</text>
+</a></g>
+
+<g id="C-node3" class="node">
+<title>C03</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M829.59,-686.8C829.59,-686.8 656.38,-686.8 656.38,-686.8 650.38,-686.8 644.38,-680.8 644.38,-674.8 644.38,-674.8 644.38,-605.76 644.38,-605.76 644.38,-599.76 650.38,-593.76 656.38,-593.76 656.38,-593.76 829.59,-593.76 829.59,-593.76 835.59,-593.76 841.59,-599.76 841.59,-605.76 841.59,-605.76 841.59,-674.8 841.59,-674.8 841.59,-680.8 835.59,-686.8 829.59,-686.8" />
+<a href="03_CHAMPIONSHIP.html#c03" aria-label="C03 Persistence, rollback, and parallel binary search study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="662.78" y="-663.28" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">C03</text>
+<text xml:space="preserve" text-anchor="start" x="662.78" y="-642.58" font-family="Arial" font-weight="bold" font-size="13.00">Persistence, rollback, and</text>
+<text xml:space="preserve" text-anchor="start" x="676.14" y="-629.58" font-family="Arial" font-weight="bold" font-size="13.00">parallel binary search</text>
+<text xml:space="preserve" text-anchor="start" x="662.78" y="-611.28" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: R06,R08,R17</text>
+</a></g>
+
+<g id="C-node4" class="node">
+<title>C04</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M300.47,-530.56C300.47,-530.56 181.5,-530.56 181.5,-530.56 175.5,-530.56 169.5,-524.56 169.5,-518.56 169.5,-518.56 169.5,-459.92 169.5,-459.92 169.5,-453.92 175.5,-447.92 181.5,-447.92 181.5,-447.92 300.47,-447.92 300.47,-447.92 306.47,-447.92 312.47,-453.92 312.47,-459.92 312.47,-459.92 312.47,-518.56 312.47,-518.56 312.47,-524.56 306.47,-530.56 300.47,-530.56" />
+<a href="03_CHAMPIONSHIP.html#c04" aria-label="C04 DP optimization study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="187.9" y="-507.04" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">C04</text>
+<text xml:space="preserve" text-anchor="start" x="187.9" y="-486.34" font-family="Arial" font-weight="bold" font-size="13.00">DP optimization</text>
+<text xml:space="preserve" text-anchor="start" x="187.9" y="-465.44" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: R02,R06,R18</text>
+</a></g>
+
+<g id="C-node5" class="node">
+<title>C05</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M554.39,-535.76C554.39,-535.76 385.58,-535.76 385.58,-535.76 379.58,-535.76 373.58,-529.76 373.58,-523.76 373.58,-523.76 373.58,-454.72 373.58,-454.72 373.58,-448.72 379.58,-442.72 385.58,-442.72 385.58,-442.72 554.39,-442.72 554.39,-442.72 560.39,-442.72 566.39,-448.72 566.39,-454.72 566.39,-454.72 566.39,-523.76 566.39,-523.76 566.39,-529.76 560.39,-535.76 554.39,-535.76" />
+<a href="03_CHAMPIONSHIP.html#c05" aria-label="C05 Digit, profile, and subset-transform DP study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="391.98" y="-512.24" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">C05</text>
+<text xml:space="preserve" text-anchor="start" x="391.98" y="-491.54" font-family="Arial" font-weight="bold" font-size="13.00">Digit, profile, and subset-</text>
+<text xml:space="preserve" text-anchor="start" x="428.81" y="-478.54" font-family="Arial" font-weight="bold" font-size="13.00">transform DP</text>
+<text xml:space="preserve" text-anchor="start" x="391.98" y="-460.24" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: R03,R14</text>
+</a></g>
+
+<g id="C-node6" class="node">
+<title>C06</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M833.46,-530.56C833.46,-530.56 628.51,-530.56 628.51,-530.56 622.51,-530.56 616.51,-524.56 616.51,-518.56 616.51,-518.56 616.51,-459.92 616.51,-459.92 616.51,-453.92 622.51,-447.92 628.51,-447.92 628.51,-447.92 833.46,-447.92 833.46,-447.92 839.46,-447.92 845.46,-453.92 845.46,-459.92 845.46,-459.92 845.46,-518.56 845.46,-518.56 845.46,-524.56 839.46,-530.56 833.46,-530.56" />
+<a href="03_CHAMPIONSHIP.html#c06" aria-label="C06 Automata and suffix structures study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="634.91" y="-507.04" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">C06</text>
+<text xml:space="preserve" text-anchor="start" x="634.91" y="-486.34" font-family="Arial" font-weight="bold" font-size="13.00">Automata and suffix structures</text>
+<text xml:space="preserve" text-anchor="start" x="634.91" y="-465.44" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: R15</text>
+</a></g>
+
+<g id="C-node7" class="node">
+<title>C07</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M339.81,-384.72C339.81,-384.72 134.16,-384.72 134.16,-384.72 128.16,-384.72 122.16,-378.72 122.16,-372.72 122.16,-372.72 122.16,-303.68 122.16,-303.68 122.16,-297.68 128.16,-291.68 134.16,-291.68 134.16,-291.68 339.81,-291.68 339.81,-291.68 345.81,-291.68 351.81,-297.68 351.81,-303.68 351.81,-303.68 351.81,-372.72 351.81,-372.72 351.81,-378.72 345.81,-384.72 339.81,-384.72" />
+<a href="03_CHAMPIONSHIP.html#c07" aria-label="C07 Min-cost flow, assignment, and constrained flow study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="140.56" y="-361.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">C07</text>
+<text xml:space="preserve" text-anchor="start" x="140.56" y="-340.5" font-family="Arial" font-weight="bold" font-size="13.00">Min-cost flow, assignment, and</text>
+<text xml:space="preserve" text-anchor="start" x="185.34" y="-327.5" font-family="Arial" font-weight="bold" font-size="13.00">constrained flow</text>
+<text xml:space="preserve" text-anchor="start" x="140.56" y="-309.2" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: R13,R09</text>
+</a></g>
+
+<g id="C-node8" class="node">
+<title>C08</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M600.12,-384.72C600.12,-384.72 403.85,-384.72 403.85,-384.72 397.85,-384.72 391.85,-378.72 391.85,-372.72 391.85,-372.72 391.85,-303.68 391.85,-303.68 391.85,-297.68 397.85,-291.68 403.85,-291.68 403.85,-291.68 600.12,-291.68 600.12,-291.68 606.12,-291.68 612.12,-297.68 612.12,-303.68 612.12,-303.68 612.12,-372.72 612.12,-372.72 612.12,-378.72 606.12,-384.72 600.12,-384.72" />
+<a href="03_CHAMPIONSHIP.html#c08" aria-label="C08 Advanced number theory and polynomial tools study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="410.25" y="-361.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">C08</text>
+<text xml:space="preserve" text-anchor="start" x="410.25" y="-340.5" font-family="Arial" font-weight="bold" font-size="13.00">Advanced number theory and</text>
+<text xml:space="preserve" text-anchor="start" x="450.34" y="-327.5" font-family="Arial" font-weight="bold" font-size="13.00">polynomial tools</text>
+<text xml:space="preserve" text-anchor="start" x="410.25" y="-309.2" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: R14</text>
+</a></g>
+
+<g id="C-node9" class="node">
+<title>C09</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M838.3,-384.72C838.3,-384.72 663.67,-384.72 663.67,-384.72 657.67,-384.72 651.67,-378.72 651.67,-372.72 651.67,-372.72 651.67,-303.68 651.67,-303.68 651.67,-297.68 657.67,-291.68 663.67,-291.68 663.67,-291.68 838.3,-291.68 838.3,-291.68 844.3,-291.68 850.3,-297.68 850.3,-303.68 850.3,-303.68 850.3,-372.72 850.3,-372.72 850.3,-378.72 844.3,-384.72 838.3,-384.72" />
+<a href="03_CHAMPIONSHIP.html#c09" aria-label="C09 Probability processes and algebra study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="670.07" y="-361.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">C09</text>
+<text xml:space="preserve" text-anchor="start" x="670.07" y="-340.5" font-family="Arial" font-weight="bold" font-size="13.00">Probability processes and</text>
+<text xml:space="preserve" text-anchor="start" x="727.86" y="-327.5" font-family="Arial" font-weight="bold" font-size="13.00">algebra</text>
+<text xml:space="preserve" text-anchor="start" x="670.07" y="-309.2" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: R18,R19</text>
+</a></g>
+
+<g id="C-node10" class="node">
+<title>C10</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M539.59,-233.68C539.59,-233.68 374.38,-233.68 374.38,-233.68 368.38,-233.68 362.38,-227.68 362.38,-221.68 362.38,-221.68 362.38,-152.64 362.38,-152.64 362.38,-146.64 368.38,-140.64 374.38,-140.64 374.38,-140.64 539.59,-140.64 539.59,-140.64 545.59,-140.64 551.59,-146.64 551.59,-152.64 551.59,-152.64 551.59,-221.68 551.59,-221.68 551.59,-227.68 545.59,-233.68 539.59,-233.68" />
+<a href="03_CHAMPIONSHIP.html#c10" aria-label="C10 Geometric modeling and transformations study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="380.78" y="-210.16" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">C10</text>
+<text xml:space="preserve" text-anchor="start" x="380.78" y="-189.46" font-family="Arial" font-weight="bold" font-size="13.00">Geometric modeling and</text>
+<text xml:space="preserve" text-anchor="start" x="407.51" y="-176.46" font-family="Arial" font-weight="bold" font-size="13.00">transformations</text>
+<text xml:space="preserve" text-anchor="start" x="380.78" y="-158.16" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: R16,R18</text>
+</a></g>
+
+<g id="C-node11" class="node">
+<title>C11</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M195.97,-233.68C195.97,-233.68 12,-233.68 12,-233.68 6,-233.68 0,-227.68 0,-221.68 0,-221.68 0,-152.64 0,-152.64 0,-146.64 6,-140.64 12,-140.64 12,-140.64 195.97,-140.64 195.97,-140.64 201.97,-140.64 207.97,-146.64 207.97,-152.64 207.97,-152.64 207.97,-221.68 207.97,-221.68 207.97,-227.68 201.97,-233.68 195.97,-233.68" />
+<a href="03_CHAMPIONSHIP.html#c11" aria-label="C11 Amortization and combined structures study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="18.4" y="-210.16" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">C11</text>
+<text xml:space="preserve" text-anchor="start" x="18.4" y="-189.46" font-family="Arial" font-weight="bold" font-size="13.00">Amortization and combined</text>
+<text xml:space="preserve" text-anchor="start" x="72.2" y="-176.46" font-family="Arial" font-weight="bold" font-size="13.00">structures</text>
+<text xml:space="preserve" text-anchor="start" x="18.4" y="-158.16" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: R07,R09,C01</text>
+</a></g>
+
+<g id="C-node12" class="node">
+<title>C12</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M838.83,-82.64C838.83,-82.64 615.14,-82.64 615.14,-82.64 609.14,-82.64 603.14,-76.64 603.14,-70.64 603.14,-70.64 603.14,-12 603.14,-12 603.14,-6 609.14,0 615.14,0 615.14,0 838.83,0 838.83,0 844.83,0 850.83,-6 850.83,-12 850.83,-12 850.83,-70.64 850.83,-70.64 850.83,-76.64 844.83,-82.64 838.83,-82.64" />
+<a href="03_CHAMPIONSHIP.html#c12" aria-label="C12 Championship contest integration study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="621.54" y="-59.12" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">C12</text>
+<text xml:space="preserve" text-anchor="start" x="621.54" y="-38.42" font-family="Arial" font-weight="bold" font-size="13.00">Championship contest integration</text>
+<text xml:space="preserve" text-anchor="start" x="621.54" y="-17.52" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: R20,C01-C11</text>
+</a></g>
+
+
+
+
+
+
+<g id="C-node18" class="node">
+<title>toolkit_C</title>
+<path fill="#ffffff" stroke="#ccd7e2" stroke-dasharray="5,2" d="M823.26,-211.88C823.26,-211.88 660.71,-211.88 660.71,-211.88 654.71,-211.88 648.71,-205.88 648.71,-199.88 648.71,-199.88 648.71,-174.44 648.71,-174.44 648.71,-168.44 654.71,-162.44 660.71,-162.44 660.71,-162.44 823.26,-162.44 823.26,-162.44 829.26,-162.44 835.26,-168.44 835.26,-174.44 835.26,-174.44 835.26,-199.88 835.26,-199.88 835.26,-205.88 829.26,-211.88 823.26,-211.88" />
+<text xml:space="preserve" text-anchor="middle" x="741.99" y="-190.46" font-family="Arial" font-size="11.00" fill="#596c7f">Complete the prerequisite toolkit</text>
+<text xml:space="preserve" text-anchor="middle" x="741.99" y="-177.26" font-family="Arial" font-size="11.00" fill="#596c7f">R20,C01-C11</text>
+</g>
+</g>
+</svg>

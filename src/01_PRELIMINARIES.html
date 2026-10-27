@@ -1,0 +1,1030 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>Preliminaries and foundations · ICPC roadmap</title><style>:root { color-scheme: light; font-family: "Segoe UI", Arial, sans-serif; color: #172b43; background: #fff; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { max-width: 1160px; padding: 64px 40px 32px; margin: auto; }
+h1, h2, p { margin: 0; }
+h1 { font-size: clamp(30px, 4vw, 44px); font-weight: 600; letter-spacing: -1px; margin: 12px 0 18px; }
+h2 { font-size: 28px; font-weight: 600; margin: 8px 0 10px; }
+p { color: #526579; line-height: 1.7; }
+.eyebrow { color: #326186; font-size: 12px; letter-spacing: 1.5px; font-weight: 700; }
+.document-heading > p:not(.eyebrow) { max-width: 850px; }
+.stage-sequence { display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin: 32px 0 24px; gap: 12px; font-size: 14px; font-weight: 600; }
+.stage-sequence li:not(:last-child)::after { content: "→"; margin-left: 12px; color: #8193a7; }
+.reading-note { font-size: 13px; }
+section { border-top: 1px solid #dce3eb; margin-top: 48px; padding-top: 32px; }
+.stage-heading { margin-bottom: 22px; }
+.diagram-frame { margin-top: 12px; }
+.diagram { position: relative; touch-action: pan-y; }
+.diagram svg { display: block; width: 100%; height: auto; max-height: 75vh; }
+.diagram.is-pannable { cursor: grab; touch-action: none; }
+.diagram.is-dragging { cursor: grabbing; user-select: none; }
+.diagram:focus-visible { outline: 1px dashed #8193a7; outline-offset: 3px; }
+.diagram-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 20px; padding: 0 0 10px; font-size: 11px; color: #6a7d90; }
+.diagram-toolbar[hidden] { display: none; }
+.zoom-controls { display: flex; align-items: center; gap: 8px; }
+.zoom-controls button { font: inherit; font-size: 14px; color: #244f74; background: transparent; border: 0; border-radius: 4px; min-width: 34px; min-height: 34px; padding: 5px 10px; cursor: pointer; }
+.zoom-controls button:hover { background: #f1f5f9; }
+.zoom-controls button:disabled { opacity: .4; cursor: default; }
+.zoom-controls button:focus-visible { outline: 2px solid #326186; outline-offset: 2px; }
+.zoom-controls output { min-width: 44px; text-align: center; font-variant-numeric: tabular-nums; }
+.references { margin-top: 12px; font-size: 13px; }
+a { color: #326186; text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid #326186; outline-offset: 4px; }
+footer { margin-top: 48px; border-top: 1px solid #dce3eb; padding-top: 24px; font-size: 12px; }
+footer p + p { margin-top: 8px; }
+.overview-links { display: flex; flex-wrap: wrap; gap: 20px; font-size: 13px; margin-bottom: 22px; }
+.skip-link { position: absolute; left: -9999px; }
+.skip-link:focus { left: 20px; top: 10px; background: white; padding: 12px; z-index: 5; }
+.guide-layout { max-width: 1500px; margin: auto; display: grid; grid-template-columns: 240px minmax(0, 1fr); }
+.guide-sidebar { position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto; padding: 44px 22px; border-right: 1px solid #e2e8ef; background: #f8fafc; }
+.guide-brand { display: block; font-weight: 700; font-size: 17px; text-decoration: none; margin-bottom: 40px; letter-spacing: 1px; }
+.guide-sidebar nav { margin-top: 14px; display: grid; gap: 5px; }
+.guide-sidebar nav a { padding: 10px 12px; font-size: 13px; line-height: 1.4; text-decoration: none; border-radius: 4px; color: #526579; }
+.guide-sidebar nav a[aria-current] { background: #e7eff7; color: #244f74; font-weight: 600; }
+main.guide-main { min-width: 0; width: 100%; max-width: 1120px; padding: 48px 48px 36px; }
+.guide-heading { padding-bottom: 30px; border-bottom: 1px solid #dce3eb; }
+.guide-heading h1 { font-size: clamp(28px, 3vw, 38px); line-height: 1.2; }
+.guide-heading > p:last-child { font-size: 13px; }
+.contents { margin: 28px 0 36px; padding: 24px 28px; border: 1px solid #dce3eb; border-radius: 5px; background: #fbfcfe; }
+.contents h2 { font-size: 14px; margin: 0 0 14px; }
+.contents ol { columns: 2; column-gap: 36px; padding: 0; margin: 0; list-style: none; }
+.contents li { break-inside: avoid; margin-bottom: 8px; font-size: 13px; line-height: 1.5; }
+.contents a { text-decoration: none; }
+.prose { font-size: 15px; line-height: 1.8; overflow-wrap: anywhere; }
+.prose p { margin: 16px 0; }
+.prose h2 { font-size: 23px; margin: 44px 0 18px; padding-top: 24px; border-top: 1px solid #dce3eb; line-height: 1.4; letter-spacing: -.3px; }
+.prose h3 { font-size: 18px; margin: 28px 0 12px; }
+.prose li { margin-bottom: 8px; color: #526579; }
+.prose strong { color: #243c55; font-weight: 600; }
+.prose .module-note { padding-left: 16px; border-left: 3px solid #dce7f2; }
+.table-scroll { max-width: 100%; overflow-x: auto; margin: 24px 0; border: 1px solid #dce3eb; border-radius: 5px; }
+.prose table { width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.65; }
+.prose th { background: #f1f5f9; color: #243c55; text-align: left; font-weight: 600; }
+.prose th, .prose td { padding: 12px 14px; border-bottom: 1px solid #e2e8ef; vertical-align: top; min-width: 90px; }
+.prose tr:last-child td { border-bottom: 0; }
+.prose tbody tr:nth-child(even) { background: #fbfcfe; }
+.prose code { font-size: .9em; background: #f0f4f8; border-radius: 3px; padding: 2px 4px; }
+.prose pre { padding: 20px; background: #f1f5f9; overflow: auto; }
+.prose blockquote { margin: 20px 0; padding: 8px 20px; border-left: 3px solid #b7ccdf; background: #f8fafc; }
+.source-note { margin: 28px 0; padding: 4px 22px 18px; border: 1px solid #dce3eb; border-radius: 5px; background: #fbfcfe; }
+.topic-stages { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 24px 0; font-size: 14px; }
+.topic-list { list-style: none; padding: 0; margin: 24px 0 0; }
+.topic-list li { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 16px; padding: 22px 0; border-bottom: 1px solid #e2e8ef; }
+.topic-code { color: #326186; font-size: 12px; font-weight: 600; padding-top: 3px; }
+.topic-list h3 { font-size: 17px; margin: 0 0 8px; line-height: 1.4; font-weight: 600; }
+.topic-list h3 a { text-decoration: none; }
+.topic-list p { font-size: 14px; }
+.topic-list .topic-prerequisites { font-size: 12px; color: #6a7d90; margin-bottom: 8px; }
+.guide-pagination { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid #dce3eb; padding-top: 28px; margin-top: 48px; }
+.guide-pagination a { text-decoration: none; font-weight: 600; font-size: 14px; }
+.guide-pagination span { display: block; color: #6a7d90; font-size: 11px; font-weight: 400; margin-bottom: 8px; }
+@media (max-width: 900px) {
+  .guide-layout { grid-template-columns: 1fr; }
+  .guide-sidebar { position: static; height: auto; overflow-y: visible; padding: 24px; border-right: 0; border-bottom: 1px solid #e2e8ef; }
+  .guide-brand { margin-bottom: 18px; }
+  .guide-sidebar nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  main.guide-main { padding: 30px 24px; }
+}
+@media (max-width: 600px) {
+  .guide-sidebar nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .contents ol { columns: 1; }
+  .contents { padding: 20px; }
+  main.guide-main { padding: 28px 18px; }
+  .prose th, .prose td { min-width: 125px; }
+}
+@media (max-width: 600px) { main { padding: 32px 18px; } section { margin-top: 32px; } }
+@media print {
+  @page { size: A3 portrait; margin: 12mm; }
+  main { max-width: none; padding: 0; }
+  .document-heading { break-after: page; }
+  section { break-before: page; border: 0; margin: 0; padding: 0; }
+  .diagram { overflow: visible; height: auto; }
+  .diagram-frame { border: 0; overflow: visible; }
+  .diagram-toolbar { display: none; }
+  .diagram svg { min-width: 0; width: 100%; max-height: 340mm; }
+  .references { display: none; }
+  footer { break-before: page; }
+  .guide-sidebar, .guide-pagination, .skip-link { display: none; }
+  .guide-layout { display: block; }
+  main.guide-main { max-width: none; padding: 0; }
+  .guide-page footer { break-before: auto; }
+  .table-scroll { overflow: visible; }
+  .prose h2 { break-after: avoid; }
+}
+</style><!-- enrichment-style:start --><style>
+.worked-example { padding: 2px 20px; border-left: 3px solid #b7ccdf; background: #f8fafc; margin: 22px 0; }
+.worked-example h3 { font-size: 16px; margin-top: 16px; }
+.learning-resources { padding-left: 22px; }
+.learning-resources li { margin-bottom: 17px; }
+.learning-resources p { margin: 4px 0 0; font-size: 13px; line-height: 1.65; }
+.resource-provenance, .prose .resource-scope { font-size: 13px; }
+.resource-kind { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; color: #526579; background: #edf2f7; border-radius: 3px; padding: 2px 6px; margin-right: 6px; }
+.prose .resource-date { font-size: 11px; color: #6a7d90; }
+@media print { .worked-example { break-inside: avoid; } .learning-resources li { break-inside: avoid; } }
+</style><!-- enrichment-style:end --></head>
+<body class="guide-page"><a class="skip-link" href="#content">Skip to guide</a><div class="guide-layout">
+<aside class="guide-sidebar"><a class="guide-brand" href="../index.html">ICPC ROADMAP</a><p class="eyebrow">STUDY GUIDES</p><nav aria-label="Roadmap library"><a href="../index.html">Roadmap overview</a><a href="topics.html">All topics</a><a href="01_PRELIMINARIES.html" aria-current="page">Preliminaries</a><a href="02_REGIONALS.html">Regionals</a><a href="03_CHAMPIONSHIP.html">Championship</a><a href="04_WORLD_FINALS.html">World Finals</a><a href="06_PAST_PAPERS.html">Past papers</a><a href="09_TRAINING_ROUTINE.html">Training routine</a><a href="README.html">About this roadmap</a></nav></aside>
+<main class="guide-main" id="content"><header class="guide-heading"><p class="eyebrow">ICPC PREPARATION / PRELIMINARIES</p><h1>Preliminaries and foundations</h1><p>Structured study guide · Reference edition</p></header>
+<nav class="contents" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#how-to-use-each-module">How to use each module</a></li><li><a href="#p01-language-complexity-and-arithmetic">P01 · Language, complexity, and arithmetic</a></li><li><a href="#p02-simulation-and-careful-implementation">P02 · Simulation and careful implementation</a></li><li><a href="#p03-elementary-strings-and-parsing">P03 · Elementary strings and parsing</a></li><li><a href="#p04-sorting-comparators-and-order">P04 · Sorting, comparators, and order</a></li><li><a href="#p05-frequency-counting-sets-and-maps">P05 · Frequency counting, sets, and maps</a></li><li><a href="#p06-prefix-sums-and-difference-arrays">P06 · Prefix sums and difference arrays</a></li><li><a href="#p07-two-pointers-and-sliding-windows">P07 · Two pointers and sliding windows</a></li><li><a href="#p08-binary-search-and-answer-search">P08 · Binary search and answer search</a></li><li><a href="#p09-enumeration-recursion-and-bits">P09 · Enumeration, recursion, and bits</a></li><li><a href="#p10-greedy-proofs-invariants-and-construction">P10 · Greedy proofs, invariants, and construction</a></li><li><a href="#p11-elementary-number-theory-and-counting">P11 · Elementary number theory and counting</a></li><li><a href="#p12-basic-dynamic-programming">P12 · Basic dynamic programming</a></li><li><a href="#p13-graph-and-tree-foundations">P13 · Graph and tree foundations</a></li><li><a href="#p14-geometry-and-numerical-basics">P14 · Geometry and numerical basics</a></li><li><a href="#p15-elementary-games-and-probability">P15 · Elementary games and probability</a></li><li><a href="#p16-preliminary-contest-integration">P16 · Preliminary contest integration</a></li></ol></nav>
+<article class="prose">
+<p>16 modules · 64 selected practice problems · researched 2026-10-26</p>
+<p>This is the main starting track. If you already solve routine implementation problems comfortably, use P01-P05 as a diagnostic and spend your time on P06-P15. Do not skip them merely because their names look familiar. These are preparation priorities, not a claim that preliminary contests contain only these topics.</p>
+<p><strong>Suggested pace:</strong> 8-12 weeks at roughly 8-12 focused hours per week, adjusted to your current ability. A newcomer may need longer. Each week, learn one or two related modules, solve their starter/core exercises, and spend a session on mixed untagged problems. Start timed practice before finishing the syllabus.</p>
+<p><strong>First pass:</strong> P01-P08, then P09-P13. Add P14-P15 while starting full-set practice in P16. Stretch problems are optional on the first pass. For a strong preliminary contest, start R01, R02, R06, R08, and R09 as soon as their prerequisites are ready.</p>
+<p><strong>Exit evidence:</strong> explain and implement the basic tools without copying; solve unfamiliar combinations under time pressure; complete three unseen preliminary-style sets and upsolve reachable misses. A solve count is meaningful only relative to that specific set and its standings. This roadmap does not promise qualification at any rating or solve count.</p>
+<p><strong>Past-paper bridge:</strong> NAQ 2022 C, D, E, and K; NWERC 2024 A and E; Topi paper 02. Find the exact statements and spoiler-marked mappings in <a href="06_PAST_PAPERS.html">Past papers</a>.</p>
+<h2 id="how-to-use-each-module">How to use each module</h2>
+<p>Work in prerequisite order. Attempt <strong>starter</strong>, then <strong>core</strong>, then <strong>stretch</strong>. These labels are relative to the module, not official platform difficulties. The “why it fits” notes contain hints: skip that column if you want a blind attempt. A listed technique is a suitable approach, not necessarily the unique or simplest one. CF ratings are reference values and may change; a dash means no rating is listed.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Focus</th>
+<th>Prerequisites</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#p01">P01</a></td>
+<td>Language, complexity, and arithmetic</td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="#p02">P02</a></td>
+<td>Simulation and careful implementation</td>
+<td>P01</td>
+</tr>
+<tr>
+<td><a href="#p03">P03</a></td>
+<td>Elementary strings and parsing</td>
+<td>P02</td>
+</tr>
+<tr>
+<td><a href="#p04">P04</a></td>
+<td>Sorting, comparators, and order</td>
+<td>P02</td>
+</tr>
+<tr>
+<td><a href="#p05">P05</a></td>
+<td>Frequency counting, sets, and maps</td>
+<td>P03,P04</td>
+</tr>
+<tr>
+<td><a href="#p06">P06</a></td>
+<td>Prefix sums and difference arrays</td>
+<td>P02</td>
+</tr>
+<tr>
+<td><a href="#p07">P07</a></td>
+<td>Two pointers and sliding windows</td>
+<td>P04,P06</td>
+</tr>
+<tr>
+<td><a href="#p08">P08</a></td>
+<td>Binary search and answer search</td>
+<td>P04,P06</td>
+</tr>
+<tr>
+<td><a href="#p09">P09</a></td>
+<td>Enumeration, recursion, and bits</td>
+<td>P01</td>
+</tr>
+<tr>
+<td><a href="#p10">P10</a></td>
+<td>Greedy proofs, invariants, and construction</td>
+<td>P04,P09</td>
+</tr>
+<tr>
+<td><a href="#p11">P11</a></td>
+<td>Elementary number theory and counting</td>
+<td>P01,P09</td>
+</tr>
+<tr>
+<td><a href="#p12">P12</a></td>
+<td>Basic dynamic programming</td>
+<td>P06,P09</td>
+</tr>
+<tr>
+<td><a href="#p13">P13</a></td>
+<td>Graph and tree foundations</td>
+<td>P02,P09</td>
+</tr>
+<tr>
+<td><a href="#p14">P14</a></td>
+<td>Geometry and numerical basics</td>
+<td>P01,P08</td>
+</tr>
+<tr>
+<td><a href="#p15">P15</a></td>
+<td>Elementary games and probability</td>
+<td>P09,P11,P12</td>
+</tr>
+<tr>
+<td><a href="#p16">P16</a></td>
+<td>Preliminary contest integration</td>
+<td>P01-P15</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="p01"></a></p>
+<h2 id="p01-language-complexity-and-arithmetic">P01 · Language, complexity, and arithmetic</h2>
+<p class="module-note"><strong>Prerequisites:</strong> None.</p>
+<p class="module-note"><strong>Learn:</strong> C++17/20 syntax and STL; input until EOF and multiple cases; integer division; 64-bit arithmetic; O(1), logarithmic, linear, n log n, quadratic and exponential bounds; memory estimates.</p>
+<p class="module-note"><strong>Mastery check:</strong> Derive the largest intermediate value and operation count before coding; compile and run from a terminal.</p>
+<p class="module-note"><strong>Watch for:</strong> Promoting after an overflowing multiplication; stale state between cases; assuming every judge supports the same compiler.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cses.fi/book/book.pdf">Handbook, chapters 1-2</a>.</p>
+<!-- enriched:P01:start -->
+<div class="topic-expansion" aria-label="P01 detailed study content"><h3>Understand the idea</h3><p>An algorithm must fit both the mathematical constraints and the machine representation. Translate the largest input into a bound on work, memory, and intermediate values before choosing a container or loop. Separate worst-case complexity from an estimate of runtime: an O(n) algorithm can still allocate too much memory. In C++, expressions are evaluated using their operand types, so assigning a product to long long does not repair an earlier int overflow. Learn vectors, pairs, iterators, references, and the standard algorithms you will use repeatedly.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>For n = 200000, checking all pairs means about 20 billion comparisons; sorting needs roughly n log2(n) comparisons. Multiplying two values up to 10^9 requires widening an operand before multiplication. For nonnegative a and positive b, a / b + (a % b != 0) computes ceiling division without adding b - 1.</p></div>
+<h3>Learning sequence</h3><ol><li>Compile a minimal multi-case template and an EOF-based reader.</li><li>Estimate storage for an n by n table and compare it with an adjacency list.</li><li>Test division and remainders on negative values; distinguish language rules from mathematical floor.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Contest setup and complexity; supplement the examples with your compiler&#x27;s C++ documentation.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=ZA-tUyM_y7s">Lecture 1: Algorithms and Computation</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-1-algorithms-and-computation/">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/01-introduction.pdf">Stanford CS97SI: Introduction</a></li><li><span class="resource-kind">Reference</span> <a href="https://en.cppreference.com/w/cpp.html">C++ language and standard-library reference</a><p>Look up integer types, arithmetic conversions, containers, and algorithms.</p></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:P01:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://codeforces.com/problemset/problem/4/A">CF 4A — Watermelon</a></td>
+<td style="text-align:right">800</td>
+<td>Parity and the positive-part boundary case.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/1/A">CF 1A — Theatre Square</a></td>
+<td style="text-align:right">1000</td>
+<td>Ceiling division and a product requiring 64-bit arithmetic.</td>
+</tr>
+<tr>
+<td>starter</td>
+<td><a href="https://codeforces.com/problemset/problem/71/A">CF 71A — Way Too Long Words</a></td>
+<td style="text-align:right">800</td>
+<td>Multiple cases and precise string output.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="p02"></a></p>
+<h2 id="p02-simulation-and-careful-implementation">P02 · Simulation and careful implementation</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P01.</p>
+<p class="module-note"><strong>Learn:</strong> Translate rules into explicit state transitions; arrays, grids, indices, simultaneous versus sequential updates; counting and running extrema.</p>
+<p class="module-note"><strong>Mastery check:</strong> Explain the state after each step and test smallest inputs, ties, and repeated values.</p>
+<p class="module-note"><strong>Watch for:</strong> Changing a state in place when the problem requires all changes to happen simultaneously.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cses.fi/book/book.pdf">Handbook, chapters 1,5</a>.</p>
+<!-- enriched:P02:start -->
+<div class="topic-expansion" aria-label="P02 detailed study content"><h3>Understand the idea</h3><p>Simulation starts by defining exactly what the state contains and when an update becomes visible. Write the transition for one event, then identify what must be remembered between events. A useful loop invariant describes the state after the first k events. For a grid process, explicitly decide whether neighbors are read from the old grid or the changing grid. Prefer a simple direct simulation until the input bounds demonstrate that acceleration is necessary.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>If every adjacent BG pair swaps simultaneously, a left-to-right in-place pass must skip the position just moved into. Otherwise one child can move several places in a single round. A second buffer provides a general alternative when updates overlap more extensively.</p></div>
+<h3>Learning sequence</h3><ol><li>Trace three events by hand and record the state after each.</li><li>Implement a direct reference simulator before optimizing repeated operations.</li><li>Build cases with no changes, all changes, equal timestamps, and multiple test cases.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Implementation checklist and common mistakes; the companion lecture develops array representations.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=CHhwJjR0mZA">Lecture 2: Data Structures and Dynamic Arrays</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-2-data-structures-and-dynamic-arrays/">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/01-introduction.pdf">Stanford CS97SI: Introduction</a></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:P02:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://codeforces.com/problemset/problem/231/A">CF 231A — Team</a></td>
+<td style="text-align:right">800</td>
+<td>Count rows satisfying a threshold.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/116/A">CF 116A — Tram</a></td>
+<td style="text-align:right">800</td>
+<td>Simulate passenger balance and maintain its maximum.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/266/B">CF 266B — Queue at the School</a></td>
+<td style="text-align:right">800</td>
+<td>Simultaneous swaps require skipping a newly moved character.</td>
+</tr>
+<tr>
+<td>starter</td>
+<td><a href="https://codeforces.com/problemset/problem/263/A">CF 263A — Beautiful Matrix</a></td>
+<td style="text-align:right">800</td>
+<td>Locate a grid entry and compute Manhattan distance.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="p03"></a></p>
+<h2 id="p03-elementary-strings-and-parsing">P03 · Elementary strings and parsing</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P02.</p>
+<p class="module-note"><strong>Learn:</strong> Character classification; case conversion; lexicographic comparison; runs; palindrome checks; subsequences versus substrings; token versus whole-line input.</p>
+<p class="module-note"><strong>Mastery check:</strong> Implement a linear subsequence scan and explain why skipped characters cannot help later.</p>
+<p class="module-note"><strong>Watch for:</strong> Confusing contiguous substrings with subsequences; getline after token input; empty and repeated characters.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cses.fi/book/book.pdf">Handbook, chapters 26</a>.</p>
+<!-- enriched:P03:start -->
+<div class="topic-expansion" aria-label="P03 detailed study content"><h3>Understand the idea</h3><p>Treat a string problem as a question about positions and relationships before choosing a string algorithm. A substring occupies a contiguous interval; a subsequence preserves order while allowing gaps. Runs can be processed with a current character and length. Lexicographic order is determined by the first unequal character, with a shorter prefix ordered first. Parsing requires an explicit input grammar: whitespace-separated tokens, complete lines, delimiters, and empty fields need different handling.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>To test whether abc is a subsequence of axbyc, keep the index of the next unmatched target character and advance it only on a match. Choosing the earliest possible matching position leaves at least as much remaining text as any later choice. This gives a linear scan without recursion.</p></div>
+<h3>Learning sequence</h3><ol><li>Implement reversal, palindrome checking, run counting, and subsequence testing.</li><li>Read a line containing spaces after a numeric input and handle the leftover newline.</li><li>Explain whether empty strings, punctuation, and case differences affect your specification.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Optional later reading on string algorithms; first finish the elementary scans above. The video covers array storage rather than parsing.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=CHhwJjR0mZA">Lecture 2: Data Structures and Dynamic Arrays</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-2-data-structures-and-dynamic-arrays/">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/10-string-algorithms.pdf">Stanford CS97SI: String Algorithms</a></li><li><span class="resource-kind">Reference</span> <a href="https://en.cppreference.com/w/cpp/string/basic_string.html">C++ basic_string and input operations</a><p>Consult indexing, substrings, comparison, and getline behavior.</p></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:P03:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://codeforces.com/problemset/problem/41/A">CF 41A — Translation</a></td>
+<td style="text-align:right">800</td>
+<td>Reverse-string comparison.</td>
+</tr>
+<tr>
+<td>starter</td>
+<td><a href="https://codeforces.com/problemset/problem/112/A">CF 112A — Petya and Strings</a></td>
+<td style="text-align:right">800</td>
+<td>Case-insensitive lexicographic comparison.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/96/A">CF 96A — Football</a></td>
+<td style="text-align:right">900</td>
+<td>Scan the length of consecutive equal characters.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/58/A">CF 58A — Chat room</a></td>
+<td style="text-align:right">1000</td>
+<td>Test a fixed word as a subsequence with one pointer.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="p04"></a></p>
+<h2 id="p04-sorting-comparators-and-order">P04 · Sorting, comparators, and order</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P02.</p>
+<p class="module-note"><strong>Learn:</strong> Sort numbers and pairs; stable ordering; tie handling; distinct values; coordinate compression as an introduction.</p>
+<p class="module-note"><strong>Mastery check:</strong> Write a comparator that is a strict weak ordering and identify what sorting makes adjacent.</p>
+<p class="module-note"><strong>Watch for:</strong> Using &lt;= in a comparator; forgetting the secondary key; losing original indices.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cses.fi/book/book.pdf">Handbook, chapters 3</a>.</p>
+<!-- enriched:P04:start -->
+<div class="topic-expansion" aria-label="P04 detailed study content"><h3>Understand the idea</h3><p>Sorting reveals structure by placing comparable objects next to each other. It can turn duplicate detection, closest-value searches, interval processing, and rank queries into simple scans. Choose the key before writing the comparator, including the direction of every tie-break. A valid comparator must reject comp(x,x) and remain transitive. Coordinate compression replaces values by sorted distinct ranks: it preserves relative order and equality, but does not preserve numerical distances.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>For records (score, penalty), rank by descending score and then ascending penalty. Two records with identical keys belong to the same rank group even if their original indices differ. If coordinates 10 and 1000 compress to consecutive ranks, their geometric gap is still 990, not one.</p></div>
+<h3>Learning sequence</h3><ol><li>Express a multi-key order as a tuple or an explicit strict comparator.</li><li>Sort while retaining original indices, then restore answer order.</li><li>Implement compression with sort, unique, and lower_bound; verify duplicates share a rank.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Ordering and supporting data structures; use the video for sorting and comparison-based reasoning.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=oS9aPzUNG-s">Lecture 3: Sets and Sorting</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-3-sets-and-sorting/">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/03-data-structures.pdf">Stanford CS97SI: Data Structures</a></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:P04:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://codeforces.com/problemset/problem/339/A">CF 339A — Helpful Maths</a></td>
+<td style="text-align:right">800</td>
+<td>Extract and sort small numeric tokens.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/337/A">CF 337A — Puzzles</a></td>
+<td style="text-align:right">900</td>
+<td>Sort and scan consecutive windows for a minimum spread.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/166/A">CF 166A — Rank List</a></td>
+<td style="text-align:right">1100</td>
+<td>Two-key ordering and counting ties at a selected rank.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://codeforces.com/problemset/problem/451/B">CF 451B — Sort the Array</a></td>
+<td style="text-align:right">1300</td>
+<td>Identify and verify a single reversed interval.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="p05"></a></p>
+<h2 id="p05-frequency-counting-sets-and-maps">P05 · Frequency counting, sets, and maps</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P03,P04.</p>
+<p class="module-note"><strong>Learn:</strong> Frequency arrays; map/set/multiset; hash maps; duplicate handling; algebraically transform a pair condition into equal keys.</p>
+<p class="module-note"><strong>Mastery check:</strong> Turn a quadratic pair count into a linear or n log n frequency computation.</p>
+<p class="module-note"><strong>Watch for:</strong> Erasing all copies from a multiset; counting self-pairs; treating a hash table as a string-hashing algorithm.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cses.fi/book/book.pdf">Handbook, chapters 4</a>.</p>
+<!-- enriched:P05:start -->
+<div class="topic-expansion" aria-label="P05 detailed study content"><h3>Understand the idea</h3><p>A frequency table groups objects by the information relevant to the answer. Use an array for a small dense key range, a balanced map for ordered operations, and a hash table for expected fast lookup when order is irrelevant. A set records presence; a multiset retains multiplicity. Before storing a complicated object, try rearranging the condition into equal keys or complementary keys. Decide whether a query counts previous elements or all elements, since that determines self-pair handling.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>The condition a[j] - a[i] = j - i is equivalent to a[j] - j = a[i] - i. Scanning left to right, add the number of previous occurrences of a[i] - i, then increment its frequency. A group of size k contributes k(k-1)/2 unordered pairs.</p></div>
+<h3>Learning sequence</h3><ol><li>Solve one pair-counting problem with a quadratic baseline and then a frequency scan.</li><li>Compare erase(value) with erase(iterator) on a multiset containing duplicates.</li><li>Test a single huge frequency and use a wide type for the pair count.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Hashing assumptions and collision behavior; compare these with the ordered-container tradeoffs above.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=Nu8YGneFCWE">Lecture 4: Hashing</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-4-hashing/">source page</a>)</span></li><li><span class="resource-kind">Handout PDF</span> <a href="https://jeffe.cs.illinois.edu/teaching/algorithms/notes/05-hashing.pdf">Jeff Erickson: Hashing</a></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:P05:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/4/C">CF 4C — Registration system</a></td>
+<td style="text-align:right">1300</td>
+<td>Maintain per-name counters in a dictionary; not rolling hashing.</td>
+</tr>
+<tr>
+<td>starter</td>
+<td><a href="https://codeforces.com/problemset/problem/443/A">CF 443A — Anton and Letters</a></td>
+<td style="text-align:right">800</td>
+<td>Count distinct letters with a set or frequency array.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/1520/D">CF 1520D — Same Differences</a></td>
+<td style="text-align:right">1200</td>
+<td>Rearrange the pair equation into equal a[i]-i keys.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://codeforces.com/problemset/problem/1490/F">CF 1490F — Equalize the Array</a></td>
+<td style="text-align:right">1500</td>
+<td>Count frequencies, sort them, and choose a retained frequency.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="p06"></a></p>
+<h2 id="p06-prefix-sums-and-difference-arrays">P06 · Prefix sums and difference arrays</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P02.</p>
+<p class="module-note"><strong>Learn:</strong> Half-open and inclusive ranges; prefix sums; prefix counts; difference updates; 2D prefix sums; prefix XOR.</p>
+<p class="module-note"><strong>Mastery check:</strong> Derive a range formula from the definition; explain why two prefix passes solve offline interval coverage.</p>
+<p class="module-note"><strong>Watch for:</strong> Subtracting the wrong endpoint; indexing r+1 outside storage; overflow in cumulative sums.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cses.fi/book/book.pdf">Handbook, chapters 9</a>.</p>
+<!-- enriched:P06:start -->
+<div class="topic-expansion" aria-label="P06 detailed study content"><h3>Understand the idea</h3><p>Prefix aggregates exchange preprocessing for cheap static interval queries. With p[0] = 0 and p[i+1] = p[i] + a[i], the sum on [l,r) is p[r] - p[l]. A difference array performs the inverse viewpoint: record changes at interval boundaries, then accumulate once to recover values. For offline updates followed by queries, build coverage first and a second prefix table afterward. Two-dimensional prefixes use inclusion-exclusion to remove the overlap subtracted twice.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>Adding 5 to [2,5) records d[2] += 5 and d[5] -= 5. One prefix pass applies the update to indices 2, 3, and 4. For [3,1,4,2], p = [0,3,4,8,10], so the sum on [1,3) is 8 - 3 = 5.</p></div>
+<h3>Learning sequence</h3><ol><li>Derive the interval formula from your chosen indexing convention.</li><li>Implement offline range additions and compare the resulting array with direct updates.</li><li>Extend to a rectangle query and explicitly draw the four prefix rectangles.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Range-query context in the slides; the dedicated video explains prefix sums. Derive difference-array formulas separately.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=f0bfiuDjq9A">Competitive Programming Initiative: Prefix Sums Lesson</a> <span class="resource-provenance">(<a href="https://usaco.guide/silver/prefix-sums">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/03-data-structures.pdf">Stanford CS97SI: Data Structures</a></li><li><span class="resource-kind">Tutorial</span> <a href="https://usaco.guide/silver/prefix-sums">USACO Guide: prefix sums</a><p>One- and two-dimensional prefix sums with examples and practice.</p></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:P06:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://codeforces.com/problemset/problem/363/B">CF 363B — Fence</a></td>
+<td style="text-align:right">1100</td>
+<td>Fixed-length minimum-sum window via prefix sums or running sum.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/313/B">CF 313B — Ilya and Queries</a></td>
+<td style="text-align:right">1100</td>
+<td>Prefix counts of equal adjacent pairs.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/433/B">CF 433B — Kuriyama Mirai's Stones</a></td>
+<td style="text-align:right">1200</td>
+<td>Two prefix arrays, one in original order and one sorted.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://codeforces.com/problemset/problem/816/B">CF 816B — Karen and Coffee</a></td>
+<td style="text-align:right">1400</td>
+<td>Difference-array interval coverage followed by prefix counting.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://cses.fi/problemset/task/1652">Forest Queries</a></td>
+<td style="text-align:right">—</td>
+<td>2D inclusion-exclusion for static rectangle sums.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="p07"></a></p>
+<h2 id="p07-two-pointers-and-sliding-windows">P07 · Two pointers and sliding windows</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P04,P06.</p>
+<p class="module-note"><strong>Learn:</strong> Opposite-end scans; positive-sum windows; distinct-element windows; maintaining counts; amortized linear movement.</p>
+<p class="module-note"><strong>Mastery check:</strong> State precisely why moving one endpoint is safe and why each endpoint advances O(n) times.</p>
+<p class="module-note"><strong>Watch for:</strong> Using a positive-sum window when negative values destroy monotonicity.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cses.fi/book/book.pdf">Handbook, chapters 8</a>.</p>
+<!-- enriched:P07:start -->
+<div class="topic-expansion" aria-label="P07 detailed study content"><h3>Understand the idea</h3><p>Two pointers are justified by a monotone elimination rule, not simply by using two indices. On sorted data, an endpoint can discard many impossible pairs at once. In a sliding window, maintain an invariant about the current interval and adjust its left boundary when extending the right boundary breaks it. The nested loops can still be linear because each endpoint advances at most n times. Distinguish maintaining a sum from maintaining a frequency map or an extremum.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>For positive values and a sum limit S, extending the right endpoint cannot decrease the sum, and removing the leftmost value cannot increase it. These facts justify shrinking an invalid window. With negative values, an invalid partial window may become valid after extension, so the same proof fails.</p></div>
+<h3>Learning sequence</h3><ol><li>Write the window invariant and the exact condition for shrinking.</li><li>Trace opposite-end pair search on a sorted array with duplicates.</li><li>Solve a distinct-element window and verify that deleting one occurrence does not erase all copies.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">The video covers pointer movement; the slides provide contest implementation context rather than a complete window tutorial.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=zmadiUuUeAA">Two pointers video linked by USACO Guide</a> <span class="resource-provenance">(<a href="https://usaco.guide/silver/two-pointers">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/01-introduction.pdf">Stanford CS97SI: Introduction</a></li><li><span class="resource-kind">Tutorial</span> <a href="https://usaco.guide/silver/two-pointers">USACO Guide: two pointers</a><p>Pointer movement, window invariants, and amortized analysis.</p></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:P07:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/279/B">CF 279B — Books</a></td>
+<td style="text-align:right">1400</td>
+<td>Positive reading times give a monotone contiguous window.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/489/B">CF 489B — BerSU Ball</a></td>
+<td style="text-align:right">1200</td>
+<td>Sorted two-pointer matching with tolerance one.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://cses.fi/problemset/task/1141">Playlist</a></td>
+<td style="text-align:right">—</td>
+<td>Maintain a longest window without repeated values.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="p08"></a></p>
+<h2 id="p08-binary-search-and-answer-search">P08 · Binary search and answer search</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P04,P06.</p>
+<p class="module-note"><strong>Learn:</strong> lower_bound/upper_bound; first true/last false; prefix search; monotone feasibility; integer and real domains.</p>
+<p class="module-note"><strong>Mastery check:</strong> Give an invariant, a feasible bound, and a monotonicity proof before implementing answer search.</p>
+<p class="module-note"><strong>Watch for:</strong> Off-by-one errors, unsafe midpoint arithmetic, or binary search on a nonmonotone predicate.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/num_methods/binary_search.html">Binary Search</a>.</p>
+<!-- enriched:P08:start -->
+<div class="topic-expansion" aria-label="P08 detailed study content"><h3>Understand the idea</h3><p>Binary search locates a boundary in an ordered domain. In answer search, the array is implicit: a feasibility function supplies false/true values. First prove that feasibility changes direction at most once, then choose bounds that contain the boundary. A half-open search with a sentinel avoids treating every loop as a new off-by-one puzzle. Include the cost of one predicate evaluation in the final complexity. For real-valued answers, relate the iteration count to interval width and required precision.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>If machines take 2 and 3 time units per item, production by time T is floor(T/2) + floor(T/3). Producing four items is impossible at T = 5 and possible at T = 6. The predicate is monotone because increasing time never removes produced items. Cap the running count once it reaches the target to avoid overflow.</p></div>
+<h3>Learning sequence</h3><ol><li>Implement first-true search and test all-false and all-true domains.</li><li>Prove a feasible upper bound instead of choosing an unexplained constant.</li><li>Compare lower_bound and upper_bound on repeated values and missing keys.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Use the dedicated boundary-search video first; the slides supplement complexity and implementation checks.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=GU7DpgHINWQ">Binary Search Tutorial (C++ and Python)</a> <span class="resource-provenance">(<a href="https://usaco.guide/silver/binary-search">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/01-introduction.pdf">Stanford CS97SI: Introduction</a></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:P08:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://codeforces.com/problemset/problem/706/B">CF 706B — Interesting drink</a></td>
+<td style="text-align:right">1100</td>
+<td>Count prices at most a query using upper_bound.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/474/B">CF 474B — Worms</a></td>
+<td style="text-align:right">1200</td>
+<td>Find the first cumulative pile size reaching a target.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/1620">Factory Machines</a></td>
+<td style="text-align:right">—</td>
+<td>Binary search time using a monotone production count.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://codeforces.com/problemset/problem/1352/C">CF 1352C — K-th Not Divisible by n</a></td>
+<td style="text-align:right">1200</td>
+<td>Search on a monotone count, then derive a direct formula.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="p09"></a></p>
+<h2 id="p09-enumeration-recursion-and-bits">P09 · Enumeration, recursion, and bits</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P01.</p>
+<p class="module-note"><strong>Learn:</strong> Subsets and permutations; recursion and backtracking; pruning with proof; bit tests, popcount, XOR; exhaustive small-instance solvers.</p>
+<p class="module-note"><strong>Mastery check:</strong> Count the search space and build a brute-force reference for a later optimized solution.</p>
+<p class="module-note"><strong>Watch for:</strong> Pruning valid branches; signed shifts; enumerating 2^n when n is too large.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cses.fi/book/book.pdf">Handbook, chapters 5</a>; <a href="https://cp-algorithms.com/algebra/bit-manipulation.html">Bit manipulation</a>.</p>
+<!-- enriched:P09:start -->
+<div class="topic-expansion" aria-label="P09 detailed study content"><h3>Understand the idea</h3><p>Enumeration is both a complete solution for small inputs and a tool for checking more sophisticated algorithms. Choose a representation that makes every candidate appear exactly once: subset masks, increasing combinations, lexicographic permutations, or a recursion tree. Estimate the number of states and the work per state separately. Backtracking must restore modified state before trying the next branch. Pruning is valid only when no completion of the current partial choice can succeed or improve the answer.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>Twenty items have 2^20 subsets, about one million; forty items have about one trillion. For a queen placement search, occupied columns and diagonals can reject a branch immediately. A bitmask stores a set compactly, but shifting by an invalid width or into a signed overflow is not a substitute for a mathematical bound.</p></div>
+<h3>Learning sequence</h3><ol><li>Implement subsets recursively and with masks; compare their outputs.</li><li>Write a brute-force solver that also returns a witness.</li><li>Document why every pruning condition is sound and test it against an unpruned version.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Systematic search and pruning proofs; the video connects subset sum with pseudopolynomial DP.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=i9OAOk0CUQE">Lecture 18: Dynamic Programming, Part 4: Rods, Subset Sum, Pseudopolynomial</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-18-dynamic-programming-part-4-rods-subset-sum-pseudopolynomial/">source page</a>)</span></li><li><span class="resource-kind">Handout PDF</span> <a href="https://jeffe.cs.illinois.edu/teaching/algorithms/book/02-backtracking.pdf">Jeff Erickson: Backtracking</a></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:P09:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://cses.fi/problemset/task/1623">Apple Division</a></td>
+<td style="text-align:right">—</td>
+<td>Enumerate subsets and minimize partition difference.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/1622">Creating Strings</a></td>
+<td style="text-align:right">—</td>
+<td>Enumerate unique permutations in lexicographic order.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://cses.fi/problemset/task/1624">Chessboard and Queens</a></td>
+<td style="text-align:right">—</td>
+<td>Backtracking with occupied-column and diagonal checks.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/2205">Gray Code</a></td>
+<td style="text-align:right">—</td>
+<td>Bit construction with adjacent codes differing in one bit.</td>
+</tr>
+<tr>
+<td>starter</td>
+<td><a href="https://codeforces.com/problemset/problem/579/A">CF 579A — Raising Bacteria</a></td>
+<td style="text-align:right">1000</td>
+<td>The minimum number of initial bacteria equals the popcount of the target.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="p10"></a></p>
+<h2 id="p10-greedy-proofs-invariants-and-construction">P10 · Greedy proofs, invariants, and construction</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P04,P09.</p>
+<p class="module-note"><strong>Learn:</strong> Exchange arguments; staying ahead; parity and conservation; feasibility then construction; extremal choices; counterexample hunting.</p>
+<p class="module-note"><strong>Mastery check:</strong> Explain why a local choice preserves an optimum, or exhibit a counterexample to an attractive wrong rule.</p>
+<p class="module-note"><strong>Watch for:</strong> Calling a heuristic greedy; ignoring impossible cases; proving necessity without sufficiency.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cses.fi/book/book.pdf">Handbook, chapters 6</a>.</p>
+<!-- enriched:P10:start -->
+<div class="topic-expansion" aria-label="P10 detailed study content"><h3>Understand the idea</h3><p>A greedy algorithm commits to a local decision without revisiting it. Its central task is a proof that an optimum can be modified to include that decision. Exchange arguments replace an alleged optimum&#x27;s first conflicting choice; staying-ahead proofs compare partial solutions. In constructive tasks, identify necessary constraints such as parity or total sum, then prove they are sufficient by building a valid object. Invariants describe what operations preserve, while extremal arguments focus on a smallest or largest object.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>For maximum-cardinality nonoverlapping interval selection, choose the compatible interval finishing earliest. Replacing the first interval of any optimum with this one cannot block its later intervals. Sorting by shortest duration has no corresponding guarantee and admits counterexamples. Weighted interval selection requires a different model, usually DP.</p></div>
+<h3>Learning sequence</h3><ol><li>Write a two-paragraph exchange proof before implementing a greedy rule.</li><li>Use exhaustive small inputs to find counterexamples to alternative rules.</li><li>For a construction, verify feasibility, termination, and every output constraint separately.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Interval scheduling, greedy reasoning, and correctness proofs; compare the proof patterns with your construction.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=2P-yW7LQr08">Lecture 1: Overview, Interval Scheduling</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/resources/lecture-1-course-overview-interval-scheduling/">source page</a>)</span></li><li><span class="resource-kind">Handout PDF</span> <a href="https://jeffe.cs.illinois.edu/teaching/algorithms/book/04-greedy.pdf">Jeff Erickson: Greedy Algorithms</a></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:P10:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://codeforces.com/problemset/problem/160/A">CF 160A — Twins</a></td>
+<td style="text-align:right">900</td>
+<td>Largest-first selection with an exchange argument.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/230/A">CF 230A — Dragons</a></td>
+<td style="text-align:right">1000</td>
+<td>Order challenges by required strength and maintain feasibility.</td>
+</tr>
+<tr>
+<td>starter</td>
+<td><a href="https://codeforces.com/problemset/problem/1472/B">CF 1472B — Fair Division</a></td>
+<td style="text-align:right">800</td>
+<td>Parity plus a sufficiency argument for weights one and two.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://codeforces.com/problemset/problem/1368/B">CF 1368B — Codeforces Subsequences</a></td>
+<td style="text-align:right">1500</td>
+<td>Balance multiplicities to maximize a product for a fixed length.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://codeforces.com/problemset/problem/1520/E">CF 1520E — Arranging The Sheep</a></td>
+<td style="text-align:right">1400</td>
+<td>Shift occupied positions by rank and minimize absolute deviations at a median.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="p11"></a></p>
+<h2 id="p11-elementary-number-theory-and-counting">P11 · Elementary number theory and counting</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P01,P09.</p>
+<p class="module-note"><strong>Learn:</strong> GCD/LCM; sieve; divisors and prime factorization; modular arithmetic; fast exponentiation; basic permutations/combinations; pigeonhole arguments.</p>
+<p class="module-note"><strong>Mastery check:</strong> Implement a sieve and modular power; prove a divisor characterization and bound products safely.</p>
+<p class="module-note"><strong>Watch for:</strong> Treating 1 as prime; multiplying before dividing for LCM; assuming modular division always exists.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/algebra/euclid-algorithm.html">Euclidean algorithm for computing the greatest common divisor</a>; <a href="https://cp-algorithms.com/algebra/sieve-of-eratosthenes.html">Sieve of Eratosthenes</a>; <a href="https://cp-algorithms.com/algebra/binary-exp.html">Binary Exponentiation</a>.</p>
+<!-- enriched:P11:start -->
+<div class="topic-expansion" aria-label="P11 detailed study content"><h3>Understand the idea</h3><p>Number theory begins with divisibility rather than formulas to memorize. Euclid&#x27;s algorithm repeatedly replaces a pair by a smaller equivalent gcd problem. A sieve amortizes primality or divisor information across a bounded range. Factorization converts divisor questions into choices of prime exponents. Modular arithmetic permits addition and multiplication after reduction, but division requires an invertible denominator. Counting tasks also need clarity about order, repetition, and whether objects are distinguishable.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>If n = p^2 for prime p, its divisors are exactly 1, p, p^2; conversely, three divisors force that structure. For lcm(a,b), compute a/gcd(a,b) before multiplying by b and still check the final bound. Binary exponentiation processes exponent bits, reducing O(k) repeated multiplication to O(log k).</p></div>
+<h3>Learning sequence</h3><ol><li>Implement gcd, a sieve, factorization, and modular exponentiation independently.</li><li>Derive divisor count as the product of exponent-plus-one terms.</li><li>Check whether a modular inverse exists using gcd before applying a division rule.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Divisibility, gcd, modular arithmetic, and counting; connect the number-theory lectures with the implementation drills above.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=NuY7szYSXSw">Lecture 4: Number Theory I</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/resources/lecture-4-number-theory-i/">source page</a>)</span></li><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=XX7ePR21Ook">Lecture 5: Number Theory II</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/resources/lecture-5-number-theory-ii/">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/02-mathematics.pdf">Stanford CS97SI: Mathematics</a></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:P11:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://codeforces.com/problemset/problem/26/A">CF 26A — Almost Prime</a></td>
+<td style="text-align:right">900</td>
+<td>Count distinct prime divisors with sieve-style multiples.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/230/B">CF 230B — T-primes</a></td>
+<td style="text-align:right">1300</td>
+<td>Exactly three divisors means the square of a prime.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/472/A">CF 472A — Design Tutorial: Learn from Math</a></td>
+<td style="text-align:right">800</td>
+<td>Construct a sum of two composites by parity cases.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/1095">Exponentiation</a></td>
+<td style="text-align:right">—</td>
+<td>Binary modular exponentiation.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/1713">Counting Divisors</a></td>
+<td style="text-align:right">—</td>
+<td>Factorization or divisor precomputation.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="p12"></a></p>
+<h2 id="p12-basic-dynamic-programming">P12 · Basic dynamic programming</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P06,P09.</p>
+<p class="module-note"><strong>Learn:</strong> State, transition, base case, order and answer; memoization versus iteration; min/max/count DP; coin change; reconstruction.</p>
+<p class="module-note"><strong>Mastery check:</strong> Explain why each state contains enough information and why every solution is counted exactly as intended.</p>
+<p class="module-note"><strong>Watch for:</strong> Accidental unbounded reuse in 0/1 knapsack; unreachable states treated as zero; permutations versus combinations.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/dynamic_programming/intro-to-dp.html">Introduction to Dynamic Programming</a>; <a href="https://cp-algorithms.com/dynamic_programming/knapsack.html">Knapsack Problem</a>.</p>
+<!-- enriched:P12:start -->
+<div class="topic-expansion" aria-label="P12 detailed study content"><h3>Understand the idea</h3><p>Dynamic programming merges partial solutions that have the same relevant future. Define the meaning of a state in a complete sentence; specify base cases, transitions, evaluation order, and where the answer is stored. A recurrence needs both completeness and a reason it does not accidentally count solutions multiple times. Memoization explores reachable states recursively; bottom-up evaluation follows dependency order explicitly. Reconstruction stores a chosen transition or derives one afterward from the optimal values.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>With coins 1 and 2 and target 3, ordered sequences are 111, 12, and 21, while unordered multisets are only {1,1,1} and {1,2}. Amount-first and coin-first loops model different counting problems. In minimization DP, unreachable states need an infinity sentinel whose arithmetic is guarded.</p></div>
+<h3>Learning sequence</h3><ol><li>Draw the dependency graph of a small recurrence.</li><li>Compare a recursive exhaustive solver, memoization, and iteration on the same inputs.</li><li>Recover one optimal solution and verify its cost and legality independently.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">State design and classic transitions; pair the lecture&#x27;s recurrence framework with the coin-counting example above.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=r4-cftqTcdI">Lecture 15: Dynamic Programming, Part 1: SRTBOT, Fib, DAGs, Bowling</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-15-dynamic-programming-part-1-srtbot-fib-dags-bowling/">source page</a>)</span></li><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=KLBCUx1is2c">Lecture 16: Dynamic Programming, Part 2: LCS, LIS, Coins</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-16-dynamic-programming-part-2-lcs-lis-coins/">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/04-dynamic-programming.pdf">Stanford CS97SI: Dynamic Programming</a></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:P12:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://atcoder.jp/contests/dp/tasks/dp_a?lang=en">A - Frog 1</a></td>
+<td style="text-align:right">—</td>
+<td>Minimum-cost DP on a short forward transition graph.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/189/A">CF 189A — Cut Ribbon</a></td>
+<td style="text-align:right">1300</td>
+<td>Unbounded exact-sum maximization with unreachable states.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/455/A">CF 455A — Boredom</a></td>
+<td style="text-align:right">1500</td>
+<td>Aggregate values then use a take-or-skip recurrence.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/1635">Coin Combinations I</a></td>
+<td style="text-align:right">—</td>
+<td>Count ordered coin sequences; loop order matters.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/1636">Coin Combinations II</a></td>
+<td style="text-align:right">—</td>
+<td>Count unordered coin multisets; contrast with the previous task.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="p13"></a></p>
+<h2 id="p13-graph-and-tree-foundations">P13 · Graph and tree foundations</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P02,P09.</p>
+<p class="module-note"><strong>Learn:</strong> Adjacency lists; BFS/DFS; grid flood fill; components; unweighted shortest paths; parent/depth; bipartiteness; forest versus tree.</p>
+<p class="module-note"><strong>Mastery check:</strong> Recover a BFS path and traverse a disconnected graph in O(n+m).</p>
+<p class="module-note"><strong>Watch for:</strong> Deep recursive DFS overflow; forgetting disconnected components; marking BFS vertices too late.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/graph/breadth-first-search.html">Breadth First Search</a>; <a href="https://cp-algorithms.com/graph/depth-first-search.html">Depth First Search</a>.</p>
+<!-- enriched:P13:start -->
+<div class="topic-expansion" aria-label="P13 detailed study content"><h3>Understand the idea</h3><p>Represent a graph according to its scale and operations. Adjacency lists support traversal in O(n+m), including disconnected components. BFS discovers vertices in layers and yields shortest paths when every edge has equal cost. DFS exposes recursive structure and supports component and cycle reasoning. A rooted tree adds parent, depth, and subtree relationships, but an arbitrary graph needs visited-state handling. Grids are graphs whose neighbors can be generated without storing all edges.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>In a maze, mark a cell when it enters the BFS queue and store its predecessor and incoming move. When the destination is found, follow predecessors backward and reverse the moves. Marking only when removing from the queue can insert the same cell repeatedly. A disconnected graph needs a traversal start in each unvisited component.</p></div>
+<h3>Learning sequence</h3><ol><li>Implement iterative DFS and BFS on a graph and a grid.</li><li>Reconstruct a shortest path and verify that every consecutive pair is adjacent.</li><li>Test isolated vertices, disconnected components, a single vertex, and a long chain.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Traversal fundamentals, graph representations, and correctness reasoning.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=oFVYVzlvk9c">Lecture 9: Breadth-First Search</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-9-breadth-first-search/">source page</a>)</span></li><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=IBfWDYSffUU">Lecture 10: Depth-First Search</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-10-depth-first-search/">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/06-basic-graph-algorithms.pdf">Stanford CS97SI: Basic Graph Algorithms</a></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:P13:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://cses.fi/problemset/task/1192">Counting Rooms</a></td>
+<td style="text-align:right">—</td>
+<td>Flood-fill connected empty cells.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/1193">Labyrinth</a></td>
+<td style="text-align:right">—</td>
+<td>BFS with path reconstruction in a grid.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/115/A">CF 115A — Party</a></td>
+<td style="text-align:right">900</td>
+<td>Maximum depth in a rooted forest.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/580/C">CF 580C — Kefa and Park</a></td>
+<td style="text-align:right">1500</td>
+<td>Tree traversal carrying a consecutive-cat constraint.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/1668">Building Teams</a></td>
+<td style="text-align:right">—</td>
+<td>Bipartite coloring across disconnected components.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="p14"></a></p>
+<h2 id="p14-geometry-and-numerical-basics">P14 · Geometry and numerical basics</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P01,P08.</p>
+<p class="module-note"><strong>Learn:</strong> Coordinates and vectors; squared distance; dot/cross products; orientation; area; rounding and absolute/relative error; exact integer predicates.</p>
+<p class="module-note"><strong>Mastery check:</strong> Bound a cross product and distinguish boundary, collinear, and strictly interior cases.</p>
+<p class="module-note"><strong>Watch for:</strong> Floating equality; overflowing squared distance; unnecessary square roots in comparisons.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/geometry/basic-geometry.html">Basic Geometry</a>.</p>
+<!-- enriched:P14:start -->
+<div class="topic-expansion" aria-label="P14 detailed study content"><h3>Understand the idea</h3><p>Geometry becomes simpler when predicates are separated from measurements. Orientation, collinearity, and many intersection decisions can be computed exactly for integer coordinates using cross products. Dot products express projection and perpendicularity; squared distances avoid unnecessary square roots. Bound products before selecting integer types. Floating-point output needs a tolerance model that accounts for both small and large expected values, and numerical comparisons should reflect the scale of the quantities involved.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>For A = (0,0), B = (3,0), C = (1,2), cross(B-A,C-A) = 6, so C is left of directed AB and the triangle has doubled area 6. The same computation distinguishes a boundary point when the result is zero; an additional bounding-box test determines whether it lies on the segment.</p></div>
+<h3>Learning sequence</h3><ol><li>Implement a point type, dot product, cross product, and orientation.</li><li>Derive the polygon shoelace sum using signed triangle areas.</li><li>Test repeated points, collinear points, large coordinates, and answers close to zero.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Vector predicates and planar algorithms; the convex-hull video is an extension after basic orientation.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=EzeYI7p9MjU">Lecture 2: Divide &amp; Conquer: Convex Hull, Median Finding</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/resources/lecture-2-divide-conquer-convex-hull-median-finding/">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/09-computational-geometry.pdf">Stanford CS97SI: Computational Geometry</a></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:P14:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/492/B">CF 492B — Vanya and Lanterns</a></td>
+<td style="text-align:right">1200</td>
+<td>Sorted gaps and endpoint distances with fractional output.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/2189">Point Location Test</a></td>
+<td style="text-align:right">—</td>
+<td>Sign of an integer cross product determines orientation.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://cses.fi/problemset/task/2191">Polygon Area</a></td>
+<td style="text-align:right">—</td>
+<td>Shoelace sum using exact doubled area.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="p15"></a></p>
+<h2 id="p15-elementary-games-and-probability">P15 · Elementary games and probability</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P09,P11,P12.</p>
+<p class="module-note"><strong>Learn:</strong> Winning/losing states; small-state minimax; parity strategies; equally likely outcomes; binomial counting; expected value and indicators.</p>
+<p class="module-note"><strong>Mastery check:</strong> Compute small cases exhaustively, then prove the observed game pattern; define the probability sample space.</p>
+<p class="module-note"><strong>Watch for:</strong> Extrapolating a game pattern without proof; assuming events are independent; treating expectation as a most-likely outcome.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cses.fi/book/book.pdf">Handbook, chapters 24-25</a>.</p>
+<!-- enriched:P15:start -->
+<div class="topic-expansion" aria-label="P15 detailed study content"><h3>Understand the idea</h3><p>For a finite normal-play impartial game, a position is winning if it has a move to a losing position, and losing if every move reaches a winning one. This recurrence is a proof framework, not permission to extrapolate an unverified pattern. Probability begins by defining elementary outcomes and their weights. Expected value is a weighted average; indicator variables often simplify a total even when the indicators are dependent. Independence must be justified before multiplying probabilities.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>If a player may remove one or two stones and taking the last wins, positions divisible by three are losing. Every other position can move to a multiple of three, and every move from a multiple of three leaves that set. For two fair dice, enumerate the 36 ordered outcomes rather than treating the eleven possible sums as equally likely.</p></div>
+<h3>Learning sequence</h3><ol><li>Tabulate winning and losing states before attempting a pattern proof.</li><li>Enumerate small probability spaces and compare with a counting formula.</li><li>Compute an expected count by summing event indicators and explain why independence is unnecessary.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">The videos cover sample spaces and expectation; the slides separately supply winning/losing and impartial-game foundations.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=SmFwFdESMHI">Lecture 18: Probability Introduction</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/resources/lecture-18-probability-introduction/">source page</a>)</span></li><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=gGlMSe7uEkA">Lecture 22: Expectation I</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/resources/lecture-22-expectation-i/">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/05-combinatorial-games.pdf">Stanford CS97SI: Combinatorial Games</a></li><li><span class="resource-kind">Course notes</span> <a href="https://courses.csail.mit.edu/6.042/spring18/mcs.pdf">MIT Mathematics for Computer Science</a><p>Read the probability, expectation, and counting sections; this is a full textbook PDF.</p></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:P15:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>core</td>
+<td><a href="https://atcoder.jp/contests/dp/tasks/dp_k?lang=en">K - Stones</a></td>
+<td style="text-align:right">—</td>
+<td>Winning/losing subtraction-game DP.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/476/B">CF 476B — Dreamoon and WiFi</a></td>
+<td style="text-align:right">1300</td>
+<td>Count equally likely assignments yielding a target displacement.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://codeforces.com/problemset/problem/1370/C">CF 1370C — Number Game</a></td>
+<td style="text-align:right">1400</td>
+<td>Prove winning and losing number-theoretic cases.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="p16"></a></p>
+<h2 id="p16-preliminary-contest-integration">P16 · Preliminary contest integration</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P01-P15.</p>
+<p class="module-note"><strong>Learn:</strong> Read and triage a whole set; estimate implementation cost; construct counterexamples; debug with brute force; split work and maintain a submission log.</p>
+<p class="module-note"><strong>Mastery check:</strong> Complete at least three unseen timed sets, upsolve the reachable misses, and explain every wrong submission.</p>
+<p class="module-note"><strong>Watch for:</strong> Only solving tagged exercises; ignoring easy implementation problems while chasing one hard task.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://github.com/kth-competitive-programming/kactl">KACTL reference and testing guidance</a>.</p>
+<!-- enriched:P16:start -->
+<div class="topic-expansion" aria-label="P16 detailed study content"><h3>Understand the idea</h3><p>Contest integration is a separate skill from recognizing tagged exercises. Read a complete set, summarize each statement, estimate solution and implementation confidence, and revisit estimates as new information arrives. Keep proof work, coding, testing, and submissions visible to teammates. A failed attempt should lead to a specific hypothesis and a counterexample, rather than an unstructured rewrite. During upsolving, record the first reasoning step you missed so that the lesson transfers to other problems.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>For a constructive output, build a checker that validates constraints without reproducing the construction. For an optimization problem, compare your implementation with exhaustive search on hundreds of tiny random cases. Save the random seed and smallest failing input when they disagree; a reproducible failure is more useful than a passing sample.</p></div>
+<h3>Learning sequence</h3><ol><li>Run one unseen timed set using the intended team workflow.</li><li>For every wrong submission, write the violated invariant or misunderstood requirement.</li><li>Re-solve a reachable missed problem later without looking at the editorial.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Contest workflow and common mistakes; the discussion video concerns educational streaming and learning practice.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=9p-M0JJz_aQ">Algorithms Live! Episode 34 - Educational Streaming w/ Errichto</a> <span class="resource-provenance">(<a href="https://algorithms-live.blogspot.com/2018/12/episode-34-educational-streaming-w.html">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/01-introduction.pdf">Stanford CS97SI: Introduction</a></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:P16:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>checkpoint</td>
+<td><a href="https://codeforces.com/problemset/problem/1512/D">CF 1512D — Corrupted Array</a></td>
+<td style="text-align:right">1200</td>
+<td>Recover an array from a total-sum invariant and exceptional values.</td>
+</tr>
+<tr>
+<td>checkpoint</td>
+<td><a href="https://codeforces.com/problemset/problem/1485/A">CF 1485A — Add and Divide</a></td>
+<td style="text-align:right">1000</td>
+<td>Bound a small enumeration over denominator increments.</td>
+</tr>
+</tbody>
+</table></div>
+</article><nav class="guide-pagination" aria-label="Adjacent guides"><a href="02_REGIONALS.html"><span>Next guide</span>Regionals</a></nav>
+<footer><a href="../index.html">Back to the connected roadmap</a></footer></main></div></body></html>

@@ -1,0 +1,1238 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>Regional preparation · ICPC roadmap</title><style>:root { color-scheme: light; font-family: "Segoe UI", Arial, sans-serif; color: #172b43; background: #fff; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { max-width: 1160px; padding: 64px 40px 32px; margin: auto; }
+h1, h2, p { margin: 0; }
+h1 { font-size: clamp(30px, 4vw, 44px); font-weight: 600; letter-spacing: -1px; margin: 12px 0 18px; }
+h2 { font-size: 28px; font-weight: 600; margin: 8px 0 10px; }
+p { color: #526579; line-height: 1.7; }
+.eyebrow { color: #326186; font-size: 12px; letter-spacing: 1.5px; font-weight: 700; }
+.document-heading > p:not(.eyebrow) { max-width: 850px; }
+.stage-sequence { display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin: 32px 0 24px; gap: 12px; font-size: 14px; font-weight: 600; }
+.stage-sequence li:not(:last-child)::after { content: "→"; margin-left: 12px; color: #8193a7; }
+.reading-note { font-size: 13px; }
+section { border-top: 1px solid #dce3eb; margin-top: 48px; padding-top: 32px; }
+.stage-heading { margin-bottom: 22px; }
+.diagram-frame { margin-top: 12px; }
+.diagram { position: relative; touch-action: pan-y; }
+.diagram svg { display: block; width: 100%; height: auto; max-height: 75vh; }
+.diagram.is-pannable { cursor: grab; touch-action: none; }
+.diagram.is-dragging { cursor: grabbing; user-select: none; }
+.diagram:focus-visible { outline: 1px dashed #8193a7; outline-offset: 3px; }
+.diagram-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 20px; padding: 0 0 10px; font-size: 11px; color: #6a7d90; }
+.diagram-toolbar[hidden] { display: none; }
+.zoom-controls { display: flex; align-items: center; gap: 8px; }
+.zoom-controls button { font: inherit; font-size: 14px; color: #244f74; background: transparent; border: 0; border-radius: 4px; min-width: 34px; min-height: 34px; padding: 5px 10px; cursor: pointer; }
+.zoom-controls button:hover { background: #f1f5f9; }
+.zoom-controls button:disabled { opacity: .4; cursor: default; }
+.zoom-controls button:focus-visible { outline: 2px solid #326186; outline-offset: 2px; }
+.zoom-controls output { min-width: 44px; text-align: center; font-variant-numeric: tabular-nums; }
+.references { margin-top: 12px; font-size: 13px; }
+a { color: #326186; text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid #326186; outline-offset: 4px; }
+footer { margin-top: 48px; border-top: 1px solid #dce3eb; padding-top: 24px; font-size: 12px; }
+footer p + p { margin-top: 8px; }
+.overview-links { display: flex; flex-wrap: wrap; gap: 20px; font-size: 13px; margin-bottom: 22px; }
+.skip-link { position: absolute; left: -9999px; }
+.skip-link:focus { left: 20px; top: 10px; background: white; padding: 12px; z-index: 5; }
+.guide-layout { max-width: 1500px; margin: auto; display: grid; grid-template-columns: 240px minmax(0, 1fr); }
+.guide-sidebar { position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto; padding: 44px 22px; border-right: 1px solid #e2e8ef; background: #f8fafc; }
+.guide-brand { display: block; font-weight: 700; font-size: 17px; text-decoration: none; margin-bottom: 40px; letter-spacing: 1px; }
+.guide-sidebar nav { margin-top: 14px; display: grid; gap: 5px; }
+.guide-sidebar nav a { padding: 10px 12px; font-size: 13px; line-height: 1.4; text-decoration: none; border-radius: 4px; color: #526579; }
+.guide-sidebar nav a[aria-current] { background: #e7eff7; color: #244f74; font-weight: 600; }
+main.guide-main { min-width: 0; width: 100%; max-width: 1120px; padding: 48px 48px 36px; }
+.guide-heading { padding-bottom: 30px; border-bottom: 1px solid #dce3eb; }
+.guide-heading h1 { font-size: clamp(28px, 3vw, 38px); line-height: 1.2; }
+.guide-heading > p:last-child { font-size: 13px; }
+.contents { margin: 28px 0 36px; padding: 24px 28px; border: 1px solid #dce3eb; border-radius: 5px; background: #fbfcfe; }
+.contents h2 { font-size: 14px; margin: 0 0 14px; }
+.contents ol { columns: 2; column-gap: 36px; padding: 0; margin: 0; list-style: none; }
+.contents li { break-inside: avoid; margin-bottom: 8px; font-size: 13px; line-height: 1.5; }
+.contents a { text-decoration: none; }
+.prose { font-size: 15px; line-height: 1.8; overflow-wrap: anywhere; }
+.prose p { margin: 16px 0; }
+.prose h2 { font-size: 23px; margin: 44px 0 18px; padding-top: 24px; border-top: 1px solid #dce3eb; line-height: 1.4; letter-spacing: -.3px; }
+.prose h3 { font-size: 18px; margin: 28px 0 12px; }
+.prose li { margin-bottom: 8px; color: #526579; }
+.prose strong { color: #243c55; font-weight: 600; }
+.prose .module-note { padding-left: 16px; border-left: 3px solid #dce7f2; }
+.table-scroll { max-width: 100%; overflow-x: auto; margin: 24px 0; border: 1px solid #dce3eb; border-radius: 5px; }
+.prose table { width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.65; }
+.prose th { background: #f1f5f9; color: #243c55; text-align: left; font-weight: 600; }
+.prose th, .prose td { padding: 12px 14px; border-bottom: 1px solid #e2e8ef; vertical-align: top; min-width: 90px; }
+.prose tr:last-child td { border-bottom: 0; }
+.prose tbody tr:nth-child(even) { background: #fbfcfe; }
+.prose code { font-size: .9em; background: #f0f4f8; border-radius: 3px; padding: 2px 4px; }
+.prose pre { padding: 20px; background: #f1f5f9; overflow: auto; }
+.prose blockquote { margin: 20px 0; padding: 8px 20px; border-left: 3px solid #b7ccdf; background: #f8fafc; }
+.source-note { margin: 28px 0; padding: 4px 22px 18px; border: 1px solid #dce3eb; border-radius: 5px; background: #fbfcfe; }
+.topic-stages { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 24px 0; font-size: 14px; }
+.topic-list { list-style: none; padding: 0; margin: 24px 0 0; }
+.topic-list li { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 16px; padding: 22px 0; border-bottom: 1px solid #e2e8ef; }
+.topic-code { color: #326186; font-size: 12px; font-weight: 600; padding-top: 3px; }
+.topic-list h3 { font-size: 17px; margin: 0 0 8px; line-height: 1.4; font-weight: 600; }
+.topic-list h3 a { text-decoration: none; }
+.topic-list p { font-size: 14px; }
+.topic-list .topic-prerequisites { font-size: 12px; color: #6a7d90; margin-bottom: 8px; }
+.guide-pagination { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid #dce3eb; padding-top: 28px; margin-top: 48px; }
+.guide-pagination a { text-decoration: none; font-weight: 600; font-size: 14px; }
+.guide-pagination span { display: block; color: #6a7d90; font-size: 11px; font-weight: 400; margin-bottom: 8px; }
+@media (max-width: 900px) {
+  .guide-layout { grid-template-columns: 1fr; }
+  .guide-sidebar { position: static; height: auto; overflow-y: visible; padding: 24px; border-right: 0; border-bottom: 1px solid #e2e8ef; }
+  .guide-brand { margin-bottom: 18px; }
+  .guide-sidebar nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  main.guide-main { padding: 30px 24px; }
+}
+@media (max-width: 600px) {
+  .guide-sidebar nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .contents ol { columns: 1; }
+  .contents { padding: 20px; }
+  main.guide-main { padding: 28px 18px; }
+  .prose th, .prose td { min-width: 125px; }
+}
+@media (max-width: 600px) { main { padding: 32px 18px; } section { margin-top: 32px; } }
+@media print {
+  @page { size: A3 portrait; margin: 12mm; }
+  main { max-width: none; padding: 0; }
+  .document-heading { break-after: page; }
+  section { break-before: page; border: 0; margin: 0; padding: 0; }
+  .diagram { overflow: visible; height: auto; }
+  .diagram-frame { border: 0; overflow: visible; }
+  .diagram-toolbar { display: none; }
+  .diagram svg { min-width: 0; width: 100%; max-height: 340mm; }
+  .references { display: none; }
+  footer { break-before: page; }
+  .guide-sidebar, .guide-pagination, .skip-link { display: none; }
+  .guide-layout { display: block; }
+  main.guide-main { max-width: none; padding: 0; }
+  .guide-page footer { break-before: auto; }
+  .table-scroll { overflow: visible; }
+  .prose h2 { break-after: avoid; }
+}
+</style><!-- enrichment-style:start --><style>
+.worked-example { padding: 2px 20px; border-left: 3px solid #b7ccdf; background: #f8fafc; margin: 22px 0; }
+.worked-example h3 { font-size: 16px; margin-top: 16px; }
+.learning-resources { padding-left: 22px; }
+.learning-resources li { margin-bottom: 17px; }
+.learning-resources p { margin: 4px 0 0; font-size: 13px; line-height: 1.65; }
+.resource-provenance, .prose .resource-scope { font-size: 13px; }
+.resource-kind { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; color: #526579; background: #edf2f7; border-radius: 3px; padding: 2px 6px; margin-right: 6px; }
+.prose .resource-date { font-size: 11px; color: #6a7d90; }
+@media print { .worked-example { break-inside: avoid; } .learning-resources li { break-inside: avoid; } }
+</style><!-- enrichment-style:end --></head>
+<body class="guide-page"><a class="skip-link" href="#content">Skip to guide</a><div class="guide-layout">
+<aside class="guide-sidebar"><a class="guide-brand" href="../index.html">ICPC ROADMAP</a><p class="eyebrow">STUDY GUIDES</p><nav aria-label="Roadmap library"><a href="../index.html">Roadmap overview</a><a href="topics.html">All topics</a><a href="01_PRELIMINARIES.html">Preliminaries</a><a href="02_REGIONALS.html" aria-current="page">Regionals</a><a href="03_CHAMPIONSHIP.html">Championship</a><a href="04_WORLD_FINALS.html">World Finals</a><a href="06_PAST_PAPERS.html">Past papers</a><a href="09_TRAINING_ROUTINE.html">Training routine</a><a href="README.html">About this roadmap</a></nav></aside>
+<main class="guide-main" id="content"><header class="guide-heading"><p class="eyebrow">ICPC PREPARATION / REGIONALS</p><h1>Regional preparation</h1><p>Structured study guide · Reference edition</p></header>
+<nav class="contents" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#how-to-use-each-module">How to use each module</a></li><li><a href="#r01-ordered-structures-and-monotonic-structures">R01 · Ordered structures and monotonic structures</a></li><li><a href="#r02-dp-breadth-knapsack-sequences-grids-intervals">R02 · DP breadth: knapsack, sequences, grids, intervals</a></li><li><a href="#r03-small-exponential-methods">R03 · Small exponential methods</a></li><li><a href="#r04-tree-dp-and-rerooting">R04 · Tree DP and rerooting</a></li><li><a href="#r05-binary-lifting-euler-flattening-and-lca">R05 · Binary lifting, Euler flattening, and LCA</a></li><li><a href="#r06-fenwick-segment-trees-and-sparse-tables">R06 · Fenwick, segment trees, and sparse tables</a></li><li><a href="#r07-lazy-propagation-and-richer-range-queries">R07 · Lazy propagation and richer range queries</a></li><li><a href="#r08-dsu-and-minimum-spanning-trees">R08 · DSU and minimum spanning trees</a></li><li><a href="#r09-shortest-paths-and-state-expansion">R09 · Shortest paths and state expansion</a></li><li><a href="#r10-directed-structure-scc-and-2-sat">R10 · Directed structure, SCC, and 2-SAT</a></li><li><a href="#r11-bridges-articulation-points-and-bcc">R11 · Bridges, articulation points, and BCC</a></li><li><a href="#r12-euler-trails-and-graph-construction">R12 · Euler trails and graph construction</a></li><li><a href="#r13-bipartite-matching-and-max-flow">R13 · Bipartite matching and max flow</a></li><li><a href="#r14-modular-combinatorics-and-recurrences">R14 · Modular combinatorics and recurrences</a></li><li><a href="#r15-string-matching-hashing-and-tries">R15 · String matching, hashing, and tries</a></li><li><a href="#r16-planar-geometry-and-sweep-lines">R16 · Planar geometry and sweep lines</a></li><li><a href="#r17-offline-queries-and-square-root-decomposition">R17 · Offline queries and square-root decomposition</a></li><li><a href="#r18-numerical-search-and-linear-algebra-introduction">R18 · Numerical search and linear algebra introduction</a></li><li><a href="#r19-regional-games-and-probability">R19 · Regional games and probability</a></li><li><a href="#r20-regional-contest-integration">R20 · Regional contest integration</a></li></ol></nav>
+<article class="prose">
+<p>20 modules · 78 selected practice problems · researched 2026-10-26</p>
+<p>This is the main development track after the foundations. Regional sets vary widely: the first problems often use preliminary skills, while later problems can require championship-level insight. Keep P-level speed practice throughout this stage.</p>
+<p><strong>Suggested pace:</strong> 16-24 additional weeks, driven by mastery rather than a deadline. Spend about half your time on topic practice and half on virtual contests, upsolving, and revisiting weak fundamentals. Avoid doing all the graph theory first while neglecting DP, geometry, and implementation.</p>
+<p><strong>Regional core first:</strong> R01-R10, R14-R16, plus one basic matching/flow implementation from R13. R11-R13, R17-R19 deepen breadth; their stretch exercises can be postponed. Read R06 before doing the range-data-structure exercises in R05. A practical interleaving is R01, R02, R06, R08, R09, R04, R05, R10, R15, R03, R14, R07, R11-R13, R16-R19.</p>
+<p><strong>Exit evidence:</strong> handle modeling and combinations, not just templates; reconstruct answers; recognize invalid algorithm preconditions; complete and review at least six regional sets, including three genuinely unseen virtuals. This is a suggested training checkpoint, not an official ICPC standard.</p>
+<p><strong>Past-paper bridge:</strong> NWERC 2024 L, D, F, K; Topi paper 03; NAQ 2022 M as a stretch task. Reserve another regional set for a blind mock rather than reading all editorials immediately.</p>
+<h2 id="how-to-use-each-module">How to use each module</h2>
+<p>Work in prerequisite order. Attempt <strong>starter</strong>, then <strong>core</strong>, then <strong>stretch</strong>. These labels are relative to the module, not official platform difficulties. The “why it fits” notes contain hints: skip that column if you want a blind attempt. A listed technique is a suitable approach, not necessarily the unique or simplest one. CF ratings are reference values and may change; a dash means no rating is listed.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Focus</th>
+<th>Prerequisites</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#r01">R01</a></td>
+<td>Ordered structures and monotonic structures</td>
+<td>P04,P05,P07</td>
+</tr>
+<tr>
+<td><a href="#r02">R02</a></td>
+<td>DP breadth: knapsack, sequences, grids, intervals</td>
+<td>P12,P13</td>
+</tr>
+<tr>
+<td><a href="#r03">R03</a></td>
+<td>Small exponential methods</td>
+<td>P09,P12</td>
+</tr>
+<tr>
+<td><a href="#r04">R04</a></td>
+<td>Tree DP and rerooting</td>
+<td>P13,R02</td>
+</tr>
+<tr>
+<td><a href="#r05">R05</a></td>
+<td>Binary lifting, Euler flattening, and LCA</td>
+<td>P13,R06</td>
+</tr>
+<tr>
+<td><a href="#r06">R06</a></td>
+<td>Fenwick, segment trees, and sparse tables</td>
+<td>P06,P08</td>
+</tr>
+<tr>
+<td><a href="#r07">R07</a></td>
+<td>Lazy propagation and richer range queries</td>
+<td>R06</td>
+</tr>
+<tr>
+<td><a href="#r08">R08</a></td>
+<td>DSU and minimum spanning trees</td>
+<td>P04,P13</td>
+</tr>
+<tr>
+<td><a href="#r09">R09</a></td>
+<td>Shortest paths and state expansion</td>
+<td>P13,R01</td>
+</tr>
+<tr>
+<td><a href="#r10">R10</a></td>
+<td>Directed structure, SCC, and 2-SAT</td>
+<td>P13,R09</td>
+</tr>
+<tr>
+<td><a href="#r11">R11</a></td>
+<td>Bridges, articulation points, and BCC</td>
+<td>P13,R08</td>
+</tr>
+<tr>
+<td><a href="#r12">R12</a></td>
+<td>Euler trails and graph construction</td>
+<td>P10,P13</td>
+</tr>
+<tr>
+<td><a href="#r13">R13</a></td>
+<td>Bipartite matching and max flow</td>
+<td>P13,R09</td>
+</tr>
+<tr>
+<td><a href="#r14">R14</a></td>
+<td>Modular combinatorics and recurrences</td>
+<td>P11,P12</td>
+</tr>
+<tr>
+<td><a href="#r15">R15</a></td>
+<td>String matching, hashing, and tries</td>
+<td>P03,P05</td>
+</tr>
+<tr>
+<td><a href="#r16">R16</a></td>
+<td>Planar geometry and sweep lines</td>
+<td>P14,R01</td>
+</tr>
+<tr>
+<td><a href="#r17">R17</a></td>
+<td>Offline queries and square-root decomposition</td>
+<td>P06,R06</td>
+</tr>
+<tr>
+<td><a href="#r18">R18</a></td>
+<td>Numerical search and linear algebra introduction</td>
+<td>P08,P14,R14</td>
+</tr>
+<tr>
+<td><a href="#r19">R19</a></td>
+<td>Regional games and probability</td>
+<td>P15,R02,R14</td>
+</tr>
+<tr>
+<td><a href="#r20">R20</a></td>
+<td>Regional contest integration</td>
+<td>P16,R01-R19</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="r01"></a></p>
+<h2 id="r01-ordered-structures-and-monotonic-structures">R01 · Ordered structures and monotonic structures</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P04,P05,P07.</p>
+<p class="module-note"><strong>Learn:</strong> Heaps; balanced ordered sets; event sorting; nearest smaller/greater; monotonic stacks/deques; interval scheduling and sweep events.</p>
+<p class="module-note"><strong>Mastery check:</strong> Choose between heap, deque, and ordered set and prove an amortized bound.</p>
+<p class="module-note"><strong>Watch for:</strong> Removing equal values incorrectly; inconsistent endpoint ordering at simultaneous events.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/data_structures/stack_queue_modification.html">Minimum Stack / Minimum Queue</a>; <a href="https://cses.fi/book/book.pdf">Handbook, chapters 8</a>.</p>
+<!-- enriched:R01:start -->
+<div class="topic-expansion" aria-label="R01 detailed study content"><h3>Understand the idea</h3><p>Choose an ordered structure from the operations you need. A heap exposes only an extreme element; an ordered set supports predecessor and successor; a monotonic deque discards candidates that can never become optimal again. Monotonic stacks solve nearest-smaller or nearest-greater relationships through an explicit pop condition. In a sweep, convert intervals into events and decide how equal coordinates are processed. The proof often charges each insertion and removal once, yielding a linear bound after sorting.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>For sliding-window minima, store indices in increasing value order. When a new value arrives, remove larger or equal values from the back because they expire earlier and are no better. Remove expired indices from the front. Each index enters and leaves once. Whether equality should be removed depends on whether you need just a minimum value or a particular witness.</p></div>
+<h3>Learning sequence</h3><ol><li>Implement nearest smaller and sliding-window minimum with different equality policies.</li><li>Compare heap, set, and deque solutions for their supported deletions.</li><li>Test touching intervals and document whether endpoints are open or closed.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Heap and ordered-structure foundations; implement the monotonic deque from the invariant above as a separate exercise.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=Xnpo1atN-Iw">Lecture 8: Binary Heaps</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-8-binary-heaps/">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/03-data-structures.pdf">Stanford CS97SI: Data Structures</a></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:R01:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://cses.fi/problemset/task/1645">Nearest Smaller Values</a></td>
+<td style="text-align:right">—</td>
+<td>Monotonic stack with a clear pop condition.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/1164">Room Allocation</a></td>
+<td style="text-align:right">—</td>
+<td>Sort arrivals and recycle rooms with a heap.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/1163">Traffic Lights</a></td>
+<td style="text-align:right">—</td>
+<td>Ordered positions plus a multiset of gap lengths.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="r02"></a></p>
+<h2 id="r02-dp-breadth-knapsack-sequences-grids-intervals">R02 · DP breadth: knapsack, sequences, grids, intervals</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P12,P13.</p>
+<p class="module-note"><strong>Learn:</strong> 0/1 and unbounded knapsack; value-indexed DP; LIS O(n log n); LCS/edit distance; interval DP; DAG DP; weighted interval scheduling.</p>
+<p class="module-note"><strong>Mastery check:</strong> Derive two state formulations for knapsack and choose from constraints; reconstruct an answer.</p>
+<p class="module-note"><strong>Watch for:</strong> Optimizing an incorrect recurrence; reusing a state in the same iteration; confusing LIS tails with the actual subsequence.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/dynamic_programming/knapsack.html">Knapsack Problem</a>; <a href="https://cp-algorithms.com/dynamic_programming/longest_increasing_subsequence.html">Longest increasing subsequence</a>.</p>
+<!-- enriched:R02:start -->
+<div class="topic-expansion" aria-label="R02 detailed study content"><h3>Understand the idea</h3><p>DP breadth means learning to choose the dimension that stays small. Weight-indexed knapsack is unsuitable when capacity is huge but total value is small; value-indexed DP reverses the perspective. Sequence DP compares prefixes, while interval DP combines subintervals through a split or endpoint decision. DAG DP evaluates states in topological order. The O(n log n) LIS method stores minimum possible tail values for each length, which are summaries rather than an actual subsequence.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>In 0/1 knapsack, descending capacity iteration prevents the current item from being reused. Ascending iteration permits repeated use and models unbounded knapsack. For weighted interval scheduling, sort by finishing time, locate the last compatible predecessor, and compare skipping an interval with taking its weight plus the predecessor optimum.</p></div>
+<h3>Learning sequence</h3><ol><li>Solve one weight-indexed and one value-indexed knapsack instance.</li><li>Derive edit distance and an interval recurrence with explicit empty intervals.</li><li>Reconstruct an LIS using predecessor indices rather than printing the tails array.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Subset-sum/knapsack foundations, sequence, and interval recurrence design, with reconstruction and dependency reasoning.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=i9OAOk0CUQE">Lecture 18: Dynamic Programming, Part 4: Rods, Subset Sum, Pseudopolynomial</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-18-dynamic-programming-part-4-rods-subset-sum-pseudopolynomial/">source page</a>)</span></li><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=KLBCUx1is2c">Lecture 16: Dynamic Programming, Part 2: LCS, LIS, Coins</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-16-dynamic-programming-part-2-lcs-lis-coins/">source page</a>)</span></li><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=TDo3r5M1LNo">Lecture 17: Dynamic Programming, Part 3: APSP, Parens, Piano</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-17-dynamic-programming-part-3-apsp-parens-piano/">source page</a>)</span></li><li><span class="resource-kind">Handout PDF</span> <a href="https://jeffe.cs.illinois.edu/teaching/algorithms/book/03-dynprog.pdf">Jeff Erickson: Dynamic Programming</a></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:R02:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://atcoder.jp/contests/dp/tasks/dp_d?lang=en">D - Knapsack 1</a></td>
+<td style="text-align:right">—</td>
+<td>Capacity-indexed 0/1 knapsack.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://atcoder.jp/contests/dp/tasks/dp_e?lang=en">E - Knapsack 2</a></td>
+<td style="text-align:right">—</td>
+<td>Value-indexed minimum-weight knapsack.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://atcoder.jp/contests/dp/tasks/dp_f?lang=en">F - LCS</a></td>
+<td style="text-align:right">—</td>
+<td>LCS DP and reconstruction.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://atcoder.jp/contests/dp/tasks/dp_n?lang=en">N - Slimes</a></td>
+<td style="text-align:right">—</td>
+<td>Cubic interval-merge DP; also a later optimization baseline.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/1145">Increasing Subsequence</a></td>
+<td style="text-align:right">—</td>
+<td>O(n log n) LIS with minimum tails.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://cses.fi/problemset/task/1140">Projects</a></td>
+<td style="text-align:right">—</td>
+<td>Weighted interval scheduling with binary search.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="r03"></a></p>
+<h2 id="r03-small-exponential-methods">R03 · Small exponential methods</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P09,P12.</p>
+<p class="module-note"><strong>Learn:</strong> Meet in the middle; bitmask DP; subset transitions; Hamiltonian path/TSP; assignment counting; distinguish O(2^n), O(n2^n), and O(3^n).</p>
+<p class="module-note"><strong>Mastery check:</strong> Choose a correct exponential method from n and account for transition cost and memory.</p>
+<p class="module-note"><strong>Watch for:</strong> Calling every subset algorithm O(2^n); forgetting that the last vertex is part of a TSP state.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/algebra/all-submasks.html">Enumerating submasks of a bitmask</a>.</p>
+<!-- enriched:R03:start -->
+<div class="topic-expansion" aria-label="R03 detailed study content"><h3>Understand the idea</h3><p>Small exponential algorithms exploit a small number of decisions rather than small numerical values. Meet in the middle splits n items into halves, enumerates O(2^(n/2)) summaries per side, and combines them by sorting, hashing, or two pointers. Bitmask DP additionally stores a compact history such as visited vertices and the final vertex. Enumerating every submask of every mask costs O(3^n), which is substantially larger than one pass over all masks.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>For n = 40 subset sum, enumerate about one million sums per half instead of one trillion full subsets. For Hamiltonian paths, dp[mask][v] counts or optimizes paths visiting exactly mask and ending at v. A transition adds an unvisited neighbor; the last vertex cannot be omitted because future edges depend on it.</p></div>
+<h3>Learning sequence</h3><ol><li>Compute both time and memory for n = 20, 24, and 40.</li><li>Implement meet-in-the-middle subset sum with duplicate sums handled correctly.</li><li>Compare subset DP with permutation enumeration on tiny graphs.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Bitmask DP and meet in the middle; the handout offers broader exact exponential algorithm context.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=rlTkd4yOQpE">Algorithms Live! Episode 20 - Bitmask Dynamic Programming</a> <span class="resource-provenance">(<a href="https://algorithms-live.blogspot.com/2017/05/episode-20-bitmask-dynamic-programming.html">source page</a>)</span></li><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=18sJ3mK173s">Errichto: Meet in the Middle</a> <span class="resource-provenance">(<a href="https://codeforces.com/blog/Errichto/page/1?locale=en">source page</a>)</span></li><li><span class="resource-kind">Handout PDF</span> <a href="https://jeffe.cs.illinois.edu/teaching/algorithms/notes/B-fastexpo.pdf">Jeff Erickson: Fast Exponential Algorithms</a></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:R03:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://cses.fi/problemset/task/1628">Meet in the Middle</a></td>
+<td style="text-align:right">—</td>
+<td>Split subset-sum enumeration into two halves.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://atcoder.jp/contests/dp/tasks/dp_o?lang=en">O - Matching</a></td>
+<td style="text-align:right">—</td>
+<td>Count assignments using the chosen subset as state; not a max-matching exercise.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/580/D">CF 580D — Kefa and Dishes</a></td>
+<td style="text-align:right">1800</td>
+<td>Subset and last-item DP with ordered transition bonuses.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://cses.fi/problemset/task/1690">Hamiltonian Flights</a></td>
+<td style="text-align:right">—</td>
+<td>Count directed Hamiltonian routes with subset/endpoint DP.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="r04"></a></p>
+<h2 id="r04-tree-dp-and-rerooting">R04 · Tree DP and rerooting</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P13,R02.</p>
+<p class="module-note"><strong>Learn:</strong> Subtree sizes; diameter; independent sets and matching; merge child states; rerooting via outside contributions and prefix/suffix merges.</p>
+<p class="module-note"><strong>Mastery check:</strong> Explain the meaning of a state on a directed edge and reroot without recomputing all subtrees.</p>
+<p class="module-note"><strong>Watch for:</strong> Double-counting the parent contribution; requiring modular division when an inverse may not exist.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cses.fi/book/book.pdf">Handbook, chapters 14</a>.</p>
+<!-- enriched:R04:start -->
+<div class="topic-expansion" aria-label="R04 detailed study content"><h3>Understand the idea</h3><p>Tree DP summarizes the interaction between a subtree and its parent. The state should expose only the information the parent needs, such as whether the root is selected or matched. Rerooting supplies the complementary contribution from outside each subtree so that every vertex can act as the root. Prefix/suffix merges avoid recomputing all siblings for every child. The merge operation and identity must be specified even when the implementation looks like a simple pair of traversals.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>Let down[v] be the sum of distances from v to its subtree. After computing subtree sizes, reroot the total distance sum across edge v-u by ans[u] = ans[v] + n - 2*size[u]. Distances to size[u] vertices decrease by one; all remaining distances increase by one.</p></div>
+<h3>Learning sequence</h3><ol><li>Derive take/skip states for a maximum independent set on a tree.</li><li>Implement the distance-sum rerooting formula and verify it with BFS from every vertex.</li><li>Generalize a child merge using prefix/suffix products without assuming division is available.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">The video demonstrates tree traversal organization; adapt general DP reasoning to child states and rerooting.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=3nxtY1KStww">Algorithms Live! Episode 18 - Tree Traversal Trickery</a> <span class="resource-provenance">(<a href="https://algorithms-live.blogspot.com/2017/04/episode-18-tree-traversal-trickery.html">source page</a>)</span></li><li><span class="resource-kind">Handout PDF</span> <a href="https://jeffe.cs.illinois.edu/teaching/algorithms/book/03-dynprog.pdf">Jeff Erickson: Dynamic Programming</a></li><li><span class="resource-kind">Tutorial</span> <a href="https://usaco.guide/gold/all-roots">USACO Guide: rerooting</a><p>All-roots tree DP and the distance-sum rerooting example.</p></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:R04:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://atcoder.jp/contests/dp/tasks/dp_p?lang=en">P - Independent Set</a></td>
+<td style="text-align:right">—</td>
+<td>Count independent sets by the root color/state.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/1130">Tree Matching</a></td>
+<td style="text-align:right">—</td>
+<td>Maximum matching on a tree using child-state choices.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/1133">Tree Distances II</a></td>
+<td style="text-align:right">—</td>
+<td>Reroot the sum of distances using subtree sizes.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://atcoder.jp/contests/dp/tasks/dp_v?lang=en">V - Subtree</a></td>
+<td style="text-align:right">—</td>
+<td>Reroot connected-subset counts under a possibly composite modulus.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="r05"></a></p>
+<h2 id="r05-binary-lifting-euler-flattening-and-lca">R05 · Binary lifting, Euler flattening, and LCA</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P13,R06.</p>
+<p class="module-note"><strong>Learn:</strong> Ancestor jumps; entry/exit times; subtree intervals; lowest common ancestor; distances; path differences; functional graph jumps.</p>
+<p class="module-note"><strong>Mastery check:</strong> Answer LCA/distance queries and translate a subtree into one interval; separate Euler walk RMQ from entry-order flattening.</p>
+<p class="module-note"><strong>Watch for:</strong> Mixing two different Euler-tour arrays; too few lifting levels; mishandling roots and nonexistent ancestors.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/graph/lca_binary_lifting.html">Lowest Common Ancestor - Binary Lifting</a>.</p>
+<!-- enriched:R05:start -->
+<div class="topic-expansion" aria-label="R05 detailed study content"><h3>Understand the idea</h3><p>Binary lifting precomputes 2^k-step ancestors or transitions, allowing large jumps by decomposing the distance into bits. Euler entry order flattens every rooted subtree into a contiguous interval. LCA combines ancestry tests or depth equalization with jumps to locate the deepest shared ancestor. Distance formulas then reduce path questions to depths and LCAs. Functional graphs support the same jump table even though their global structure includes cycles rather than tree roots.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>With entry times tin and exclusive exit times tout, u belongs to v&#x27;s subtree exactly when tin[v] &lt;= tin[u] &lt; tout[v]. In an unweighted tree, distance(u,v) = depth[u] + depth[v] - 2*depth[lca(u,v)]. For node and edge path-difference updates, derive the cancellation points separately; their formulas differ at the LCA.</p></div>
+<h3>Learning sequence</h3><ol><li>Build jump tables with a clearly defined root sentinel.</li><li>Flatten a tree and answer subtree sums using a range structure.</li><li>Test ancestor-descendant queries, equal endpoints, and jumps longer than a tree depth.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">LCA and range-query foundations; derive binary lifting and the Euler interval convention using the original Study references as well.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=EKcQt-74bNw">Algorithms Live! Episode 28 - Sparse Tables and LCA</a> <span class="resource-provenance">(<a href="https://algorithms-live.blogspot.com/2017/07/episode-28-sparse-tables-and-lca.html">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/03-data-structures.pdf">Stanford CS97SI: Data Structures</a></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:R05:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://cses.fi/problemset/task/1687">Company Queries I</a></td>
+<td style="text-align:right">—</td>
+<td>Binary-lifting kth ancestors.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/1135">Distance Queries</a></td>
+<td style="text-align:right">—</td>
+<td>LCA plus depths gives tree distances.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/1137">Subtree Queries</a></td>
+<td style="text-align:right">—</td>
+<td>Entry-order flattening plus a range-sum structure.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://cses.fi/problemset/task/1136">Counting Paths</a></td>
+<td style="text-align:right">—</td>
+<td>LCA and tree difference accumulation for path counts.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="r06"></a></p>
+<h2 id="r06-fenwick-segment-trees-and-sparse-tables">R06 · Fenwick, segment trees, and sparse tables</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P06,P08.</p>
+<p class="module-note"><strong>Learn:</strong> Fenwick point-update/range-sum; segment tree associative merges; static idempotent RMQ; coordinate compression; order statistics.</p>
+<p class="module-note"><strong>Mastery check:</strong> Specify the merge identity and prove associativity; choose a sparse table only when its query rule applies.</p>
+<p class="module-note"><strong>Watch for:</strong> Using overlapping sparse-table blocks for sums; mixing update/query indexing conventions.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/data_structures/fenwick.html">Fenwick Tree</a>; <a href="https://cp-algorithms.com/data_structures/segment_tree.html">Segment Tree</a>; <a href="https://cp-algorithms.com/data_structures/sparse-table.html">Sparse Table</a>.</p>
+<!-- enriched:R06:start -->
+<div class="topic-expansion" aria-label="R06 detailed study content"><h3>Understand the idea</h3><p>Range structures differ in the algebra they require and the updates they support. A Fenwick tree compactly decomposes prefixes and is especially convenient for additive counts and sums. A segment tree combines adjacent aggregates with an associative operation and an identity. A sparse table answers static idempotent queries by overlapping blocks; this overlap works for min or gcd but double-counts a sum. Coordinate compression connects large values to frequency-based range queries.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>For segment minimum, merge is min and the identity is positive infinity. For a prefix-frequency tree, finding the k-th present value descends according to the count in the left half. This requires nonnegative frequencies so cumulative counts remain monotone. A Fenwick range-sum query subtracts two prefixes because addition has an inverse.</p></div>
+<h3>Learning sequence</h3><ol><li>Implement point-update/range-query versions of Fenwick and segment trees.</li><li>State the merge and identity for sum, minimum, and a custom aggregate.</li><li>Use a sparse table only after proving that overlapping blocks are valid for the operation.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Fenwick trees, sparse tables, LCA, and underlying range operations; use the original Study reference for segment-tree implementation.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=RgITNht_f4Q">William Fiset: Fenwick Tree</a> <span class="resource-provenance">(<a href="https://github.com/williamfiset/Algorithms">source page</a>)</span></li><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=EKcQt-74bNw">Algorithms Live! Episode 28 - Sparse Tables and LCA</a> <span class="resource-provenance">(<a href="https://algorithms-live.blogspot.com/2017/07/episode-28-sparse-tables-and-lca.html">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/03-data-structures.pdf">Stanford CS97SI: Data Structures</a></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:R06:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://cses.fi/problemset/task/1648">Dynamic Range Sum Queries</a></td>
+<td style="text-align:right">—</td>
+<td>Fenwick or segment-tree point updates and range sums.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/1647">Static Range Minimum Queries</a></td>
+<td style="text-align:right">—</td>
+<td>Idempotent minimum supports overlapping sparse-table blocks.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/61/E">CF 61E — Enemy is weak</a></td>
+<td style="text-align:right">1900</td>
+<td>Coordinate compression and counts on both sides of a middle element.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://codeforces.com/problemset/problem/474/F">CF 474F — Ant colony</a></td>
+<td style="text-align:right">2100</td>
+<td>Range GCD plus counts of values equal to that GCD.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="r07"></a></p>
+<h2 id="r07-lazy-propagation-and-richer-range-queries">R07 · Lazy propagation and richer range queries</h2>
+<p class="module-note"><strong>Prerequisites:</strong> R06.</p>
+<p class="module-note"><strong>Learn:</strong> Range add/assign; composition order; aggregate length; bracket merges; search inside segment trees.</p>
+<p class="module-note"><strong>Mastery check:</strong> Write down how a tag transforms a node and how new and old tags compose before coding.</p>
+<p class="module-note"><strong>Watch for:</strong> Assignment and addition do not commute; propagating tags without accounting for segment length.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/data_structures/segment_tree.html">Segment Tree</a>.</p>
+<!-- enriched:R07:start -->
+<div class="topic-expansion" aria-label="R07 detailed study content"><h3>Understand the idea</h3><p>Lazy propagation postpones updates while keeping each node&#x27;s aggregate correct. Specify what a tag does to a segment and how a new tag composes with an older one. Composition order matters for assignment and affine updates. A sum aggregate needs segment length to apply a range addition. Richer merges may track several fields, such as bracket balance and unmatched endpoints. Searching within a tree additionally requires a predicate that allows entire segments to be skipped safely.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>Represent an update as x -&gt; a*x+b. Applying (a1,b1) and then (a2,b2) yields (a2*a1,a2*b1+b2). On a segment of length len, the sum becomes a*sum+b*len. This single model includes addition and assignment, with assignment represented by a = 0.</p></div>
+<h3>Learning sequence</h3><ol><li>Write tag composition on paper before implementing push.</li><li>Stress-test alternating assignment and addition against a plain array.</li><li>Implement first position exceeding a threshold and explain why each skipped segment cannot contain an answer.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">The Fibonacci Machine video is an augmented segment-tree application; first implement the basic tree from the original Study references, then derive lazy-tag algebra.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=k67ueEUBLnI">Algorithms Live! Episode 26 - Fibonacci Machine</a> <span class="resource-provenance">(<a href="https://algorithms-live.blogspot.com/2017/07/episode-26-fibonacci-machine.html">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/03-data-structures.pdf">Stanford CS97SI: Data Structures</a></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:R07:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/380/C">CF 380C — Sereja and Brackets</a></td>
+<td style="text-align:right">2000</td>
+<td>Associative bracket-summary merge for range queries.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/52/C">CF 52C — Circular RMQ</a></td>
+<td style="text-align:right">2200</td>
+<td>Lazy range add and range minimum with circular interval splitting.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://cses.fi/problemset/task/1735">Range Updates and Sums</a></td>
+<td style="text-align:right">—</td>
+<td>Compose assignment and addition tags over segment sums.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="r08"></a></p>
+<h2 id="r08-dsu-and-minimum-spanning-trees">R08 · DSU and minimum spanning trees</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P04,P13.</p>
+<p class="module-note"><strong>Learn:</strong> Union by size and path compression; Kruskal/Prim; cycle and cut properties; offline reverse processing; MST edge replacement.</p>
+<p class="module-note"><strong>Mastery check:</strong> Explain the cut property and use DSU to distinguish redundant edges from connecting edges.</p>
+<p class="module-note"><strong>Watch for:</strong> Confusing connectivity with reachability in directed graphs; comparing an MST with shortest-path trees.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/data_structures/disjoint_set_union.html">Disjoint Set Union</a>; <a href="https://cp-algorithms.com/graph/mst_kruskal.html">Minimum Spanning Tree - Kruskal</a>.</p>
+<!-- enriched:R08:start -->
+<div class="topic-expansion" aria-label="R08 detailed study content"><h3>Understand the idea</h3><p>Disjoint set union maintains a partition under merges. Union by size and path compression give near-constant amortized operations for standard connectivity queries. Kruskal processes edges in nondecreasing weight and accepts only those joining different components; Prim grows a connected tree through its cheapest outgoing edge. The cut property explains safe choices, while cycle reasoning explains replacements. Offline reversal turns some deletion sequences into insertions that ordinary DSU can handle.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>An added non-tree edge creates one cycle in an MST. Removing a maximum-weight edge on that cycle gives the cheapest tree containing the added edge. For a disconnected graph, Kruskal returns a minimum spanning forest, so a program expecting one spanning tree must also check connectivity.</p></div>
+<h3>Learning sequence</h3><ol><li>Implement DSU with component sizes and a component counter.</li><li>Prove Kruskal&#x27;s choice using a cut and compare its output weight with Prim.</li><li>Process a deletion-only connectivity task backward, preserving the timing of answers.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Cut/cycle proofs and minimum-spanning-tree correctness.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=tKwnms5iRBU">Lecture 12: Greedy Algorithms: Minimum Spanning Tree</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/resources/lecture-12-greedy-algorithms-minimum-spanning-tree/">source page</a>)</span></li><li><span class="resource-kind">Handout PDF</span> <a href="https://jeffe.cs.illinois.edu/teaching/algorithms/book/07-mst.pdf">Jeff Erickson: Minimum Spanning Trees</a></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:R08:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://cses.fi/problemset/task/1675">Road Reparation</a></td>
+<td style="text-align:right">—</td>
+<td>Minimum spanning tree with Kruskal or Prim.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/25/D">CF 25D — Roads not only in Berland</a></td>
+<td style="text-align:right">1900</td>
+<td>Use redundant edges to connect DSU components constructively.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://codeforces.com/problemset/problem/609/E">CF 609E — Minimum spanning tree for each edge</a></td>
+<td style="text-align:right">2100</td>
+<td>MST plus maximum-edge tree-path queries for forcing each edge.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="r09"></a></p>
+<h2 id="r09-shortest-paths-and-state-expansion">R09 · Shortest paths and state expansion</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P13,R01.</p>
+<p class="module-note"><strong>Learn:</strong> Dijkstra; 0-1 BFS; Bellman-Ford; Floyd-Warshall; negative-cycle relevance; multilayer graphs; reconstructing paths.</p>
+<p class="module-note"><strong>Mastery check:</strong> Select the method from edge weights and constraints; model a limited-use action as extra state.</p>
+<p class="module-note"><strong>Watch for:</strong> Dijkstra with negative edges; reporting an irrelevant negative cycle; overflow when adding infinity.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/graph/dijkstra.html">Dijkstra - finding shortest paths from given vertex</a>; <a href="https://cp-algorithms.com/graph/01_bfs.html">0-1 BFS</a>; <a href="https://cp-algorithms.com/graph/bellman_ford.html">Bellman-Ford - finding shortest paths with negative weights</a>; <a href="https://cp-algorithms.com/graph/all-pair-shortest-path-floyd-warshall.html">Floyd-Warshall - finding all shortest paths</a>.</p>
+<!-- enriched:R09:start -->
+<div class="topic-expansion" aria-label="R09 detailed study content"><h3>Understand the idea</h3><p>A shortest-path algorithm depends on edge weights and the meaning of a state. BFS handles equal weights, 0-1 BFS handles weights zero or one, and Dijkstra handles nonnegative weights. Bellman-Ford allows negative weights and detects reachable negative cycles; Floyd-Warshall supports dense all-pairs queries. State expansion incorporates a resource or mode into each vertex so that the next transition depends only on the current state. Count expanded vertices and edges before choosing an algorithm.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>To allow one discounted edge, use states (v,unused) and (v,used). Ordinary edges preserve the layer; taking a discounted transition moves from unused to used. Dijkstra remains valid if all resulting costs are nonnegative. A priority queue may contain old distance entries, which should be skipped after a better distance is known.</p></div>
+<h3>Learning sequence</h3><ol><li>Implement path reconstruction alongside distances.</li><li>Choose the algorithm for equal, binary, nonnegative, and negative edge weights.</li><li>Model a fuel, coupon, or parity constraint and verify the expanded-state transitions.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Algorithm selection by weight assumptions; extend the model with resource or mode states.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=f9cVS_URPc0">Lecture 12: Bellman-Ford</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-12-bellman-ford/">source page</a>)</span></li><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=NSHizBK9JD8">Lecture 13: Dijkstra</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-13-dijkstra/">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/07-shortest-path-algorithms.pdf">Stanford CS97SI: Shortest Path Algorithms</a></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:R09:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://codeforces.com/problemset/problem/20/C">CF 20C — Dijkstra?</a></td>
+<td style="text-align:right">1900</td>
+<td>Dijkstra with explicit shortest-path reconstruction.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/1195">Flight Discount</a></td>
+<td style="text-align:right">—</td>
+<td>Layered Dijkstra or forward/backward distances for one discounted edge.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/1673">High Score</a></td>
+<td style="text-align:right">—</td>
+<td>Bellman-Ford-style relaxation and reachability-filtered positive cycles.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://codeforces.com/problemset/problem/295/B">CF 295B — Greg and Graph</a></td>
+<td style="text-align:right">1700</td>
+<td>Reverse vertex deletions and incrementally apply Floyd-Warshall.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://atcoder.jp/contests/abc176/tasks/abc176_d?lang=en">D - Wizard in Maze</a></td>
+<td style="text-align:right">—</td>
+<td>Model free adjacent moves and cost-one warps with 0-1 BFS.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="r10"></a></p>
+<h2 id="r10-directed-structure-scc-and-2-sat">R10 · Directed structure, SCC, and 2-SAT</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P13,R09.</p>
+<p class="module-note"><strong>Learn:</strong> Topological sorting; DAG DP; SCC condensation; implication graphs; satisfiability and assignment extraction.</p>
+<p class="module-note"><strong>Mastery check:</strong> Turn a logical clause into two implications and explain why a variable and its negation cannot share an SCC.</p>
+<p class="module-note"><strong>Watch for:</strong> Wrong SCC topological order when constructing the assignment; confusing directed and undirected connectivity.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/graph/strongly-connected-components.html">Strongly Connected Components and Condensation Graph</a>; <a href="https://cp-algorithms.com/graph/2SAT.html">2-SAT</a>.</p>
+<!-- enriched:R10:start -->
+<div class="topic-expansion" aria-label="R10 detailed study content"><h3>Understand the idea</h3><p>Directed cycles are local obstructions to topological ordering. DFS finishing order or indegree elimination orders a DAG, while strongly connected components contract arbitrary directed graphs into a DAG of mutually reachable groups. A 2-SAT clause becomes implications between literals; the instance is impossible exactly when a variable and its negation lie in the same SCC. Constructing an assignment requires respecting the component order used by the implementation, rather than copying an inequality from another convention.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>The clause (x or y) creates implications not-x -&gt; y and not-y -&gt; x. After building both edges for every clause, SCCs detect contradictions. Separately, a longest-path DP on the condensation DAG can aggregate component weights, but the aggregation must match what the original problem permits inside a component.</p></div>
+<h3>Learning sequence</h3><ol><li>Implement topological sort and explicitly report cycles.</li><li>Compare SCC output with brute-force reachability on small directed graphs.</li><li>Validate a 2-SAT assignment by evaluating every original clause.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Directed traversal, SCC structure, topological order, and implication reasoning.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=9Wbej7Fy5Lw">Algorithms Live! Episode 27 - Topological Sort and Kosaraju&#x27;s Algorithm</a> <span class="resource-provenance">(<a href="https://algorithms-live.blogspot.com/2017/07/episode-27-topological-sort-and.html">source page</a>)</span></li><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=0nNYy3rltgA">Algorithms Live! Episode 24 - 2SAT</a> <span class="resource-provenance">(<a href="https://algorithms-live.blogspot.com/2017/07/episode-24-2sat.html">source page</a>)</span></li><li><span class="resource-kind">Handout PDF</span> <a href="https://jeffe.cs.illinois.edu/teaching/algorithms/book/06-dfs.pdf">Jeff Erickson: Depth-First Search</a></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:R10:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://codeforces.com/problemset/problem/510/C">CF 510C — Fox And Names</a></td>
+<td style="text-align:right">1600</td>
+<td>Infer letter precedence then topologically sort; detect invalid prefixes.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/427/C">CF 427C — Checkposts</a></td>
+<td style="text-align:right">1700</td>
+<td>SCC decomposition followed by per-component minimum and multiplicity.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/1684">Giant Pizza</a></td>
+<td style="text-align:right">—</td>
+<td>2-SAT clauses and a satisfying assignment.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://cses.fi/problemset/task/1686">Coin Collector</a></td>
+<td style="text-align:right">—</td>
+<td>Condense SCCs then maximize a path total in the DAG.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="r11"></a></p>
+<h2 id="r11-bridges-articulation-points-and-bcc">R11 · Bridges, articulation points, and BCC</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P13,R08.</p>
+<p class="module-note"><strong>Learn:</strong> DFS discovery/low values; bridges; articulation roots; edge-biconnected compression; vertex-biconnected blocks and block-cut trees.</p>
+<p class="module-note"><strong>Mastery check:</strong> Handle disconnected multigraphs by edge ID; distinguish bridge trees from block-cut trees.</p>
+<p class="module-note"><strong>Watch for:</strong> Skipping every edge to the parent rather than only the parent edge; treating the DFS root like other vertices.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/graph/bridge-searching.html">Finding Bridges in O(N+M)</a>; <a href="https://cp-algorithms.com/graph/cutpoints.html">Finding Articulation Points in O(N+M)</a>.</p>
+<!-- enriched:R11:start -->
+<div class="topic-expansion" aria-label="R11 detailed study content"><h3>Understand the idea</h3><p>Lowlink values summarize how far a DFS subtree can reach using tree edges followed by a back edge. In an undirected DFS tree, a child edge is a bridge when its subtree cannot reach the parent or an earlier ancestor. Articulation points require a separate root condition. Biconnected components use an edge stack and must be distinguished from bridge-connected components. Keep edge identifiers so parallel edges are handled correctly.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>For DFS edge v-u, low[u] &gt; tin[v] makes the edge a bridge. If two parallel edges join v and u, skipping every neighbor equal to the parent hides the second edge and can falsely report a bridge. Skip only the reverse copy of the DFS tree edge. For a non-root vertex, low[u] &gt;= tin[v] identifies a separating child.</p></div>
+<h3>Learning sequence</h3><ol><li>Compute bridges and compare with removing each edge followed by BFS.</li><li>Test parallel edges, a cycle with a tail, and disconnected graphs.</li><li>Build a bridge forest or block-cut tree and explain what each new node represents.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Lowlink invariants and biconnected decomposition; retain edge identifiers for multigraphs.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=iYJqgMKYsdI">Algorithms Live! Episode 21 - DFS Lowlink</a> <span class="resource-provenance">(<a href="https://algorithms-live.blogspot.com/2017/06/episode-21-dfs-lowlink.html">source page</a>)</span></li><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=tRTezLvPZ3k">Algorithms Live! Episode 22 - Biconnected Decompositions</a> <span class="resource-provenance">(<a href="https://algorithms-live.blogspot.com/2017/06/episode-22-biconnected-decompositions.html">source page</a>)</span></li><li><span class="resource-kind">Handout PDF</span> <a href="https://jeffe.cs.illinois.edu/teaching/algorithms/book/06-dfs.pdf">Jeff Erickson: Depth-First Search</a></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:R11:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://cses.fi/problemset/task/2076">Necessary Roads</a></td>
+<td style="text-align:right">—</td>
+<td>Identify bridges separating the given connected graph.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/2077">Necessary Cities</a></td>
+<td style="text-align:right">—</td>
+<td>Identify articulation vertices.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://codeforces.com/problemset/problem/1000/E">CF 1000E — We Need More Bosses</a></td>
+<td style="text-align:right">2100</td>
+<td>Contract bridge-free components and find the bridge-tree diameter.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://cses.fi/problemset/task/1705">Forbidden Cities</a></td>
+<td style="text-align:right">—</td>
+<td>Vertex-deletion reachability via block-cut structure or equivalent DFS/LCA reasoning.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="r12"></a></p>
+<h2 id="r12-euler-trails-and-graph-construction">R12 · Euler trails and graph construction</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P10,P13.</p>
+<p class="module-note"><strong>Learn:</strong> Hierholzer; in/out-degree conditions; connectivity of used edges; directed versus undirected trails; de Bruijn construction.</p>
+<p class="module-note"><strong>Mastery check:</strong> Output a trail and verify that every edge appears exactly once.</p>
+<p class="module-note"><strong>Watch for:</strong> Checking degree parity but not connectivity; deleting both directions inconsistently.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/graph/euler_path.html">Eulerian Path</a>.</p>
+<!-- enriched:R12:start -->
+<div class="topic-expansion" aria-label="R12 detailed study content"><h3>Understand the idea</h3><p>An Euler trail uses every edge exactly once, whereas a Hamiltonian path visits every vertex. Hierholzer&#x27;s algorithm follows unused edges and splices closed walks through a stack. Degree conditions are necessary but must be combined with connectivity of the vertices incident to edges. Directed and undirected versions have different degree equations. Edge IDs prevent using an undirected edge twice, and the final number of traversed edges is a useful validity check.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>An undirected graph with exactly two odd-degree vertices can have an open Euler trail starting at one and ending at the other, provided all nonisolated vertices lie in one connected component. For a directed open trail, the start has outdegree-indegree = 1, the end has -1, and all others have zero.</p></div>
+<h3>Learning sequence</h3><ol><li>Implement an iterative edge-ID-based Hierholzer traversal.</li><li>Reject disconnected nonempty edge components even when degrees look correct.</li><li>Model a de Bruijn sequence using length-(k-1) strings as vertices and length-k strings as edges.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Traversal background only; use the dedicated Euler-trail reference below for Hierholzer and degree conditions.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=IBfWDYSffUU">Lecture 10: Depth-First Search</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-10-depth-first-search/">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/06-basic-graph-algorithms.pdf">Stanford CS97SI: Basic Graph Algorithms</a></li><li><span class="resource-kind">Tutorial</span> <a href="https://cp-algorithms.com/graph/euler_path.html">Eulerian path and Hierholzer</a><p>Degree conditions, connectivity, and edge traversal.</p></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:R12:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://cses.fi/problemset/task/1691">Mail Delivery</a></td>
+<td style="text-align:right">—</td>
+<td>Undirected Euler circuit and edge-use validation.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/1693">Teleporters Path</a></td>
+<td style="text-align:right">—</td>
+<td>Directed Euler trail with fixed endpoints.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://cses.fi/problemset/task/1692">De Bruijn Sequence</a></td>
+<td style="text-align:right">—</td>
+<td>Encode binary strings as edges of a de Bruijn graph.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="r13"></a></p>
+<h2 id="r13-bipartite-matching-and-max-flow">R13 · Bipartite matching and max flow</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P13,R09.</p>
+<p class="module-note"><strong>Learn:</strong> Augmenting paths; Kuhn and Hopcroft-Karp; residual networks; Dinic; min-cut; edge-disjoint paths; vertex splitting; Konig's theorem.</p>
+<p class="module-note"><strong>Mastery check:</strong> Build a network with a clear interpretation for every capacity and recover the requested combinatorial object.</p>
+<p class="module-note"><strong>Watch for:</strong> Wrong reverse-edge indices; confusing edge-disjoint with vertex-disjoint paths; forgetting capacity sums can exceed 32 bits.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/graph/kuhn_maximum_bipartite_matching.html">Kuhn's Algorithm - Maximum Bipartite Matching</a>; <a href="https://cp-algorithms.com/graph/dinic.html">Maximum flow - Dinic's algorithm</a>.</p>
+<!-- enriched:R13:start -->
+<div class="topic-expansion" aria-label="R13 detailed study content"><h3>Understand the idea</h3><p>Matching and flow solve allocation problems through local improvements in a residual graph. An augmenting path can undo previous choices, which is why it succeeds where a one-pass greedy assignment fails. Bipartite matching can use Kuhn or Hopcroft-Karp; general capacities motivate a flow algorithm such as Dinic. A minimum cut certifies the maximum flow value. Vertex splitting models vertex capacities, and unit capacities often model edge-disjoint routes.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>In bipartite matching, an alternating path may replace one current match and create another, increasing the total by one. After a maximum matching, start from unmatched left vertices and traverse unmatched left-to-right and matched right-to-left edges. The unreachable left vertices together with reachable right vertices form a minimum vertex cover.</p></div>
+<h3>Learning sequence</h3><ol><li>Implement residual reverse edges and test cancellation paths.</li><li>Write a matching reduction with a meaning for every source, sink, and capacity.</li><li>Verify both a feasible solution and a cut or cover certificate of equal value.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Residual improvement, matching models, and flow/cut relationships.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=K1i-wP82Zdo">Algorithms Live! Episode 33 - Maximum Flow Intuition</a> <span class="resource-provenance">(<a href="https://algorithms-live.blogspot.com/2018/11/episode-33-maximum-flow-intuition.html">source page</a>)</span></li><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=8C_T4iTzPCU">Lecture 14: Incremental Improvement: Matching</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/resources/lecture-14-incremental-improvement-matching/">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/08-network-flow-problems.pdf">Stanford CS97SI: Network Flow Problems</a></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:R13:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://cses.fi/problemset/task/1696">School Dance</a></td>
+<td style="text-align:right">—</td>
+<td>Maximum bipartite matching and output matched pairs.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/1694">Download Speed</a></td>
+<td style="text-align:right">—</td>
+<td>Capacitated directed maximum flow.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/1695">Police Chase</a></td>
+<td style="text-align:right">—</td>
+<td>Recover an undirected minimum cut from residual reachability.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://cses.fi/problemset/task/1711">Distinct Routes</a></td>
+<td style="text-align:right">—</td>
+<td>Unit-capacity flow followed by path decomposition.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="r14"></a></p>
+<h2 id="r14-modular-combinatorics-and-recurrences">R14 · Modular combinatorics and recurrences</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P11,P12.</p>
+<p class="module-note"><strong>Learn:</strong> Factorials/inverses; binomial coefficients; stars and bars; inclusion-exclusion; extended GCD; CRT including noncoprime moduli; matrix exponentiation.</p>
+<p class="module-note"><strong>Mastery check:</strong> State inverse/CRT compatibility conditions and express a recurrence as a matrix transition.</p>
+<p class="module-note"><strong>Watch for:</strong> Using Fermat inverses with a composite modulus; dividing a modular exponent incorrectly; matrix order errors.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/algebra/chinese-remainder-theorem.html">Chinese Remainder Theorem</a>; <a href="https://cp-algorithms.com/combinatorics/binomial-coefficients.html">Binomial Coefficients</a>; <a href="https://cp-algorithms.com/algebra/binary-exp.html">Binary Exponentiation</a>.</p>
+<!-- enriched:R14:start -->
+<div class="topic-expansion" aria-label="R14 detailed study content"><h3>Understand the idea</h3><p>Modular combinatorics combines counting arguments with arithmetic assumptions. Factorials and inverse factorials make repeated binomial queries cheap when the modulus and range support inverses. Stars and bars counts nonnegative allocations; inclusion-exclusion corrects overlapping forbidden conditions. Extended Euclid finds Bezout coefficients and modular inverses when gcd is one. CRT combines compatible congruences, including noncoprime moduli. Matrix exponentiation speeds fixed-dimensional linear recurrences but does not make a large state space small.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>The system x = 1 mod 4 and x = 3 mod 6 is compatible because the residues agree modulo gcd(4,6) = 2; its solutions are x = 9 mod 12. Changing the second residue to 2 makes the system inconsistent. For binomial coefficients modulo a prime p, the usual inverse-factorial formula fails once the factorial includes p.</p></div>
+<h3>Learning sequence</h3><ol><li>Derive one counting formula before writing modular code.</li><li>Implement noncoprime CRT with an inconsistency result.</li><li>Construct a transition matrix from a recurrence and verify the first several terms directly.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Modular number theory and counting foundations. Use the CRT and binomial references below for implementation details.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=XX7ePR21Ook">Lecture 5: Number Theory II</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/resources/lecture-5-number-theory-ii/">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/02-mathematics.pdf">Stanford CS97SI: Mathematics</a></li><li><span class="resource-kind">Tutorial</span> <a href="https://cp-algorithms.com/algebra/chinese-remainder-theorem.html">Chinese remainder theorem</a><p>Compatibility and combining noncoprime congruences.</p></li><li><span class="resource-kind">Tutorial</span> <a href="https://cp-algorithms.com/combinatorics/binomial-coefficients.html">Binomial coefficients</a><p>Methods depend on modulus and input range.</p></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:R14:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://cses.fi/problemset/task/1079">Binomial Coefficients</a></td>
+<td style="text-align:right">—</td>
+<td>Factorial and inverse-factorial preprocessing modulo a prime.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/1716">Distributing Apples</a></td>
+<td style="text-align:right">—</td>
+<td>Stars-and-bars counting.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/2185">Prime Multiples</a></td>
+<td style="text-align:right">—</td>
+<td>Inclusion-exclusion over prime divisibility.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://atcoder.jp/contests/practice2/tasks/practice2_c?lang=en">C - Floor Sum</a></td>
+<td style="text-align:right">—</td>
+<td>Floor-sum arithmetic and Euclidean reduction; an additional number-theory exercise.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/1723">Graph Paths I</a></td>
+<td style="text-align:right">—</td>
+<td>Exponentiate an adjacency matrix to count fixed-length walks.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://atcoder.jp/contests/abc193/tasks/abc193_e?lang=en">E - Oversleeping</a></td>
+<td style="text-align:right">—</td>
+<td>Enumerate active residues and combine the two periods with generalized CRT.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="r15"></a></p>
+<h2 id="r15-string-matching-hashing-and-tries">R15 · String matching, hashing, and tries</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P03,P05.</p>
+<p class="module-note"><strong>Learn:</strong> Prefix function/KMP; Z-function; borders and periods; Rabin-Karp; polynomial hashes and collision risk; ordinary and binary tries.</p>
+<p class="module-note"><strong>Mastery check:</strong> Give deterministic KMP/Z solutions for exact matching and explain the probabilistic guarantee of hashing.</p>
+<p class="module-note"><strong>Watch for:</strong> Assigning dictionary map exercises to rolling hash; comparing unnormalized substring hashes; confusing trie edges with suffix links.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/string/prefix-function.html">Prefix function - Knuth-Morris-Pratt</a>; <a href="https://cp-algorithms.com/string/z-function.html">Z-function</a>; <a href="https://cp-algorithms.com/string/string-hashing.html">String Hashing</a>.</p>
+<!-- enriched:R15:start -->
+<div class="topic-expansion" aria-label="R15 detailed study content"><h3>Understand the idea</h3><p>String matching replaces repeated character comparisons with reusable prefix information. The prefix function records the longest proper border of each prefix; KMP follows those borders after a mismatch. The Z-function measures agreement with the whole string from every starting position. Tries store shared prefixes explicitly, while binary tries support bitwise decisions. Polynomial hashing summarizes substrings probabilistically and requires a collision strategy; a hash table and a rolling string hash solve different problems.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>For pattern abab, the prefix-function values are [0,0,1,2]. After matching abab and seeing a mismatch, a border tells KMP how much matched work remains useful. For substring hashes, normalize positions or compare using aligned powers; equal hashes are evidence under a probabilistic model, not a deterministic equality proof.</p></div>
+<h3>Learning sequence</h3><ol><li>Implement prefix and Z functions and compare matches with direct scanning.</li><li>Insert words into a trie while retaining terminal multiplicities.</li><li>Document hash modulus, base choice, normalization, and collision handling for many comparisons.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">The video covers hash-table foundations; the slides and dedicated references develop string matching, hashing, and indexing.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=Nu8YGneFCWE">Lecture 4: Hashing</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-4-hashing/">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/10-string-algorithms.pdf">Stanford CS97SI: String Algorithms</a></li><li><span class="resource-kind">Tutorial</span> <a href="https://cp-algorithms.com/string/prefix-function.html">Prefix function and KMP</a><p>Borders, failure transitions, matching, and periods.</p></li><li><span class="resource-kind">Tutorial</span> <a href="https://cp-algorithms.com/string/z-function.html">Z-function</a><p>Linear-time prefix matching at every position.</p></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:R15:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/432/D">CF 432D — Prefixes and Suffixes</a></td>
+<td style="text-align:right">2000</td>
+<td>Borders plus occurrence counts using prefix/Z-function structure.</td>
+</tr>
+<tr>
+<td>starter</td>
+<td><a href="https://cses.fi/problemset/task/1753">String Matching</a></td>
+<td style="text-align:right">—</td>
+<td>KMP or Z gives deterministic pattern-occurrence counting; Rabin-Karp is an alternative.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/1733">Finding Periods</a></td>
+<td style="text-align:right">—</td>
+<td>Use prefix/Z matches to characterize periods.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://codeforces.com/problemset/problem/271/D">CF 271D — Good Substrings</a></td>
+<td style="text-align:right">1800</td>
+<td>Count distinct substrings with a bad-character bound; rolling hash is one approach.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://cses.fi/problemset/task/1655">Maximum Xor Subarray</a></td>
+<td style="text-align:right">—</td>
+<td>A binary trie on prefix XOR values maximizes a subarray XOR.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="r16"></a></p>
+<h2 id="r16-planar-geometry-and-sweep-lines">R16 · Planar geometry and sweep lines</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P14,R01.</p>
+<p class="module-note"><strong>Learn:</strong> Segment intersection; polygon area and point inclusion; convex hull; polar-angle order; rotating calipers; closest pair; coordinate transforms.</p>
+<p class="module-note"><strong>Mastery check:</strong> Handle duplicate points, collinear hull points, and boundary cases explicitly.</p>
+<p class="module-note"><strong>Watch for:</strong> Sorting by an inconsistent floating angle comparator; assuming a polygon is convex without proof.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/geometry/convex-hull.html">Convex hull construction</a>; <a href="https://cp-algorithms.com/geometry/nearest_points.html">Finding the nearest pair of points</a>.</p>
+<!-- enriched:R16:start -->
+<div class="topic-expansion" aria-label="R16 detailed study content"><h3>Understand the idea</h3><p>Planar geometry combines exact predicates with global ordering. Segment intersection needs orientation tests plus explicit collinear overlap handling. A convex hull removes points that cannot lie on the boundary; the choice to retain collinear boundary points changes the pop condition. Sweeps turn geometry into changing one-dimensional order, with careful treatment of simultaneous events. Rotating calipers uses monotone movement around convex polygons, while closest-pair divide-and-conquer requires a packing argument to bound comparisons.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>To test whether two closed segments intersect, handle strict crossings by opposite orientation signs, then handle zero cross products by bounding-box membership. Two collinear disjoint segments must not be accepted merely because all four cross products vanish. For polygon area, retain signed doubled area until the final conversion.</p></div>
+<h3>Learning sequence</h3><ol><li>Implement intersection, point-on-segment, hull, and polygon area with shared predicates.</li><li>Specify boundary behavior for point-in-polygon queries.</li><li>Test repeated points, vertical segments, collinear hulls, and simultaneous sweep events.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Convex-hull divide-and-conquer in the video; the slides cover geometric sweeps and other planar primitives.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=EzeYI7p9MjU">Lecture 2: Divide &amp; Conquer: Convex Hull, Median Finding</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/resources/lecture-2-divide-conquer-convex-hull-median-finding/">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/09-computational-geometry.pdf">Stanford CS97SI: Computational Geometry</a></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:R16:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://cses.fi/problemset/task/2190">Line Segment Intersection</a></td>
+<td style="text-align:right">—</td>
+<td>Orientation and bounding boxes including collinear overlaps.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/2192">Point in Polygon</a></td>
+<td style="text-align:right">—</td>
+<td>Ray crossing with explicit boundary checks.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/2195">Convex Hull</a></td>
+<td style="text-align:right">—</td>
+<td>Monotone-chain hull construction with collinearity handling.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://cses.fi/problemset/task/2194">Minimum Euclidean Distance</a></td>
+<td style="text-align:right">—</td>
+<td>Closest pair by divide-and-conquer or plane sweep.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://cses.fi/problemset/task/1740">Intersection Points</a></td>
+<td style="text-align:right">—</td>
+<td>Sweep events and an indexed range-count structure.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="r17"></a></p>
+<h2 id="r17-offline-queries-and-square-root-decomposition">R17 · Offline queries and square-root decomposition</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P06,R06.</p>
+<p class="module-note"><strong>Learn:</strong> Block decomposition; offline sweeps; Mo's algorithm and add/remove contributions; choosing block sizes; query reordering.</p>
+<p class="module-note"><strong>Mastery check:</strong> Derive an incremental statistic and explain why the query order changes runtime but not answers.</p>
+<p class="module-note"><strong>Watch for:</strong> Applying offline reordering to answer-dependent queries; claiming Mo is always faster than a Fenwick sweep.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/data_structures/sqrt_decomposition.html">Sqrt Decomposition</a>.</p>
+<!-- enriched:R17:start -->
+<div class="topic-expansion" aria-label="R17 detailed study content"><h3>Understand the idea</h3><p>Offline processing changes query order to reuse work. A sweep sorts events by one coordinate and maintains a structure over another. Square-root decomposition groups indices or values into blocks so an operation handles full blocks cheaply and boundary elements directly. Mo&#x27;s algorithm orders interval queries to reduce total endpoint movement, provided the answer can be updated when one element enters or leaves. Select a block size from the actual operation costs and query count rather than assuming sqrt(n) is always best.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>For the number of equal pairs in a window, adding a value of current frequency f creates f new pairs, then increments its count. Removing a value first decrements its count and subtracts the new frequency. This supports Mo&#x27;s algorithm, while simply recomputing every answer would lose the benefit of query reordering.</p></div>
+<h3>Learning sequence</h3><ol><li>Implement a block range-sum structure and count boundary work.</li><li>Derive add/remove formulas for a nontrivial window statistic.</li><li>Restore original query order and compare all answers with a quadratic baseline.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Range-query foundation for offline sweeps; Mo&#x27;s add/remove machinery is covered separately in the written reference.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=RgITNht_f4Q">William Fiset: Fenwick Tree</a> <span class="resource-provenance">(<a href="https://github.com/williamfiset/Algorithms">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/03-data-structures.pdf">Stanford CS97SI: Data Structures</a></li><li><span class="resource-kind">Tutorial</span> <a href="https://cp-algorithms.com/data_structures/sqrt_decomposition.html">Square-root decomposition and Mo&#x27;s algorithm</a><p>Block tradeoffs, query ordering, and add/remove interfaces.</p></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:R17:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://cses.fi/problemset/task/1734">Distinct Values Queries</a></td>
+<td style="text-align:right">—</td>
+<td>Offline right-endpoint sweep with latest occurrences and a Fenwick tree; Mo is an alternative.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://codeforces.com/problemset/problem/86/D">CF 86D — Powerful array</a></td>
+<td style="text-align:right">2200</td>
+<td>Mo's algorithm updates a frequency-squared weighted statistic.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://codeforces.com/problemset/problem/455/D">CF 455D — Serega and Fun</a></td>
+<td style="text-align:right">2700</td>
+<td>Online block decomposition supports cyclic shifts and frequency queries.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="r18"></a></p>
+<h2 id="r18-numerical-search-and-linear-algebra-introduction">R18 · Numerical search and linear algebra introduction</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P08,P14,R14.</p>
+<p class="module-note"><strong>Learn:</strong> Unimodality; ternary/golden-section search; numerical bisection; vectors, rank and linear systems; Gaussian elimination with pivoting; exact versus floating fields.</p>
+<p class="module-note"><strong>Mastery check:</strong> Justify unimodality and implement elimination that distinguishes no solution, one solution, and free variables.</p>
+<p class="module-note"><strong>Watch for:</strong> Ternary search on a merely monotone or multimodal objective; using floating elimination for exact modular algebra.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/num_methods/ternary_search.html">Ternary Search</a>; <a href="https://cp-algorithms.com/linear_algebra/linear-system-gauss.html">Gauss &amp; System of Linear Equations</a>.</p>
+<!-- enriched:R18:start -->
+<div class="topic-expansion" aria-label="R18 detailed study content"><h3>Understand the idea</h3><p>Numerical search requires a structural property of the objective. Bisection needs a monotone sign or feasibility boundary; ternary search needs unimodality, with separate treatment for discrete endpoints. Gaussian elimination solves linear systems by row operations and exposes rank, inconsistency, and free variables. Floating arithmetic needs pivoting and scale-aware tolerance; finite-field elimination requires invertible nonzero pivots. A single returned vector does not establish uniqueness.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>The equations x+y = 2 and 2x+2y = 4 describe infinitely many solutions, whereas replacing the second right-hand side by 5 creates inconsistency. In floating elimination, selecting a large available pivot reduces amplification of rounding error. Over a prime field, normalize using a modular inverse; over a composite modulus, that inverse may not exist.</p></div>
+<h3>Learning sequence</h3><ol><li>Implement elimination returning no solution, unique solution, or free variables.</li><li>Compare a ternary search with exhaustive evaluation on small discrete domains.</li><li>Check a computed solution by substituting it into the original equations.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Elimination, column/null spaces, and mathematical foundations; use the search reference below for numerical optimization.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=QVKj3LADCnA">Lecture 2: Elimination with matrices</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-2-elimination-with-matrices/">source page</a>)</span></li><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=8o5Cmfpeo6g">Lecture 6: Column space and nullspace</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-6-column-space-and-nullspace/">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/02-mathematics.pdf">Stanford CS97SI: Mathematics</a></li><li><span class="resource-kind">Tutorial</span> <a href="https://cp-algorithms.com/linear_algebra/linear-system-gauss.html">Gaussian elimination</a><p>Rank, free variables, inconsistency, and pivoting.</p></li><li><span class="resource-kind">Tutorial</span> <a href="https://cp-algorithms.com/num_methods/ternary_search.html">Ternary search</a><p>Unimodality assumptions and discrete stopping conditions.</p></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:R18:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://codeforces.com/problemset/problem/780/B">CF 780B — The Meeting Place Cannot Be Changed</a></td>
+<td style="text-align:right">1600</td>
+<td>Binary search time with interval-intersection feasibility; ternary search on the convex meeting-time function is an alternative.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/3154">System of Linear Equations</a></td>
+<td style="text-align:right">—</td>
+<td>Solve the stated modular linear system, detecting inconsistency and recovering a solution.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="r19"></a></p>
+<h2 id="r19-regional-games-and-probability">R19 · Regional games and probability</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P15,R02,R14.</p>
+<p class="module-note"><strong>Learn:</strong> Nim; mex and Sprague-Grundy; disjoint impartial games; probability DP; linearity of expectation.</p>
+<p class="module-note"><strong>Mastery check:</strong> Explain when XOR of Grundy values applies and solve an expectation problem with indicators.</p>
+<p class="module-note"><strong>Watch for:</strong> Applying Sprague-Grundy to partisan games or cyclic infinite play without additional analysis.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://cp-algorithms.com/game_theory/sprague-grundy-nim.html">Sprague-Grundy theorem. Nim</a>.</p>
+<!-- enriched:R19:start -->
+<div class="topic-expansion" aria-label="R19 detailed study content"><h3>Understand the idea</h3><p>Sprague-Grundy theory compresses finite impartial normal-play games into nimbers. A state&#x27;s value is the mex of its successor values; independent subgames combine by XOR. The theorem requires genuine independence of legal moves and a terminating game graph. Probability DP instead propagates probability mass or conditions expected values on the next transition. Linearity of expectation can avoid storing the full distribution when only an average is needed.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>Two independent Nim heaps of sizes 3 and 5 have nim-sum 6, so the position is winning. A move reducing the second heap to 3 leaves XOR zero. If a move changes both components or their legal moves depend on shared resources, blindly XORing separately computed values is unjustified.</p></div>
+<h3>Learning sequence</h3><ol><li>Compute Grundy values for a subtraction game and verify small disjoint sums.</li><li>Derive a probability DP whose total mass remains one.</li><li>Solve an expectation problem with indicators and compare against exact enumeration for tiny inputs.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">The videos cover conditional probability and expectation; the slides separately develop game-state reasoning and Grundy theory.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=E6FbvM-FGZ8">Lecture 19: Conditional Probability</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/resources/lecture-19-conditional-probability/">source page</a>)</span></li><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=gGlMSe7uEkA">Lecture 22: Expectation I</a> <span class="resource-provenance">(<a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/resources/lecture-22-expectation-i/">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/05-combinatorial-games.pdf">Stanford CS97SI: Combinatorial Games</a></li><li><span class="resource-kind">Course notes</span> <a href="https://courses.csail.mit.edu/6.042/spring18/mcs.pdf">MIT Mathematics for Computer Science</a><p>Use the expectation and conditional probability sections alongside game theory.</p></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:R19:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>starter</td>
+<td><a href="https://cses.fi/problemset/task/1730">Nim Game I</a></td>
+<td style="text-align:right">—</td>
+<td>XOR of independent Nim piles.</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td><a href="https://cses.fi/problemset/task/2207">Grundy's Game</a></td>
+<td style="text-align:right">—</td>
+<td>Mex values for unequal-pile splitting and game-state reasoning.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://atcoder.jp/contests/dp/tasks/dp_i?lang=en">I - Coins</a></td>
+<td style="text-align:right">—</td>
+<td>Probability DP for the number of heads.</td>
+</tr>
+<tr>
+<td>core</td>
+<td><a href="https://cses.fi/problemset/task/1728">Inversion Probability</a></td>
+<td style="text-align:right">—</td>
+<td>Linearity of expectation over pairwise inversion indicators.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="r20"></a></p>
+<h2 id="r20-regional-contest-integration">R20 · Regional contest integration</h2>
+<p class="module-note"><strong>Prerequisites:</strong> P16,R01-R19.</p>
+<p class="module-note"><strong>Learn:</strong> Model unfamiliar statements; combine two standard tools; test reference code; estimate team opportunity costs; prepare a permitted reference document.</p>
+<p class="module-note"><strong>Mastery check:</strong> Review six full regional sets, preserving at least three as unseen virtual contests; independently re-solve recurring failure types.</p>
+<p class="module-note"><strong>Watch for:</strong> Treating completion of an algorithm list as proof of contest readiness.</p>
+<p class="module-note"><strong>Study:</strong> <a href="https://github.com/kth-competitive-programming/kactl">KACTL reference and testing guidance</a>.</p>
+<!-- enriched:R20:start -->
+<div class="topic-expansion" aria-label="R20 detailed study content"><h3>Understand the idea</h3><p>Regional readiness depends on combining familiar tools under an unfamiliar statement. Translate the story into objects, legal operations, an objective, and constraints before naming algorithms. Keep a tested reference library, but also know its indexing, numeric assumptions, and failure modes. During a team contest, implementation time and shared-computer access affect which problem should be attempted next. Post-contest analysis should separate modeling failures from proof gaps, coding errors, and poor allocation of effort.</p>
+<div class="worked-example"><h3>Worked example / reasoning</h3><p>An interval connectivity problem may become a sorted sweep with DSU; a path-counting problem may become SCC contraction followed by DAG DP. State why each transformation preserves the original answer. A correct standard routine does not rescue a reduction that permits illegal objects or loses relevant constraints.</p></div>
+<h3>Learning sequence</h3><ol><li>Run a complete regional set with a shared submission and ownership log.</li><li>Audit every library routine used against a small independent reference.</li><li>Write one complete reduction proof for a missed problem before reading implementation details.</li></ol>
+<h3>Watch, read, and go deeper</h3><p class="resource-scope">Practice context, common mistakes, and learning workflow; use the existing past-paper bridge for full sets.</p><ul class="learning-resources"><li><span class="resource-kind">YouTube</span> <a href="https://www.youtube.com/watch?v=9p-M0JJz_aQ">Algorithms Live! Episode 34 - Educational Streaming w/ Errichto</a> <span class="resource-provenance">(<a href="https://algorithms-live.blogspot.com/2018/12/episode-34-educational-streaming-w.html">source page</a>)</span></li><li><span class="resource-kind">Slides PDF</span> <a href="https://web.stanford.edu/class/cs97si/01-introduction.pdf">Stanford CS97SI: Introduction</a></li></ul><p class="resource-date">Resources researched 27 October 2026. Companion lectures cover the stated part of this module; work through the written references for the remaining techniques.</p>
+</div>
+<!-- enriched:R20:end -->
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Problem</th>
+<th style="text-align:right">CF rating</th>
+<th>Why it fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>checkpoint</td>
+<td><a href="https://codeforces.com/problemset/problem/429/B">CF 429B — Working out</a></td>
+<td style="text-align:right">1600</td>
+<td>Combine directional grid DPs around candidate crossing configurations.</td>
+</tr>
+<tr>
+<td>checkpoint</td>
+<td><a href="https://codeforces.com/problemset/problem/276/C">CF 276C — Little Girl and Maximum Sum</a></td>
+<td style="text-align:right">1500</td>
+<td>Difference-array query frequencies and rearrangement-based greedy assignment.</td>
+</tr>
+</tbody>
+</table></div>
+</article><nav class="guide-pagination" aria-label="Adjacent guides"><a href="01_PRELIMINARIES.html"><span>Previous guide</span>Preliminaries</a><a href="03_CHAMPIONSHIP.html"><span>Next guide</span>Championship</a></nav>
+<footer><a href="../index.html">Back to the connected roadmap</a></footer></main></div></body></html>

@@ -1,0 +1,1044 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A structured ICPC roadmap from preliminaries to World Finals, with topic prerequisites and study guides.">
+<meta name="color-scheme" content="light"><title>ICPC preparation roadmap</title>
+<style>:root { color-scheme: light; font-family: "Segoe UI", Arial, sans-serif; color: #172b43; background: #fff; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { max-width: 1160px; padding: 64px 40px 32px; margin: auto; }
+h1, h2, p { margin: 0; }
+h1 { font-size: clamp(30px, 4vw, 44px); font-weight: 600; letter-spacing: -1px; margin: 12px 0 18px; }
+h2 { font-size: 28px; font-weight: 600; margin: 8px 0 10px; }
+p { color: #526579; line-height: 1.7; }
+.eyebrow { color: #326186; font-size: 12px; letter-spacing: 1.5px; font-weight: 700; }
+.document-heading > p:not(.eyebrow) { max-width: 850px; }
+.stage-sequence { display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin: 32px 0 24px; gap: 12px; font-size: 14px; font-weight: 600; }
+.stage-sequence li:not(:last-child)::after { content: "→"; margin-left: 12px; color: #8193a7; }
+.reading-note { font-size: 13px; }
+section { border-top: 1px solid #dce3eb; margin-top: 48px; padding-top: 32px; }
+.stage-heading { margin-bottom: 22px; }
+.diagram-frame { margin-top: 12px; }
+.diagram { position: relative; touch-action: pan-y; }
+.diagram svg { display: block; width: 100%; height: auto; max-height: 75vh; }
+.diagram.is-pannable { cursor: grab; touch-action: none; }
+.diagram.is-dragging { cursor: grabbing; user-select: none; }
+.diagram:focus-visible { outline: 1px dashed #8193a7; outline-offset: 3px; }
+.diagram-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 20px; padding: 0 0 10px; font-size: 11px; color: #6a7d90; }
+.diagram-toolbar[hidden] { display: none; }
+.zoom-controls { display: flex; align-items: center; gap: 8px; }
+.zoom-controls button { font: inherit; font-size: 14px; color: #244f74; background: transparent; border: 0; border-radius: 4px; min-width: 34px; min-height: 34px; padding: 5px 10px; cursor: pointer; }
+.zoom-controls button:hover { background: #f1f5f9; }
+.zoom-controls button:disabled { opacity: .4; cursor: default; }
+.zoom-controls button:focus-visible { outline: 2px solid #326186; outline-offset: 2px; }
+.zoom-controls output { min-width: 44px; text-align: center; font-variant-numeric: tabular-nums; }
+.references { margin-top: 12px; font-size: 13px; }
+a { color: #326186; text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid #326186; outline-offset: 4px; }
+footer { margin-top: 48px; border-top: 1px solid #dce3eb; padding-top: 24px; font-size: 12px; }
+footer p + p { margin-top: 8px; }
+.overview-links { display: flex; flex-wrap: wrap; gap: 20px; font-size: 13px; margin-bottom: 22px; }
+.skip-link { position: absolute; left: -9999px; }
+.skip-link:focus { left: 20px; top: 10px; background: white; padding: 12px; z-index: 5; }
+.guide-layout { max-width: 1500px; margin: auto; display: grid; grid-template-columns: 240px minmax(0, 1fr); }
+.guide-sidebar { position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto; padding: 44px 22px; border-right: 1px solid #e2e8ef; background: #f8fafc; }
+.guide-brand { display: block; font-weight: 700; font-size: 17px; text-decoration: none; margin-bottom: 40px; letter-spacing: 1px; }
+.guide-sidebar nav { margin-top: 14px; display: grid; gap: 5px; }
+.guide-sidebar nav a { padding: 10px 12px; font-size: 13px; line-height: 1.4; text-decoration: none; border-radius: 4px; color: #526579; }
+.guide-sidebar nav a[aria-current] { background: #e7eff7; color: #244f74; font-weight: 600; }
+main.guide-main { min-width: 0; width: 100%; max-width: 1120px; padding: 48px 48px 36px; }
+.guide-heading { padding-bottom: 30px; border-bottom: 1px solid #dce3eb; }
+.guide-heading h1 { font-size: clamp(28px, 3vw, 38px); line-height: 1.2; }
+.guide-heading > p:last-child { font-size: 13px; }
+.contents { margin: 28px 0 36px; padding: 24px 28px; border: 1px solid #dce3eb; border-radius: 5px; background: #fbfcfe; }
+.contents h2 { font-size: 14px; margin: 0 0 14px; }
+.contents ol { columns: 2; column-gap: 36px; padding: 0; margin: 0; list-style: none; }
+.contents li { break-inside: avoid; margin-bottom: 8px; font-size: 13px; line-height: 1.5; }
+.contents a { text-decoration: none; }
+.prose { font-size: 15px; line-height: 1.8; overflow-wrap: anywhere; }
+.prose p { margin: 16px 0; }
+.prose h2 { font-size: 23px; margin: 44px 0 18px; padding-top: 24px; border-top: 1px solid #dce3eb; line-height: 1.4; letter-spacing: -.3px; }
+.prose h3 { font-size: 18px; margin: 28px 0 12px; }
+.prose li { margin-bottom: 8px; color: #526579; }
+.prose strong { color: #243c55; font-weight: 600; }
+.prose .module-note { padding-left: 16px; border-left: 3px solid #dce7f2; }
+.table-scroll { max-width: 100%; overflow-x: auto; margin: 24px 0; border: 1px solid #dce3eb; border-radius: 5px; }
+.prose table { width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.65; }
+.prose th { background: #f1f5f9; color: #243c55; text-align: left; font-weight: 600; }
+.prose th, .prose td { padding: 12px 14px; border-bottom: 1px solid #e2e8ef; vertical-align: top; min-width: 90px; }
+.prose tr:last-child td { border-bottom: 0; }
+.prose tbody tr:nth-child(even) { background: #fbfcfe; }
+.prose code { font-size: .9em; background: #f0f4f8; border-radius: 3px; padding: 2px 4px; }
+.prose pre { padding: 20px; background: #f1f5f9; overflow: auto; }
+.prose blockquote { margin: 20px 0; padding: 8px 20px; border-left: 3px solid #b7ccdf; background: #f8fafc; }
+.source-note { margin: 28px 0; padding: 4px 22px 18px; border: 1px solid #dce3eb; border-radius: 5px; background: #fbfcfe; }
+.topic-stages { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 24px 0; font-size: 14px; }
+.topic-list { list-style: none; padding: 0; margin: 24px 0 0; }
+.topic-list li { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 16px; padding: 22px 0; border-bottom: 1px solid #e2e8ef; }
+.topic-code { color: #326186; font-size: 12px; font-weight: 600; padding-top: 3px; }
+.topic-list h3 { font-size: 17px; margin: 0 0 8px; line-height: 1.4; font-weight: 600; }
+.topic-list h3 a { text-decoration: none; }
+.topic-list p { font-size: 14px; }
+.topic-list .topic-prerequisites { font-size: 12px; color: #6a7d90; margin-bottom: 8px; }
+.guide-pagination { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid #dce3eb; padding-top: 28px; margin-top: 48px; }
+.guide-pagination a { text-decoration: none; font-weight: 600; font-size: 14px; }
+.guide-pagination span { display: block; color: #6a7d90; font-size: 11px; font-weight: 400; margin-bottom: 8px; }
+@media (max-width: 900px) {
+  .guide-layout { grid-template-columns: 1fr; }
+  .guide-sidebar { position: static; height: auto; overflow-y: visible; padding: 24px; border-right: 0; border-bottom: 1px solid #e2e8ef; }
+  .guide-brand { margin-bottom: 18px; }
+  .guide-sidebar nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  main.guide-main { padding: 30px 24px; }
+}
+@media (max-width: 600px) {
+  .guide-sidebar nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .contents ol { columns: 1; }
+  .contents { padding: 20px; }
+  main.guide-main { padding: 28px 18px; }
+  .prose th, .prose td { min-width: 125px; }
+}
+@media (max-width: 600px) { main { padding: 32px 18px; } section { margin-top: 32px; } }
+@media print {
+  @page { size: A3 portrait; margin: 12mm; }
+  main { max-width: none; padding: 0; }
+  .document-heading { break-after: page; }
+  section { break-before: page; border: 0; margin: 0; padding: 0; }
+  .diagram { overflow: visible; height: auto; }
+  .diagram-frame { border: 0; overflow: visible; }
+  .diagram-toolbar { display: none; }
+  .diagram svg { min-width: 0; width: 100%; max-height: 340mm; }
+  .references { display: none; }
+  footer { break-before: page; }
+  .guide-sidebar, .guide-pagination, .skip-link { display: none; }
+  .guide-layout { display: block; }
+  main.guide-main { max-width: none; padding: 0; }
+  .guide-page footer { break-before: auto; }
+  .table-scroll { overflow: visible; }
+  .prose h2 { break-after: avoid; }
+}
+</style>
+</head>
+<body class="roadmap-page"><a class="skip-link" href="#content">Skip to roadmap</a><div class="guide-layout">
+<aside class="guide-sidebar"><a class="guide-brand" href="index.html">ICPC ROADMAP</a><p class="eyebrow">STUDY GUIDES</p><nav aria-label="Roadmap library"><a href="index.html" aria-current="page">Roadmap overview</a><a href="src/topics.html">All topics</a><a href="src/01_PRELIMINARIES.html">Preliminaries</a><a href="src/02_REGIONALS.html">Regionals</a><a href="src/03_CHAMPIONSHIP.html">Championship</a><a href="src/04_WORLD_FINALS.html">World Finals</a><a href="src/06_PAST_PAPERS.html">Past papers</a><a href="src/09_TRAINING_ROUTINE.html">Training routine</a><a href="src/README.html">About this roadmap</a></nav></aside>
+<main class="guide-main" id="content">
+<header class="document-heading">
+<p class="eyebrow">COMPETITIVE PROGRAMMING · ICPC</p>
+<h1>Preparation roadmap</h1>
+<nav class="overview-links" aria-label="Study references"><a href="src/topics.html">View all topics as a list</a><a href="src/README.html">About this roadmap</a><a href="src/09_TRAINING_ROUTINE.html">Training routine</a><a href="src/06_PAST_PAPERS.html#past-paper-gallery">Browse 31 past-paper packets</a></nav>
+<p>From foundations to World Finals. Follow the prerequisite connections; study parallel branches in the order that suits your preparation.</p>
+<ol class="stage-sequence" aria-label="Preparation stages"><li>Preliminaries</li><li>Regionals</li><li>Championship</li><li>World Finals</li></ol>
+<p class="reading-note">Read each diagram from top to bottom. Arrows show prerequisite connections within a stage; every box lists its full required prerequisites. Redundant arrows are omitted. Contest integration uses one labeled toolkit gate to keep independent branches clear. W01–W06 are optional specialist branches.</p>
+</header>
+<section aria-labelledby="stage-P"><header class="stage-heading"><p class="eyebrow">STAGE 01</p><h2 id="stage-P">Preliminaries</h2><p>Foundations, implementation, and core problem solving. <span>Suggested pace: 8–12 weeks.</span></p></header>
+<div class="diagram-frame"><div class="diagram-toolbar" hidden><span>Drag when zoomed · Ctrl + scroll to zoom</span><div class="zoom-controls"><button type="button" data-zoom="out" aria-label="Zoom out of Preliminaries">−</button><output aria-live="polite">100%</output><button type="button" data-zoom="in" aria-label="Zoom into Preliminaries">+</button><button type="button" data-zoom="reset" aria-label="Fit complete Preliminaries diagram">Fit</button></div></div>
+<div class="diagram" tabindex="0" role="region" aria-label="Preliminaries diagram. Zoom to explore; drag or use arrow keys to pan."><svg xmlns="http://www.w3.org/2000/svg" width="1745pt" height="1022pt" viewBox="0.00 0.00 1745.00 1022.00" role="group" aria-label="Preliminaries prerequisite roadmap">
+<style>a { cursor: pointer; } a:hover text, a:focus text { fill: #244f74; text-decoration: underline; }</style><g id="P-graph0" class="graph" transform="scale(1 1) rotate(0) translate(21.6 1000.08)">
+<title>Preliminaries prerequisite roadmap</title>
+<polygon fill="white" stroke="none" points="-21.6,21.6 -21.6,-1000.08 1723.26,-1000.08 1723.26,21.6 -21.6,21.6" />
+
+<g id="P-edge7" class="edge">
+<title>P01-&gt;P02</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M1448.37,-932C1355.36,-932 1232.3,-932 1232.3,-932 1232.3,-932 1232.3,-836.21 1232.3,-836.21" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="1234.58,-836.21 1232.3,-829.71 1230.03,-836.21 1234.58,-836.21" />
+</g>
+
+<g id="P-edge17" class="edge">
+<title>P01-&gt;P09</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M1544.83,-885C1544.83,-885 1544.83,-831.05 1544.83,-831.05" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="1547.11,-831.05 1544.83,-824.55 1542.56,-831.05 1547.11,-831.05" />
+</g>
+
+<g id="P-edge8" class="edge">
+<title>P02-&gt;P03</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M1144.06,-796C904.05,-796 257.3,-796 257.3,-796 257.3,-796 257.3,-679.69 257.3,-679.69" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="259.58,-679.69 257.3,-673.19 255.03,-679.69 259.58,-679.69" />
+</g>
+
+<g id="P-edge9" class="edge">
+<title>P02-&gt;P04</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M1143.88,-765C955.42,-765 531.3,-765 531.3,-765 531.3,-765 531.3,-679.84 531.3,-679.84" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="533.58,-679.84 531.3,-673.34 529.03,-679.84 533.58,-679.84" />
+</g>
+
+<g id="P-edge12" class="edge">
+<title>P02-&gt;P06</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M1162.06,-734.02C1162.06,-697.87 1162.06,-654 1162.06,-654 1162.06,-654 1056.5,-654 1056.5,-654" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="1056.5,-651.73 1050,-654 1056.5,-656.28 1056.5,-651.73" />
+</g>
+
+<g id="P-edge23" class="edge">
+<title>P02-&gt;P13</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M1250.17,-733.92C1250.17,-733.92 1250.17,-231.82 1250.17,-231.82" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="1252.44,-231.82 1250.17,-225.32 1247.89,-231.82 1252.44,-231.82" />
+</g>
+
+<g id="P-edge10" class="edge">
+<title>P03-&gt;P05</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M169.36,-588.21C169.36,-588.21 169.36,-534.01 169.36,-534.01" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="171.64,-534.01 169.36,-527.51 167.09,-534.01 171.64,-534.01" />
+</g>
+
+<g id="P-edge11" class="edge">
+<title>P04-&gt;P05</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M438.56,-588.26C438.56,-577.56 438.56,-569 438.56,-569 438.56,-569 196.98,-569 196.98,-569 196.98,-569 196.98,-534.08 196.98,-534.08" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="199.26,-534.08 196.98,-527.58 194.71,-534.08 199.26,-534.08" />
+</g>
+
+<g id="P-edge13" class="edge">
+<title>P04-&gt;P07</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M463.55,-588.21C463.55,-588.21 463.55,-528.95 463.55,-528.95" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="465.82,-528.95 463.55,-522.45 461.27,-528.95 465.82,-528.95" />
+</g>
+
+<g id="P-edge15" class="edge">
+<title>P04-&gt;P08</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M601.3,-588.21C601.3,-588.21 601.3,-528.95 601.3,-528.95" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="603.57,-528.95 601.3,-522.45 599.02,-528.95 603.57,-528.95" />
+</g>
+
+<g id="P-edge18" class="edge">
+<title>P04-&gt;P10</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M533.54,-588.22C533.54,-505.41 533.54,-328 533.54,-328 533.54,-328 691.41,-328 691.41,-328" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="691.41,-330.28 697.91,-328 691.41,-325.73 691.41,-330.28" />
+</g>
+
+<g id="P-edge14" class="edge">
+<title>P06-&gt;P07</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M864.77,-583.12C864.77,-567.51 864.77,-554 864.77,-554 864.77,-554 488.53,-554 488.53,-554 488.53,-554 488.53,-528.69 488.53,-528.69" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="490.8,-528.69 488.53,-522.19 486.25,-528.69 490.8,-528.69" />
+</g>
+
+<g id="P-edge16" class="edge">
+<title>P06-&gt;P08</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M884.72,-582.99C884.72,-545.79 884.72,-500 884.72,-500 884.72,-500 805.74,-500 805.74,-500" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="805.74,-497.73 799.24,-500 805.74,-502.28 805.74,-497.73" />
+</g>
+
+<g id="P-edge21" class="edge">
+<title>P06-&gt;P12</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M1006.24,-583.01C1006.24,-583.01 1006.24,-377.74 1006.24,-377.74" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="1008.51,-377.74 1006.24,-371.24 1003.96,-377.74 1008.51,-377.74" />
+</g>
+
+<g id="P-edge25" class="edge">
+<title>P08-&gt;P14</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M637.82,-437.25C637.82,-437.25 637.82,-232.07 637.82,-232.07" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="640.09,-232.07 637.82,-225.57 635.54,-232.07 640.09,-232.07" />
+</g>
+
+<g id="P-edge19" class="edge">
+<title>P09-&gt;P10</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M1460.75,-739.23C1460.75,-670.28 1460.75,-540 1460.75,-540 1460.75,-540 904.67,-540 904.67,-540 904.67,-540 904.67,-382.95 904.67,-382.95" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="906.94,-382.95 904.67,-376.45 902.39,-382.95 906.94,-382.95" />
+</g>
+
+<g id="P-edge20" class="edge">
+<title>P09-&gt;P11</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M1520.09,-739.1C1520.09,-739.1 1520.09,-382.87 1520.09,-382.87" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="1522.36,-382.87 1520.09,-376.37 1517.81,-382.87 1522.36,-382.87" />
+</g>
+
+<g id="P-edge22" class="edge">
+<title>P09-&gt;P12</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M1401.11,-795C1363.05,-795 1330.67,-795 1330.67,-795 1330.67,-795 1330.67,-328 1330.67,-328 1330.67,-328 1188.69,-328 1188.69,-328" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="1188.69,-325.73 1182.19,-328 1188.69,-330.28 1188.69,-325.73" />
+</g>
+
+<g id="P-edge24" class="edge">
+<title>P09-&gt;P13</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M1400.99,-767C1367.9,-767 1340.93,-767 1340.93,-767 1340.93,-767 1340.93,-231.88 1340.93,-231.88" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="1343.2,-231.88 1340.93,-225.38 1338.65,-231.88 1343.2,-231.88" />
+</g>
+
+<g id="P-edge26" class="edge">
+<title>P11-&gt;P15</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M1367.06,-281.09C1367.06,-265.49 1367.06,-252 1367.06,-252 1367.06,-252 1069.92,-252 1069.92,-252 1069.92,-252 1069.92,-231.83 1069.92,-231.83" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="1072.2,-231.83 1069.92,-225.33 1067.65,-231.83 1072.2,-231.83" />
+</g>
+
+<g id="P-edge27" class="edge">
+<title>P12-&gt;P15</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M1017.3,-286.01C1017.3,-286.01 1017.3,-232.07 1017.3,-232.07" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="1019.58,-232.07 1017.3,-225.57 1015.03,-232.07 1019.58,-232.07" />
+</g>
+
+
+
+
+
+
+
+<g id="P-edge28" class="edge">
+<title>toolkit_P-&gt;P16</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M1557.3,-156.82C1557.3,-156.82 1557.3,-91.38 1557.3,-91.38" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="1559.58,-91.38 1557.3,-84.88 1555.03,-91.38 1559.58,-91.38" />
+</g>
+
+<g id="P-node1" class="node">
+<title>P01</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M1640.14,-978.48C1640.14,-978.48 1460.47,-978.48 1460.47,-978.48 1454.47,-978.48 1448.47,-972.48 1448.47,-966.48 1448.47,-966.48 1448.47,-897.44 1448.47,-897.44 1448.47,-891.44 1454.47,-885.44 1460.47,-885.44 1460.47,-885.44 1640.14,-885.44 1640.14,-885.44 1646.14,-885.44 1652.14,-891.44 1652.14,-897.44 1652.14,-897.44 1652.14,-966.48 1652.14,-966.48 1652.14,-972.48 1646.14,-978.48 1640.14,-978.48" />
+<a href="src/01_PRELIMINARIES.html#p01" aria-label="P01 Language, complexity, and arithmetic study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="1466.87" y="-954.96" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">P01</text>
+<text xml:space="preserve" text-anchor="start" x="1466.87" y="-934.26" font-family="Arial" font-weight="bold" font-size="13.00">Language, complexity, and</text>
+<text xml:space="preserve" text-anchor="start" x="1519.24" y="-921.26" font-family="Arial" font-weight="bold" font-size="13.00">arithmetic</text>
+<text xml:space="preserve" text-anchor="start" x="1466.87" y="-902.96" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: None</text>
+</a></g>
+
+<g id="P-node2" class="node">
+<title>P02</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M1308.41,-827.44C1308.41,-827.44 1156.2,-827.44 1156.2,-827.44 1150.2,-827.44 1144.2,-821.44 1144.2,-815.44 1144.2,-815.44 1144.2,-746.4 1144.2,-746.4 1144.2,-740.4 1150.2,-734.4 1156.2,-734.4 1156.2,-734.4 1308.41,-734.4 1308.41,-734.4 1314.41,-734.4 1320.41,-740.4 1320.41,-746.4 1320.41,-746.4 1320.41,-815.44 1320.41,-815.44 1320.41,-821.44 1314.41,-827.44 1308.41,-827.44" />
+<a href="src/01_PRELIMINARIES.html#p02" aria-label="P02 Simulation and careful implementation study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="1162.6" y="-803.92" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">P02</text>
+<text xml:space="preserve" text-anchor="start" x="1162.6" y="-783.22" font-family="Arial" font-weight="bold" font-size="13.00">Simulation and careful</text>
+<text xml:space="preserve" text-anchor="start" x="1184.27" y="-770.22" font-family="Arial" font-weight="bold" font-size="13.00">implementation</text>
+<text xml:space="preserve" text-anchor="start" x="1162.6" y="-751.92" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P01</text>
+</a></g>
+
+<g id="P-node3" class="node">
+<title>P03</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M360.87,-671.2C360.87,-671.2 153.74,-671.2 153.74,-671.2 147.74,-671.2 141.74,-665.2 141.74,-659.2 141.74,-659.2 141.74,-600.56 141.74,-600.56 141.74,-594.56 147.74,-588.56 153.74,-588.56 153.74,-588.56 360.87,-588.56 360.87,-588.56 366.87,-588.56 372.87,-594.56 372.87,-600.56 372.87,-600.56 372.87,-659.2 372.87,-659.2 372.87,-665.2 366.87,-671.2 360.87,-671.2" />
+<a href="src/01_PRELIMINARIES.html#p03" aria-label="P03 Elementary strings and parsing study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="160.14" y="-647.68" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">P03</text>
+<text xml:space="preserve" text-anchor="start" x="160.14" y="-626.98" font-family="Arial" font-weight="bold" font-size="13.00">Elementary strings and parsing</text>
+<text xml:space="preserve" text-anchor="start" x="160.14" y="-606.08" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P02</text>
+</a></g>
+
+<g id="P-node4" class="node">
+<title>P04</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M637.03,-671.2C637.03,-671.2 425.58,-671.2 425.58,-671.2 419.58,-671.2 413.58,-665.2 413.58,-659.2 413.58,-659.2 413.58,-600.56 413.58,-600.56 413.58,-594.56 419.58,-588.56 425.58,-588.56 425.58,-588.56 637.03,-588.56 637.03,-588.56 643.03,-588.56 649.03,-594.56 649.03,-600.56 649.03,-600.56 649.03,-659.2 649.03,-659.2 649.03,-665.2 643.03,-671.2 637.03,-671.2" />
+<a href="src/01_PRELIMINARIES.html#p04" aria-label="P04 Sorting, comparators, and order study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="431.98" y="-647.68" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">P04</text>
+<text xml:space="preserve" text-anchor="start" x="431.98" y="-626.98" font-family="Arial" font-weight="bold" font-size="13.00">Sorting, comparators, and order</text>
+<text xml:space="preserve" text-anchor="start" x="431.98" y="-606.08" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P02</text>
+</a></g>
+
+<g id="P-node5" class="node">
+<title>P05</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M212.61,-525.36C212.61,-525.36 12,-525.36 12,-525.36 6,-525.36 0,-519.36 0,-513.36 0,-513.36 0,-444.32 0,-444.32 0,-438.32 6,-432.32 12,-432.32 12,-432.32 212.61,-432.32 212.61,-432.32 218.61,-432.32 224.61,-438.32 224.61,-444.32 224.61,-444.32 224.61,-513.36 224.61,-513.36 224.61,-519.36 218.61,-525.36 212.61,-525.36" />
+<a href="src/01_PRELIMINARIES.html#p05" aria-label="P05 Frequency counting, sets, and maps study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="18.4" y="-501.84" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">P05</text>
+<text xml:space="preserve" text-anchor="start" x="18.4" y="-481.14" font-family="Arial" font-weight="bold" font-size="13.00">Frequency counting, sets, and</text>
+<text xml:space="preserve" text-anchor="start" x="95.32" y="-468.14" font-family="Arial" font-weight="bold" font-size="13.00">maps</text>
+<text xml:space="preserve" text-anchor="start" x="18.4" y="-449.84" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P03,P04</text>
+</a></g>
+
+<g id="P-node6" class="node">
+<title>P06</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M1035.79,-676.4C1035.79,-676.4 856.82,-676.4 856.82,-676.4 850.82,-676.4 844.82,-670.4 844.82,-664.4 844.82,-664.4 844.82,-595.36 844.82,-595.36 844.82,-589.36 850.82,-583.36 856.82,-583.36 856.82,-583.36 1035.79,-583.36 1035.79,-583.36 1041.79,-583.36 1047.79,-589.36 1047.79,-595.36 1047.79,-595.36 1047.79,-664.4 1047.79,-664.4 1047.79,-670.4 1041.79,-676.4 1035.79,-676.4" />
+<a href="src/01_PRELIMINARIES.html#p06" aria-label="P06 Prefix sums and difference arrays study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="863.22" y="-652.88" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">P06</text>
+<text xml:space="preserve" text-anchor="start" x="863.22" y="-632.18" font-family="Arial" font-weight="bold" font-size="13.00">Prefix sums and difference</text>
+<text xml:space="preserve" text-anchor="start" x="926.79" y="-619.18" font-family="Arial" font-weight="bold" font-size="13.00">arrays</text>
+<text xml:space="preserve" text-anchor="start" x="863.22" y="-600.88" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P02</text>
+</a></g>
+
+<g id="P-node7" class="node">
+<title>P07</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M501.51,-520.16C501.51,-520.16 277.1,-520.16 277.1,-520.16 271.1,-520.16 265.1,-514.16 265.1,-508.16 265.1,-508.16 265.1,-449.52 265.1,-449.52 265.1,-443.52 271.1,-437.52 277.1,-437.52 277.1,-437.52 501.51,-437.52 501.51,-437.52 507.51,-437.52 513.51,-443.52 513.51,-449.52 513.51,-449.52 513.51,-508.16 513.51,-508.16 513.51,-514.16 507.51,-520.16 501.51,-520.16" />
+<a href="src/01_PRELIMINARIES.html#p07" aria-label="P07 Two pointers and sliding windows study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="283.5" y="-496.64" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">P07</text>
+<text xml:space="preserve" text-anchor="start" x="283.5" y="-475.94" font-family="Arial" font-weight="bold" font-size="13.00">Two pointers and sliding windows</text>
+<text xml:space="preserve" text-anchor="start" x="283.5" y="-455.04" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P04,P06</text>
+</a></g>
+
+<g id="P-node8" class="node">
+<title>P08</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M785.03,-520.16C785.03,-520.16 565.57,-520.16 565.57,-520.16 559.57,-520.16 553.57,-514.16 553.57,-508.16 553.57,-508.16 553.57,-449.52 553.57,-449.52 553.57,-443.52 559.57,-437.52 565.57,-437.52 565.57,-437.52 785.03,-437.52 785.03,-437.52 791.03,-437.52 797.03,-443.52 797.03,-449.52 797.03,-449.52 797.03,-508.16 797.03,-508.16 797.03,-514.16 791.03,-520.16 785.03,-520.16" />
+<a href="src/01_PRELIMINARIES.html#p08" aria-label="P08 Binary search and answer search study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="571.97" y="-496.64" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">P08</text>
+<text xml:space="preserve" text-anchor="start" x="571.97" y="-475.94" font-family="Arial" font-weight="bold" font-size="13.00">Binary search and answer search</text>
+<text xml:space="preserve" text-anchor="start" x="571.97" y="-455.04" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P04,P06</text>
+</a></g>
+
+<g id="P-node9" class="node">
+<title>P09</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M1629.19,-822.24C1629.19,-822.24 1413.41,-822.24 1413.41,-822.24 1407.41,-822.24 1401.41,-816.24 1401.41,-810.24 1401.41,-810.24 1401.41,-751.6 1401.41,-751.6 1401.41,-745.6 1407.41,-739.6 1413.41,-739.6 1413.41,-739.6 1629.19,-739.6 1629.19,-739.6 1635.19,-739.6 1641.19,-745.6 1641.19,-751.6 1641.19,-751.6 1641.19,-810.24 1641.19,-810.24 1641.19,-816.24 1635.19,-822.24 1629.19,-822.24" />
+<a href="src/01_PRELIMINARIES.html#p09" aria-label="P09 Enumeration, recursion, and bits study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="1419.81" y="-798.72" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">P09</text>
+<text xml:space="preserve" text-anchor="start" x="1419.81" y="-778.02" font-family="Arial" font-weight="bold" font-size="13.00">Enumeration, recursion, and bits</text>
+<text xml:space="preserve" text-anchor="start" x="1419.81" y="-757.12" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P01</text>
+</a></g>
+
+<g id="P-node10" class="node">
+<title>P10</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M912.62,-374.32C912.62,-374.32 711.99,-374.32 711.99,-374.32 705.99,-374.32 699.99,-368.32 699.99,-362.32 699.99,-362.32 699.99,-293.28 699.99,-293.28 699.99,-287.28 705.99,-281.28 711.99,-281.28 711.99,-281.28 912.62,-281.28 912.62,-281.28 918.62,-281.28 924.62,-287.28 924.62,-293.28 924.62,-293.28 924.62,-362.32 924.62,-362.32 924.62,-368.32 918.62,-374.32 912.62,-374.32" />
+<a href="src/01_PRELIMINARIES.html#p10" aria-label="P10 Greedy proofs, invariants, and construction study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="718.39" y="-350.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">P10</text>
+<text xml:space="preserve" text-anchor="start" x="718.39" y="-330.1" font-family="Arial" font-weight="bold" font-size="13.00">Greedy proofs, invariants, and</text>
+<text xml:space="preserve" text-anchor="start" x="772.94" y="-317.1" font-family="Arial" font-weight="bold" font-size="13.00">construction</text>
+<text xml:space="preserve" text-anchor="start" x="718.39" y="-298.8" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P04,P09</text>
+</a></g>
+
+<g id="P-node11" class="node">
+<title>P11</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M1567.42,-374.32C1567.42,-374.32 1363.18,-374.32 1363.18,-374.32 1357.18,-374.32 1351.18,-368.32 1351.18,-362.32 1351.18,-362.32 1351.18,-293.28 1351.18,-293.28 1351.18,-287.28 1357.18,-281.28 1363.18,-281.28 1363.18,-281.28 1567.42,-281.28 1567.42,-281.28 1573.42,-281.28 1579.42,-287.28 1579.42,-293.28 1579.42,-293.28 1579.42,-362.32 1579.42,-362.32 1579.42,-368.32 1573.42,-374.32 1567.42,-374.32" />
+<a href="src/01_PRELIMINARIES.html#p11" aria-label="P11 Elementary number theory and counting study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="1369.58" y="-350.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">P11</text>
+<text xml:space="preserve" text-anchor="start" x="1369.58" y="-330.1" font-family="Arial" font-weight="bold" font-size="13.00">Elementary number theory and</text>
+<text xml:space="preserve" text-anchor="start" x="1437.87" y="-317.1" font-family="Arial" font-weight="bold" font-size="13.00">counting</text>
+<text xml:space="preserve" text-anchor="start" x="1369.58" y="-298.8" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P01,P09</text>
+</a></g>
+
+<g id="P-node12" class="node">
+<title>P12</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M1167.92,-369.12C1167.92,-369.12 976.68,-369.12 976.68,-369.12 970.68,-369.12 964.68,-363.12 964.68,-357.12 964.68,-357.12 964.68,-298.48 964.68,-298.48 964.68,-292.48 970.68,-286.48 976.68,-286.48 976.68,-286.48 1167.92,-286.48 1167.92,-286.48 1173.92,-286.48 1179.92,-292.48 1179.92,-298.48 1179.92,-298.48 1179.92,-357.12 1179.92,-357.12 1179.92,-363.12 1173.92,-369.12 1167.92,-369.12" />
+<a href="src/01_PRELIMINARIES.html#p12" aria-label="P12 Basic dynamic programming study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="983.08" y="-345.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">P12</text>
+<text xml:space="preserve" text-anchor="start" x="983.08" y="-324.9" font-family="Arial" font-weight="bold" font-size="13.00">Basic dynamic programming</text>
+<text xml:space="preserve" text-anchor="start" x="983.08" y="-304" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P06,P09</text>
+</a></g>
+
+<g id="P-node13" class="node">
+<title>P13</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M1370.93,-223.28C1370.93,-223.28 1187.68,-223.28 1187.68,-223.28 1181.68,-223.28 1175.68,-217.28 1175.68,-211.28 1175.68,-211.28 1175.68,-152.64 1175.68,-152.64 1175.68,-146.64 1181.68,-140.64 1187.68,-140.64 1187.68,-140.64 1370.93,-140.64 1370.93,-140.64 1376.93,-140.64 1382.93,-146.64 1382.93,-152.64 1382.93,-152.64 1382.93,-211.28 1382.93,-211.28 1382.93,-217.28 1376.93,-223.28 1370.93,-223.28" />
+<a href="src/01_PRELIMINARIES.html#p13" aria-label="P13 Graph and tree foundations study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="1194.08" y="-199.76" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">P13</text>
+<text xml:space="preserve" text-anchor="start" x="1194.08" y="-179.06" font-family="Arial" font-weight="bold" font-size="13.00">Graph and tree foundations</text>
+<text xml:space="preserve" text-anchor="start" x="1194.08" y="-158.16" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P02,P09</text>
+</a></g>
+
+<g id="P-node14" class="node">
+<title>P14</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M796.97,-223.28C796.97,-223.28 587.64,-223.28 587.64,-223.28 581.64,-223.28 575.64,-217.28 575.64,-211.28 575.64,-211.28 575.64,-152.64 575.64,-152.64 575.64,-146.64 581.64,-140.64 587.64,-140.64 587.64,-140.64 796.97,-140.64 796.97,-140.64 802.97,-140.64 808.97,-146.64 808.97,-152.64 808.97,-152.64 808.97,-211.28 808.97,-211.28 808.97,-217.28 802.97,-223.28 796.97,-223.28" />
+<a href="src/01_PRELIMINARIES.html#p14" aria-label="P14 Geometry and numerical basics study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="594.04" y="-199.76" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">P14</text>
+<text xml:space="preserve" text-anchor="start" x="594.04" y="-179.06" font-family="Arial" font-weight="bold" font-size="13.00">Geometry and numerical basics</text>
+<text xml:space="preserve" text-anchor="start" x="594.04" y="-158.16" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P01,P08</text>
+</a></g>
+
+<g id="P-node15" class="node">
+<title>P15</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M1110.54,-223.28C1110.54,-223.28 886.07,-223.28 886.07,-223.28 880.07,-223.28 874.07,-217.28 874.07,-211.28 874.07,-211.28 874.07,-152.64 874.07,-152.64 874.07,-146.64 880.07,-140.64 886.07,-140.64 886.07,-140.64 1110.54,-140.64 1110.54,-140.64 1116.54,-140.64 1122.54,-146.64 1122.54,-152.64 1122.54,-152.64 1122.54,-211.28 1122.54,-211.28 1122.54,-217.28 1116.54,-223.28 1110.54,-223.28" />
+<a href="src/01_PRELIMINARIES.html#p15" aria-label="P15 Elementary games and probability study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="892.47" y="-199.76" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">P15</text>
+<text xml:space="preserve" text-anchor="start" x="892.47" y="-179.06" font-family="Arial" font-weight="bold" font-size="13.00">Elementary games and probability</text>
+<text xml:space="preserve" text-anchor="start" x="892.47" y="-158.16" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P09,P11,P12</text>
+</a></g>
+
+<g id="P-node16" class="node">
+<title>P16</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M1649.42,-82.64C1649.42,-82.64 1445.19,-82.64 1445.19,-82.64 1439.19,-82.64 1433.19,-76.64 1433.19,-70.64 1433.19,-70.64 1433.19,-12 1433.19,-12 1433.19,-6 1439.19,0 1445.19,0 1445.19,0 1649.42,0 1649.42,0 1655.42,0 1661.42,-6 1661.42,-12 1661.42,-12 1661.42,-70.64 1661.42,-70.64 1661.42,-76.64 1655.42,-82.64 1649.42,-82.64" />
+<a href="src/01_PRELIMINARIES.html#p16" aria-label="P16 Preliminary contest integration study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="1451.59" y="-59.12" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">P16</text>
+<text xml:space="preserve" text-anchor="start" x="1451.59" y="-38.42" font-family="Arial" font-weight="bold" font-size="13.00">Preliminary contest integration</text>
+<text xml:space="preserve" text-anchor="start" x="1451.59" y="-17.52" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P01-P15</text>
+</a></g>
+
+
+
+
+
+
+
+
+<g id="P-node24" class="node">
+<title>toolkit_P</title>
+<path fill="#ffffff" stroke="#ccd7e2" stroke-dasharray="5,2" d="M1638.58,-206.68C1638.58,-206.68 1476.03,-206.68 1476.03,-206.68 1470.03,-206.68 1464.03,-200.68 1464.03,-194.68 1464.03,-194.68 1464.03,-169.24 1464.03,-169.24 1464.03,-163.24 1470.03,-157.24 1476.03,-157.24 1476.03,-157.24 1638.58,-157.24 1638.58,-157.24 1644.58,-157.24 1650.58,-163.24 1650.58,-169.24 1650.58,-169.24 1650.58,-194.68 1650.58,-194.68 1650.58,-200.68 1644.58,-206.68 1638.58,-206.68" />
+<text xml:space="preserve" text-anchor="middle" x="1557.3" y="-185.26" font-family="Arial" font-size="11.00" fill="#596c7f">Complete the prerequisite toolkit</text>
+<text xml:space="preserve" text-anchor="middle" x="1557.3" y="-172.06" font-family="Arial" font-size="11.00" fill="#596c7f">P01-P15</text>
+</g>
+</g>
+</svg></div></div>
+<p class="references"><a href="src/01_PRELIMINARIES.html">Study guide &amp; practice problems</a> · <a href="src/01_p_roadmap.svg">SVG diagram</a></p></section>
+<section aria-labelledby="stage-R"><header class="stage-heading"><p class="eyebrow">STAGE 02</p><h2 id="stage-R">Regionals</h2><p>The main algorithmic toolkit, with continued fundamentals practice. <span>Suggested pace: 16–24 additional weeks.</span></p></header>
+<div class="diagram-frame"><div class="diagram-toolbar" hidden><span>Drag when zoomed · Ctrl + scroll to zoom</span><div class="zoom-controls"><button type="button" data-zoom="out" aria-label="Zoom out of Regionals">−</button><output aria-live="polite">100%</output><button type="button" data-zoom="in" aria-label="Zoom into Regionals">+</button><button type="button" data-zoom="reset" aria-label="Fit complete Regionals diagram">Fit</button></div></div>
+<div class="diagram" tabindex="0" role="region" aria-label="Regionals diagram. Zoom to explore; drag or use arrow keys to pan."><svg xmlns="http://www.w3.org/2000/svg" width="1424pt" height="1173pt" viewBox="0.00 0.00 1424.00 1173.00" role="group" aria-label="Regionals prerequisite roadmap">
+<style>a { cursor: pointer; } a:hover text, a:focus text { fill: #244f74; text-decoration: underline; }</style><g id="R-graph0" class="graph" transform="scale(1 1) rotate(0) translate(21.6 1151.12)">
+<title>Regionals prerequisite roadmap</title>
+<polygon fill="white" stroke="none" points="-21.6,21.6 -21.6,-1151.12 1402.4,-1151.12 1402.4,21.6 -21.6,21.6" />
+
+<g id="R-edge11" class="edge">
+<title>R01-&gt;R09</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M412.01,-1036.14C412.01,-951.32 412.01,-781 412.01,-781 412.01,-781 411.51,-781 411.51,-781" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="415.25,-778.73 408.75,-781 415.25,-783.28 415.25,-778.73" />
+</g>
+
+<g id="R-edge15" class="edge">
+<title>R01-&gt;R16</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M461.84,-1036.06C461.84,-871.11 461.84,-328 461.84,-328 461.84,-328 393.16,-328 393.16,-328" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="393.16,-325.73 386.66,-328 393.16,-330.28 393.16,-325.73" />
+</g>
+
+<g id="R-edge8" class="edge">
+<title>R02-&gt;R04</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M704.43,-1036.04C704.43,-1036.04 704.43,-982.09 704.43,-982.09" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="706.7,-982.09 704.43,-975.59 702.15,-982.09 706.7,-982.09" />
+</g>
+
+<g id="R-edge18" class="edge">
+<title>R02-&gt;R19</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M731.78,-1036.02C731.78,-936.81 731.78,-715 731.78,-715 731.78,-715 867.62,-715 867.62,-715 867.62,-715 867.62,-231.66 867.62,-231.66" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="869.9,-231.66 867.62,-225.16 865.35,-231.66 869.9,-231.66" />
+</g>
+
+<g id="R-edge9" class="edge">
+<title>R06-&gt;R05</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M872.49,-885C872.49,-885 872.49,-836.17 872.49,-836.17" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="874.76,-836.17 872.49,-829.67 870.21,-836.17 874.76,-836.17" />
+</g>
+
+<g id="R-edge10" class="edge">
+<title>R06-&gt;R07</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M1004.17,-885C1004.17,-885 1004.17,-836.17 1004.17,-836.17" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="1006.45,-836.17 1004.17,-829.67 1001.9,-836.17 1006.45,-836.17" />
+</g>
+
+<g id="R-edge16" class="edge">
+<title>R06-&gt;R17</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M928.39,-885.06C928.39,-816.25 928.39,-696 928.39,-696 928.39,-696 887.53,-696 887.53,-696 887.53,-696 887.53,-328 887.53,-328 887.53,-328 1022.68,-328 1022.68,-328" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="1022.68,-330.28 1029.18,-328 1022.68,-325.73 1022.68,-330.28" />
+</g>
+
+<g id="R-edge13" class="edge">
+<title>R08-&gt;R11</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M1129.55,-890.42C1129.55,-872.69 1129.55,-856 1129.55,-856 1129.55,-856 942.7,-856 942.7,-856 942.7,-856 942.7,-685.05 942.7,-685.05" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="944.97,-685.05 942.7,-678.55 940.42,-685.05 944.97,-685.05" />
+</g>
+
+<g id="R-edge12" class="edge">
+<title>R09-&gt;R10</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M312.44,-733.96C312.44,-733.96 312.44,-685.13 312.44,-685.13" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="314.72,-685.13 312.44,-678.63 310.17,-685.13 314.72,-685.13" />
+</g>
+
+<g id="R-edge14" class="edge">
+<title>R09-&gt;R13</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M217.89,-781C161.89,-781 101.77,-781 101.77,-781 101.77,-781 101.77,-528.85 101.77,-528.85" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="104.05,-528.85 101.77,-522.35 99.5,-528.85 104.05,-528.85" />
+</g>
+
+<g id="R-edge17" class="edge">
+<title>R14-&gt;R18</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M678.86,-431.88C678.86,-431.88 678.86,-383.05 678.86,-383.05" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="681.13,-383.05 678.86,-376.55 676.58,-383.05 681.13,-383.05" />
+</g>
+
+<g id="R-edge19" class="edge">
+<title>R14-&gt;R19</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M834.76,-432.13C834.76,-432.13 834.76,-231.93 834.76,-231.93" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="837.03,-231.93 834.76,-225.43 832.48,-231.93 837.03,-231.93" />
+</g>
+
+
+
+
+
+
+
+
+<g id="R-edge20" class="edge">
+<title>toolkit_R-&gt;R20</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M1240.44,-156.82C1240.44,-156.82 1240.44,-91.38 1240.44,-91.38" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="1242.72,-91.38 1240.44,-84.88 1238.17,-91.38 1242.72,-91.38" />
+</g>
+
+<g id="R-node1" class="node">
+<title>R01</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M644.11,-1129.52C644.11,-1129.52 416.78,-1129.52 416.78,-1129.52 410.78,-1129.52 404.78,-1123.52 404.78,-1117.52 404.78,-1117.52 404.78,-1048.48 404.78,-1048.48 404.78,-1042.48 410.78,-1036.48 416.78,-1036.48 416.78,-1036.48 644.11,-1036.48 644.11,-1036.48 650.11,-1036.48 656.11,-1042.48 656.11,-1048.48 656.11,-1048.48 656.11,-1117.52 656.11,-1117.52 656.11,-1123.52 650.11,-1129.52 644.11,-1129.52" />
+<a href="src/02_REGIONALS.html#r01" aria-label="R01 Ordered structures and monotonic structures study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="423.18" y="-1106" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">R01</text>
+<text xml:space="preserve" text-anchor="start" x="423.18" y="-1085.3" font-family="Arial" font-weight="bold" font-size="13.00">Ordered structures and monotonic</text>
+<text xml:space="preserve" text-anchor="start" x="498.65" y="-1072.3" font-family="Arial" font-weight="bold" font-size="13.00">structures</text>
+<text xml:space="preserve" text-anchor="start" x="423.18" y="-1054" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P04,P05,P07</text>
+</a></g>
+
+<g id="R-node2" class="node">
+<title>R02</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M936.13,-1129.52C936.13,-1129.52 708.75,-1129.52 708.75,-1129.52 702.75,-1129.52 696.75,-1123.52 696.75,-1117.52 696.75,-1117.52 696.75,-1048.48 696.75,-1048.48 696.75,-1042.48 702.75,-1036.48 708.75,-1036.48 708.75,-1036.48 936.13,-1036.48 936.13,-1036.48 942.13,-1036.48 948.13,-1042.48 948.13,-1048.48 948.13,-1048.48 948.13,-1117.52 948.13,-1117.52 948.13,-1123.52 942.13,-1129.52 936.13,-1129.52" />
+<a href="src/02_REGIONALS.html#r02" aria-label="R02 DP breadth: knapsack, sequences, grids, intervals study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="715.15" y="-1106" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">R02</text>
+<text xml:space="preserve" text-anchor="start" x="715.15" y="-1085.3" font-family="Arial" font-weight="bold" font-size="13.00">DP breadth: knapsack, sequences,</text>
+<text xml:space="preserve" text-anchor="start" x="776.2" y="-1072.3" font-family="Arial" font-weight="bold" font-size="13.00">grids, intervals</text>
+<text xml:space="preserve" text-anchor="start" x="715.15" y="-1054" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P12,P13</text>
+</a></g>
+
+<g id="R-node3" class="node">
+<title>R03</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M1231,-1124.32C1231,-1124.32 1049.89,-1124.32 1049.89,-1124.32 1043.89,-1124.32 1037.89,-1118.32 1037.89,-1112.32 1037.89,-1112.32 1037.89,-1053.68 1037.89,-1053.68 1037.89,-1047.68 1043.89,-1041.68 1049.89,-1041.68 1049.89,-1041.68 1231,-1041.68 1231,-1041.68 1237,-1041.68 1243,-1047.68 1243,-1053.68 1243,-1053.68 1243,-1112.32 1243,-1112.32 1243,-1118.32 1237,-1124.32 1231,-1124.32" />
+<a href="src/02_REGIONALS.html#r03" aria-label="R03 Small exponential methods study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="1056.29" y="-1100.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">R03</text>
+<text xml:space="preserve" text-anchor="start" x="1056.29" y="-1080.1" font-family="Arial" font-weight="bold" font-size="13.00">Small exponential methods</text>
+<text xml:space="preserve" text-anchor="start" x="1056.29" y="-1059.2" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P09,P12</text>
+</a></g>
+
+<g id="R-node4" class="node">
+<title>R04</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M700.1,-973.28C700.1,-973.28 550.78,-973.28 550.78,-973.28 544.78,-973.28 538.78,-967.28 538.78,-961.28 538.78,-961.28 538.78,-902.64 538.78,-902.64 538.78,-896.64 544.78,-890.64 550.78,-890.64 550.78,-890.64 700.1,-890.64 700.1,-890.64 706.1,-890.64 712.1,-896.64 712.1,-902.64 712.1,-902.64 712.1,-961.28 712.1,-961.28 712.1,-967.28 706.1,-973.28 700.1,-973.28" />
+<a href="src/02_REGIONALS.html#r04" aria-label="R04 Tree DP and rerooting study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="557.18" y="-949.76" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">R04</text>
+<text xml:space="preserve" text-anchor="start" x="557.18" y="-929.06" font-family="Arial" font-weight="bold" font-size="13.00">Tree DP and rerooting</text>
+<text xml:space="preserve" text-anchor="start" x="557.18" y="-908.16" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P13,R02</text>
+</a></g>
+
+<g id="R-node5" class="node">
+<title>R05</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M895.43,-827.44C895.43,-827.44 763.45,-827.44 763.45,-827.44 757.45,-827.44 751.45,-821.44 751.45,-815.44 751.45,-815.44 751.45,-746.4 751.45,-746.4 751.45,-740.4 757.45,-734.4 763.45,-734.4 763.45,-734.4 895.43,-734.4 895.43,-734.4 901.43,-734.4 907.43,-740.4 907.43,-746.4 907.43,-746.4 907.43,-815.44 907.43,-815.44 907.43,-821.44 901.43,-827.44 895.43,-827.44" />
+<a href="src/02_REGIONALS.html#r05" aria-label="R05 Binary lifting, Euler flattening, and LCA study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="769.85" y="-803.92" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">R05</text>
+<text xml:space="preserve" text-anchor="start" x="769.85" y="-783.22" font-family="Arial" font-weight="bold" font-size="13.00">Binary lifting, Euler</text>
+<text xml:space="preserve" text-anchor="start" x="769.86" y="-770.22" font-family="Arial" font-weight="bold" font-size="13.00">flattening, and LCA</text>
+<text xml:space="preserve" text-anchor="start" x="769.85" y="-751.92" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P13,R06</text>
+</a></g>
+
+<g id="R-node6" class="node">
+<title>R06</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M1039.34,-978.48C1039.34,-978.48 849.54,-978.48 849.54,-978.48 843.54,-978.48 837.54,-972.48 837.54,-966.48 837.54,-966.48 837.54,-897.44 837.54,-897.44 837.54,-891.44 843.54,-885.44 849.54,-885.44 849.54,-885.44 1039.34,-885.44 1039.34,-885.44 1045.34,-885.44 1051.34,-891.44 1051.34,-897.44 1051.34,-897.44 1051.34,-966.48 1051.34,-966.48 1051.34,-972.48 1045.34,-978.48 1039.34,-978.48" />
+<a href="src/02_REGIONALS.html#r06" aria-label="R06 Fenwick, segment trees, and sparse tables study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="855.94" y="-954.96" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">R06</text>
+<text xml:space="preserve" text-anchor="start" x="855.94" y="-934.26" font-family="Arial" font-weight="bold" font-size="13.00">Fenwick, segment trees, and</text>
+<text xml:space="preserve" text-anchor="start" x="902.89" y="-921.26" font-family="Arial" font-weight="bold" font-size="13.00">sparse tables</text>
+<text xml:space="preserve" text-anchor="start" x="855.94" y="-902.96" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P06,P08</text>
+</a></g>
+
+<g id="R-node7" class="node">
+<title>R07</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M1155.88,-827.44C1155.88,-827.44 969,-827.44 969,-827.44 963,-827.44 957,-821.44 957,-815.44 957,-815.44 957,-746.4 957,-746.4 957,-740.4 963,-734.4 969,-734.4 969,-734.4 1155.88,-734.4 1155.88,-734.4 1161.88,-734.4 1167.88,-740.4 1167.88,-746.4 1167.88,-746.4 1167.88,-815.44 1167.88,-815.44 1167.88,-821.44 1161.88,-827.44 1155.88,-827.44" />
+<a href="src/02_REGIONALS.html#r07" aria-label="R07 Lazy propagation and richer range queries study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="975.4" y="-803.92" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">R07</text>
+<text xml:space="preserve" text-anchor="start" x="975.4" y="-783.22" font-family="Arial" font-weight="bold" font-size="13.00">Lazy propagation and richer</text>
+<text xml:space="preserve" text-anchor="start" x="1019.81" y="-770.22" font-family="Arial" font-weight="bold" font-size="13.00">range queries</text>
+<text xml:space="preserve" text-anchor="start" x="975.4" y="-751.92" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: R06</text>
+</a></g>
+
+<g id="R-node8" class="node">
+<title>R08</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M1327.66,-973.28C1327.66,-973.28 1103.22,-973.28 1103.22,-973.28 1097.22,-973.28 1091.22,-967.28 1091.22,-961.28 1091.22,-961.28 1091.22,-902.64 1091.22,-902.64 1091.22,-896.64 1097.22,-890.64 1103.22,-890.64 1103.22,-890.64 1327.66,-890.64 1327.66,-890.64 1333.66,-890.64 1339.66,-896.64 1339.66,-902.64 1339.66,-902.64 1339.66,-961.28 1339.66,-961.28 1339.66,-967.28 1333.66,-973.28 1327.66,-973.28" />
+<a href="src/02_REGIONALS.html#r08" aria-label="R08 DSU and minimum spanning trees study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="1109.62" y="-949.76" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">R08</text>
+<text xml:space="preserve" text-anchor="start" x="1109.62" y="-929.06" font-family="Arial" font-weight="bold" font-size="13.00">DSU and minimum spanning trees</text>
+<text xml:space="preserve" text-anchor="start" x="1109.62" y="-908.16" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P04,P13</text>
+</a></g>
+
+<g id="R-node9" class="node">
+<title>R09</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M394.69,-827.44C394.69,-827.44 230.19,-827.44 230.19,-827.44 224.19,-827.44 218.19,-821.44 218.19,-815.44 218.19,-815.44 218.19,-746.4 218.19,-746.4 218.19,-740.4 224.19,-734.4 230.19,-734.4 230.19,-734.4 394.69,-734.4 394.69,-734.4 400.69,-734.4 406.69,-740.4 406.69,-746.4 406.69,-746.4 406.69,-815.44 406.69,-815.44 406.69,-821.44 400.69,-827.44 394.69,-827.44" />
+<a href="src/02_REGIONALS.html#r09" aria-label="R09 Shortest paths and state expansion study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="236.59" y="-803.92" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">R09</text>
+<text xml:space="preserve" text-anchor="start" x="236.59" y="-783.22" font-family="Arial" font-weight="bold" font-size="13.00">Shortest paths and state</text>
+<text xml:space="preserve" text-anchor="start" x="280.29" y="-770.22" font-family="Arial" font-weight="bold" font-size="13.00">expansion</text>
+<text xml:space="preserve" text-anchor="start" x="236.59" y="-751.92" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P13,R01</text>
+</a></g>
+
+<g id="R-node10" class="node">
+<title>R10</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M405.33,-676.4C405.33,-676.4 215.55,-676.4 215.55,-676.4 209.55,-676.4 203.55,-670.4 203.55,-664.4 203.55,-664.4 203.55,-595.36 203.55,-595.36 203.55,-589.36 209.55,-583.36 215.55,-583.36 215.55,-583.36 405.33,-583.36 405.33,-583.36 411.33,-583.36 417.33,-589.36 417.33,-595.36 417.33,-595.36 417.33,-664.4 417.33,-664.4 417.33,-670.4 411.33,-676.4 405.33,-676.4" />
+<a href="src/02_REGIONALS.html#r10" aria-label="R10 Directed structure, SCC, and 2-SAT study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="221.95" y="-652.88" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">R10</text>
+<text xml:space="preserve" text-anchor="start" x="221.95" y="-632.18" font-family="Arial" font-weight="bold" font-size="13.00">Directed structure, SCC, and</text>
+<text xml:space="preserve" text-anchor="start" x="291.66" y="-619.18" font-family="Arial" font-weight="bold" font-size="13.00">2-SAT</text>
+<text xml:space="preserve" text-anchor="start" x="221.95" y="-600.88" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P13,R09</text>
+</a></g>
+
+<g id="R-node11" class="node">
+<title>R11</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M1110.8,-676.4C1110.8,-676.4 926.09,-676.4 926.09,-676.4 920.09,-676.4 914.09,-670.4 914.09,-664.4 914.09,-664.4 914.09,-595.36 914.09,-595.36 914.09,-589.36 920.09,-583.36 926.09,-583.36 926.09,-583.36 1110.8,-583.36 1110.8,-583.36 1116.8,-583.36 1122.8,-589.36 1122.8,-595.36 1122.8,-595.36 1122.8,-664.4 1122.8,-664.4 1122.8,-670.4 1116.8,-676.4 1110.8,-676.4" />
+<a href="src/02_REGIONALS.html#r11" aria-label="R11 Bridges, articulation points, and BCC study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="932.49" y="-652.88" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">R11</text>
+<text xml:space="preserve" text-anchor="start" x="932.49" y="-632.18" font-family="Arial" font-weight="bold" font-size="13.00">Bridges, articulation points,</text>
+<text xml:space="preserve" text-anchor="start" x="991" y="-619.18" font-family="Arial" font-weight="bold" font-size="13.00">and BCC</text>
+<text xml:space="preserve" text-anchor="start" x="932.49" y="-600.88" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P13,R08</text>
+</a></g>
+
+<g id="R-node12" class="node">
+<title>R12</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M1325.66,-676.4C1325.66,-676.4 1179.22,-676.4 1179.22,-676.4 1173.22,-676.4 1167.22,-670.4 1167.22,-664.4 1167.22,-664.4 1167.22,-595.36 1167.22,-595.36 1167.22,-589.36 1173.22,-583.36 1179.22,-583.36 1179.22,-583.36 1325.66,-583.36 1325.66,-583.36 1331.66,-583.36 1337.66,-589.36 1337.66,-595.36 1337.66,-595.36 1337.66,-664.4 1337.66,-664.4 1337.66,-670.4 1331.66,-676.4 1325.66,-676.4" />
+<a href="src/02_REGIONALS.html#r12" aria-label="R12 Euler trails and graph construction study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="1185.62" y="-652.88" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">R12</text>
+<text xml:space="preserve" text-anchor="start" x="1185.62" y="-632.18" font-family="Arial" font-weight="bold" font-size="13.00">Euler trails and graph</text>
+<text xml:space="preserve" text-anchor="start" x="1213.08" y="-619.18" font-family="Arial" font-weight="bold" font-size="13.00">construction</text>
+<text xml:space="preserve" text-anchor="start" x="1185.62" y="-600.88" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P10,P13</text>
+</a></g>
+
+<g id="R-node13" class="node">
+<title>R13</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M224.88,-520.16C224.88,-520.16 12,-520.16 12,-520.16 6,-520.16 0,-514.16 0,-508.16 0,-508.16 0,-449.52 0,-449.52 0,-443.52 6,-437.52 12,-437.52 12,-437.52 224.88,-437.52 224.88,-437.52 230.88,-437.52 236.88,-443.52 236.88,-449.52 236.88,-449.52 236.88,-508.16 236.88,-508.16 236.88,-514.16 230.88,-520.16 224.88,-520.16" />
+<a href="src/02_REGIONALS.html#r13" aria-label="R13 Bipartite matching and max flow study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="18.4" y="-496.64" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">R13</text>
+<text xml:space="preserve" text-anchor="start" x="18.4" y="-475.94" font-family="Arial" font-weight="bold" font-size="13.00">Bipartite matching and max flow</text>
+<text xml:space="preserve" text-anchor="start" x="18.4" y="-455.04" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P13,R09</text>
+</a></g>
+
+<g id="R-node14" class="node">
+<title>R14</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M835.71,-525.36C835.71,-525.36 653.17,-525.36 653.17,-525.36 647.17,-525.36 641.17,-519.36 641.17,-513.36 641.17,-513.36 641.17,-444.32 641.17,-444.32 641.17,-438.32 647.17,-432.32 653.17,-432.32 653.17,-432.32 835.71,-432.32 835.71,-432.32 841.71,-432.32 847.71,-438.32 847.71,-444.32 847.71,-444.32 847.71,-513.36 847.71,-513.36 847.71,-519.36 841.71,-525.36 835.71,-525.36" />
+<a href="src/02_REGIONALS.html#r14" aria-label="R14 Modular combinatorics and recurrences study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="659.57" y="-501.84" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">R14</text>
+<text xml:space="preserve" text-anchor="start" x="659.57" y="-481.14" font-family="Arial" font-weight="bold" font-size="13.00">Modular combinatorics and</text>
+<text xml:space="preserve" text-anchor="start" x="707.22" y="-468.14" font-family="Arial" font-weight="bold" font-size="13.00">recurrences</text>
+<text xml:space="preserve" text-anchor="start" x="659.57" y="-449.84" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P11,P12</text>
+</a></g>
+
+<g id="R-node15" class="node">
+<title>R15</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M1279.01,-525.36C1279.01,-525.36 1079.87,-525.36 1079.87,-525.36 1073.87,-525.36 1067.87,-519.36 1067.87,-513.36 1067.87,-513.36 1067.87,-444.32 1067.87,-444.32 1067.87,-438.32 1073.87,-432.32 1079.87,-432.32 1079.87,-432.32 1279.01,-432.32 1279.01,-432.32 1285.01,-432.32 1291.01,-438.32 1291.01,-444.32 1291.01,-444.32 1291.01,-513.36 1291.01,-513.36 1291.01,-519.36 1285.01,-525.36 1279.01,-525.36" />
+<a href="src/02_REGIONALS.html#r15" aria-label="R15 String matching, hashing, and tries study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="1086.27" y="-501.84" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">R15</text>
+<text xml:space="preserve" text-anchor="start" x="1086.27" y="-481.14" font-family="Arial" font-weight="bold" font-size="13.00">String matching, hashing, and</text>
+<text xml:space="preserve" text-anchor="start" x="1165.71" y="-468.14" font-family="Arial" font-weight="bold" font-size="13.00">tries</text>
+<text xml:space="preserve" text-anchor="start" x="1086.27" y="-449.84" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P03,P05</text>
+</a></g>
+
+<g id="R-node16" class="node">
+<title>R16</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M372.44,-369.12C372.44,-369.12 154.45,-369.12 154.45,-369.12 148.45,-369.12 142.45,-363.12 142.45,-357.12 142.45,-357.12 142.45,-298.48 142.45,-298.48 142.45,-292.48 148.45,-286.48 154.45,-286.48 154.45,-286.48 372.44,-286.48 372.44,-286.48 378.44,-286.48 384.44,-292.48 384.44,-298.48 384.44,-298.48 384.44,-357.12 384.44,-357.12 384.44,-363.12 378.44,-369.12 372.44,-369.12" />
+<a href="src/02_REGIONALS.html#r16" aria-label="R16 Planar geometry and sweep lines study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="160.85" y="-345.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">R16</text>
+<text xml:space="preserve" text-anchor="start" x="160.85" y="-324.9" font-family="Arial" font-weight="bold" font-size="13.00">Planar geometry and sweep lines</text>
+<text xml:space="preserve" text-anchor="start" x="160.85" y="-304" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P14,R01</text>
+</a></g>
+
+<g id="R-node17" class="node">
+<title>R17</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M1249.63,-374.32C1249.63,-374.32 1043.25,-374.32 1043.25,-374.32 1037.25,-374.32 1031.25,-368.32 1031.25,-362.32 1031.25,-362.32 1031.25,-293.28 1031.25,-293.28 1031.25,-287.28 1037.25,-281.28 1043.25,-281.28 1043.25,-281.28 1249.63,-281.28 1249.63,-281.28 1255.63,-281.28 1261.63,-287.28 1261.63,-293.28 1261.63,-293.28 1261.63,-362.32 1261.63,-362.32 1261.63,-368.32 1255.63,-374.32 1249.63,-374.32" />
+<a href="src/02_REGIONALS.html#r17" aria-label="R17 Offline queries and square-root decomposition study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="1049.65" y="-350.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">R17</text>
+<text xml:space="preserve" text-anchor="start" x="1049.65" y="-330.1" font-family="Arial" font-weight="bold" font-size="13.00">Offline queries and square-root</text>
+<text xml:space="preserve" text-anchor="start" x="1100.22" y="-317.1" font-family="Arial" font-weight="bold" font-size="13.00">decomposition</text>
+<text xml:space="preserve" text-anchor="start" x="1049.65" y="-298.8" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P06,R06</text>
+</a></g>
+
+<g id="R-node18" class="node">
+<title>R18</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M704.55,-374.32C704.55,-374.32 518.34,-374.32 518.34,-374.32 512.34,-374.32 506.34,-368.32 506.34,-362.32 506.34,-362.32 506.34,-293.28 506.34,-293.28 506.34,-287.28 512.34,-281.28 518.34,-281.28 518.34,-281.28 704.55,-281.28 704.55,-281.28 710.55,-281.28 716.55,-287.28 716.55,-293.28 716.55,-293.28 716.55,-362.32 716.55,-362.32 716.55,-368.32 710.55,-374.32 704.55,-374.32" />
+<a href="src/02_REGIONALS.html#r18" aria-label="R18 Numerical search and linear algebra introduction study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="524.74" y="-350.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">R18</text>
+<text xml:space="preserve" text-anchor="start" x="524.74" y="-330.1" font-family="Arial" font-weight="bold" font-size="13.00">Numerical search and linear</text>
+<text xml:space="preserve" text-anchor="start" x="548.61" y="-317.1" font-family="Arial" font-weight="bold" font-size="13.00">algebra introduction</text>
+<text xml:space="preserve" text-anchor="start" x="524.74" y="-298.8" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P08,P14,R14</text>
+</a></g>
+
+<g id="R-node19" class="node">
+<title>R19</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M1043.08,-223.28C1043.08,-223.28 833.8,-223.28 833.8,-223.28 827.8,-223.28 821.8,-217.28 821.8,-211.28 821.8,-211.28 821.8,-152.64 821.8,-152.64 821.8,-146.64 827.8,-140.64 833.8,-140.64 833.8,-140.64 1043.08,-140.64 1043.08,-140.64 1049.08,-140.64 1055.08,-146.64 1055.08,-152.64 1055.08,-152.64 1055.08,-211.28 1055.08,-211.28 1055.08,-217.28 1049.08,-223.28 1043.08,-223.28" />
+<a href="src/02_REGIONALS.html#r19" aria-label="R19 Regional games and probability study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="840.2" y="-199.76" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">R19</text>
+<text xml:space="preserve" text-anchor="start" x="840.2" y="-179.06" font-family="Arial" font-weight="bold" font-size="13.00">Regional games and probability</text>
+<text xml:space="preserve" text-anchor="start" x="840.2" y="-158.16" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P15,R02,R14</text>
+</a></g>
+
+<g id="R-node20" class="node">
+<title>R20</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M1327.6,-82.64C1327.6,-82.64 1139.29,-82.64 1139.29,-82.64 1133.29,-82.64 1127.29,-76.64 1127.29,-70.64 1127.29,-70.64 1127.29,-12 1127.29,-12 1127.29,-6 1133.29,0 1139.29,0 1139.29,0 1327.6,0 1327.6,0 1333.6,0 1339.6,-6 1339.6,-12 1339.6,-12 1339.6,-70.64 1339.6,-70.64 1339.6,-76.64 1333.6,-82.64 1327.6,-82.64" />
+<a href="src/02_REGIONALS.html#r20" aria-label="R20 Regional contest integration study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="1145.69" y="-59.12" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">R20</text>
+<text xml:space="preserve" text-anchor="start" x="1145.69" y="-38.42" font-family="Arial" font-weight="bold" font-size="13.00">Regional contest integration</text>
+<text xml:space="preserve" text-anchor="start" x="1145.69" y="-17.52" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P16,R01-R19</text>
+</a></g>
+
+
+
+
+
+
+
+
+
+<g id="R-node29" class="node">
+<title>toolkit_R</title>
+<path fill="#ffffff" stroke="#ccd7e2" stroke-dasharray="5,2" d="M1321.72,-206.68C1321.72,-206.68 1159.17,-206.68 1159.17,-206.68 1153.17,-206.68 1147.17,-200.68 1147.17,-194.68 1147.17,-194.68 1147.17,-169.24 1147.17,-169.24 1147.17,-163.24 1153.17,-157.24 1159.17,-157.24 1159.17,-157.24 1321.72,-157.24 1321.72,-157.24 1327.72,-157.24 1333.72,-163.24 1333.72,-169.24 1333.72,-169.24 1333.72,-194.68 1333.72,-194.68 1333.72,-200.68 1327.72,-206.68 1321.72,-206.68" />
+<text xml:space="preserve" text-anchor="middle" x="1240.44" y="-185.26" font-family="Arial" font-size="11.00" fill="#596c7f">Complete the prerequisite toolkit</text>
+<text xml:space="preserve" text-anchor="middle" x="1240.44" y="-172.06" font-family="Arial" font-size="11.00" fill="#596c7f">P16,R01-R19</text>
+</g>
+</g>
+</svg></div></div>
+<p class="references"><a href="src/02_REGIONALS.html">Study guide &amp; practice problems</a> · <a href="src/02_r_roadmap.svg">SVG diagram</a></p></section>
+<section aria-labelledby="stage-C"><header class="stage-heading"><p class="eyebrow">STAGE 03</p><h2 id="stage-C">Championship</h2><p>Advanced techniques, stronger proofs, and combined models. <span>Progress according to mastery.</span></p></header>
+<div class="diagram-frame"><div class="diagram-toolbar" hidden><span>Drag when zoomed · Ctrl + scroll to zoom</span><div class="zoom-controls"><button type="button" data-zoom="out" aria-label="Zoom out of Championship">−</button><output aria-live="polite">100%</output><button type="button" data-zoom="in" aria-label="Zoom into Championship">+</button><button type="button" data-zoom="reset" aria-label="Fit complete Championship diagram">Fit</button></div></div>
+<div class="diagram" tabindex="0" role="region" aria-label="Championship diagram. Zoom to explore; drag or use arrow keys to pan."><svg xmlns="http://www.w3.org/2000/svg" width="935pt" height="730pt" viewBox="0.00 0.00 935.00 730.00" role="group" aria-label="Championship prerequisite roadmap">
+<style>a { cursor: pointer; } a:hover text, a:focus text { fill: #244f74; text-decoration: underline; }</style><g id="C-graph0" class="graph" transform="scale(1 1) rotate(0) translate(21.6 708.4)">
+<title>Championship prerequisite roadmap</title>
+<polygon fill="white" stroke="none" points="-21.6,21.6 -21.6,-708.4 912.95,-708.4 912.95,21.6 -21.6,21.6" />
+
+<g id="C-edge5" class="edge">
+<title>C01-&gt;C11</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M81.16,-593.49C81.16,-593.49 81.16,-242.35 81.16,-242.35" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="83.43,-242.35 81.16,-235.85 78.88,-242.35 83.43,-242.35" />
+</g>
+
+
+
+
+
+<g id="C-edge6" class="edge">
+<title>toolkit_C-&gt;C12</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M741.99,-162.09C741.99,-162.09 741.99,-91.19 741.99,-91.19" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="744.26,-91.19 741.99,-84.69 739.71,-91.19 744.26,-91.19" />
+</g>
+
+<g id="C-node1" class="node">
+<title>C01</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M257.81,-686.8C257.81,-686.8 52.16,-686.8 52.16,-686.8 46.16,-686.8 40.16,-680.8 40.16,-674.8 40.16,-674.8 40.16,-605.76 40.16,-605.76 40.16,-599.76 46.16,-593.76 52.16,-593.76 52.16,-593.76 257.81,-593.76 257.81,-593.76 263.81,-593.76 269.81,-599.76 269.81,-605.76 269.81,-605.76 269.81,-674.8 269.81,-674.8 269.81,-680.8 263.81,-686.8 257.81,-686.8" />
+<a href="src/03_CHAMPIONSHIP.html#c01" aria-label="C01 Heavy-light decomposition and small-to-large study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="58.56" y="-663.28" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">C01</text>
+<text xml:space="preserve" text-anchor="start" x="58.56" y="-642.58" font-family="Arial" font-weight="bold" font-size="13.00">Heavy-light decomposition and</text>
+<text xml:space="preserve" text-anchor="start" x="112.36" y="-629.58" font-family="Arial" font-weight="bold" font-size="13.00">small-to-large</text>
+<text xml:space="preserve" text-anchor="start" x="58.56" y="-611.28" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: R04,R05,R07</text>
+</a></g>
+
+<g id="C-node2" class="node">
+<title>C02</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M574.23,-686.8C574.23,-686.8 357.74,-686.8 357.74,-686.8 351.74,-686.8 345.74,-680.8 345.74,-674.8 345.74,-674.8 345.74,-605.76 345.74,-605.76 345.74,-599.76 351.74,-593.76 357.74,-593.76 357.74,-593.76 574.23,-593.76 574.23,-593.76 580.23,-593.76 586.23,-599.76 586.23,-605.76 586.23,-605.76 586.23,-674.8 586.23,-674.8 586.23,-680.8 580.23,-686.8 574.23,-686.8" />
+<a href="src/03_CHAMPIONSHIP.html#c02" aria-label="C02 Centroid decomposition and tree counting study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="364.14" y="-663.28" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">C02</text>
+<text xml:space="preserve" text-anchor="start" x="364.14" y="-642.58" font-family="Arial" font-weight="bold" font-size="13.00">Centroid decomposition and tree</text>
+<text xml:space="preserve" text-anchor="start" x="438.55" y="-629.58" font-family="Arial" font-weight="bold" font-size="13.00">counting</text>
+<text xml:space="preserve" text-anchor="start" x="364.14" y="-611.28" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: R04,R05</text>
+</a></g>
+
+<g id="C-node3" class="node">
+<title>C03</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M829.59,-686.8C829.59,-686.8 656.38,-686.8 656.38,-686.8 650.38,-686.8 644.38,-680.8 644.38,-674.8 644.38,-674.8 644.38,-605.76 644.38,-605.76 644.38,-599.76 650.38,-593.76 656.38,-593.76 656.38,-593.76 829.59,-593.76 829.59,-593.76 835.59,-593.76 841.59,-599.76 841.59,-605.76 841.59,-605.76 841.59,-674.8 841.59,-674.8 841.59,-680.8 835.59,-686.8 829.59,-686.8" />
+<a href="src/03_CHAMPIONSHIP.html#c03" aria-label="C03 Persistence, rollback, and parallel binary search study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="662.78" y="-663.28" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">C03</text>
+<text xml:space="preserve" text-anchor="start" x="662.78" y="-642.58" font-family="Arial" font-weight="bold" font-size="13.00">Persistence, rollback, and</text>
+<text xml:space="preserve" text-anchor="start" x="676.14" y="-629.58" font-family="Arial" font-weight="bold" font-size="13.00">parallel binary search</text>
+<text xml:space="preserve" text-anchor="start" x="662.78" y="-611.28" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: R06,R08,R17</text>
+</a></g>
+
+<g id="C-node4" class="node">
+<title>C04</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M300.47,-530.56C300.47,-530.56 181.5,-530.56 181.5,-530.56 175.5,-530.56 169.5,-524.56 169.5,-518.56 169.5,-518.56 169.5,-459.92 169.5,-459.92 169.5,-453.92 175.5,-447.92 181.5,-447.92 181.5,-447.92 300.47,-447.92 300.47,-447.92 306.47,-447.92 312.47,-453.92 312.47,-459.92 312.47,-459.92 312.47,-518.56 312.47,-518.56 312.47,-524.56 306.47,-530.56 300.47,-530.56" />
+<a href="src/03_CHAMPIONSHIP.html#c04" aria-label="C04 DP optimization study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="187.9" y="-507.04" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">C04</text>
+<text xml:space="preserve" text-anchor="start" x="187.9" y="-486.34" font-family="Arial" font-weight="bold" font-size="13.00">DP optimization</text>
+<text xml:space="preserve" text-anchor="start" x="187.9" y="-465.44" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: R02,R06,R18</text>
+</a></g>
+
+<g id="C-node5" class="node">
+<title>C05</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M554.39,-535.76C554.39,-535.76 385.58,-535.76 385.58,-535.76 379.58,-535.76 373.58,-529.76 373.58,-523.76 373.58,-523.76 373.58,-454.72 373.58,-454.72 373.58,-448.72 379.58,-442.72 385.58,-442.72 385.58,-442.72 554.39,-442.72 554.39,-442.72 560.39,-442.72 566.39,-448.72 566.39,-454.72 566.39,-454.72 566.39,-523.76 566.39,-523.76 566.39,-529.76 560.39,-535.76 554.39,-535.76" />
+<a href="src/03_CHAMPIONSHIP.html#c05" aria-label="C05 Digit, profile, and subset-transform DP study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="391.98" y="-512.24" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">C05</text>
+<text xml:space="preserve" text-anchor="start" x="391.98" y="-491.54" font-family="Arial" font-weight="bold" font-size="13.00">Digit, profile, and subset-</text>
+<text xml:space="preserve" text-anchor="start" x="428.81" y="-478.54" font-family="Arial" font-weight="bold" font-size="13.00">transform DP</text>
+<text xml:space="preserve" text-anchor="start" x="391.98" y="-460.24" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: R03,R14</text>
+</a></g>
+
+<g id="C-node6" class="node">
+<title>C06</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M833.46,-530.56C833.46,-530.56 628.51,-530.56 628.51,-530.56 622.51,-530.56 616.51,-524.56 616.51,-518.56 616.51,-518.56 616.51,-459.92 616.51,-459.92 616.51,-453.92 622.51,-447.92 628.51,-447.92 628.51,-447.92 833.46,-447.92 833.46,-447.92 839.46,-447.92 845.46,-453.92 845.46,-459.92 845.46,-459.92 845.46,-518.56 845.46,-518.56 845.46,-524.56 839.46,-530.56 833.46,-530.56" />
+<a href="src/03_CHAMPIONSHIP.html#c06" aria-label="C06 Automata and suffix structures study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="634.91" y="-507.04" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">C06</text>
+<text xml:space="preserve" text-anchor="start" x="634.91" y="-486.34" font-family="Arial" font-weight="bold" font-size="13.00">Automata and suffix structures</text>
+<text xml:space="preserve" text-anchor="start" x="634.91" y="-465.44" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: R15</text>
+</a></g>
+
+<g id="C-node7" class="node">
+<title>C07</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M339.81,-384.72C339.81,-384.72 134.16,-384.72 134.16,-384.72 128.16,-384.72 122.16,-378.72 122.16,-372.72 122.16,-372.72 122.16,-303.68 122.16,-303.68 122.16,-297.68 128.16,-291.68 134.16,-291.68 134.16,-291.68 339.81,-291.68 339.81,-291.68 345.81,-291.68 351.81,-297.68 351.81,-303.68 351.81,-303.68 351.81,-372.72 351.81,-372.72 351.81,-378.72 345.81,-384.72 339.81,-384.72" />
+<a href="src/03_CHAMPIONSHIP.html#c07" aria-label="C07 Min-cost flow, assignment, and constrained flow study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="140.56" y="-361.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">C07</text>
+<text xml:space="preserve" text-anchor="start" x="140.56" y="-340.5" font-family="Arial" font-weight="bold" font-size="13.00">Min-cost flow, assignment, and</text>
+<text xml:space="preserve" text-anchor="start" x="185.34" y="-327.5" font-family="Arial" font-weight="bold" font-size="13.00">constrained flow</text>
+<text xml:space="preserve" text-anchor="start" x="140.56" y="-309.2" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: R13,R09</text>
+</a></g>
+
+<g id="C-node8" class="node">
+<title>C08</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M600.12,-384.72C600.12,-384.72 403.85,-384.72 403.85,-384.72 397.85,-384.72 391.85,-378.72 391.85,-372.72 391.85,-372.72 391.85,-303.68 391.85,-303.68 391.85,-297.68 397.85,-291.68 403.85,-291.68 403.85,-291.68 600.12,-291.68 600.12,-291.68 606.12,-291.68 612.12,-297.68 612.12,-303.68 612.12,-303.68 612.12,-372.72 612.12,-372.72 612.12,-378.72 606.12,-384.72 600.12,-384.72" />
+<a href="src/03_CHAMPIONSHIP.html#c08" aria-label="C08 Advanced number theory and polynomial tools study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="410.25" y="-361.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">C08</text>
+<text xml:space="preserve" text-anchor="start" x="410.25" y="-340.5" font-family="Arial" font-weight="bold" font-size="13.00">Advanced number theory and</text>
+<text xml:space="preserve" text-anchor="start" x="450.34" y="-327.5" font-family="Arial" font-weight="bold" font-size="13.00">polynomial tools</text>
+<text xml:space="preserve" text-anchor="start" x="410.25" y="-309.2" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: R14</text>
+</a></g>
+
+<g id="C-node9" class="node">
+<title>C09</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M838.3,-384.72C838.3,-384.72 663.67,-384.72 663.67,-384.72 657.67,-384.72 651.67,-378.72 651.67,-372.72 651.67,-372.72 651.67,-303.68 651.67,-303.68 651.67,-297.68 657.67,-291.68 663.67,-291.68 663.67,-291.68 838.3,-291.68 838.3,-291.68 844.3,-291.68 850.3,-297.68 850.3,-303.68 850.3,-303.68 850.3,-372.72 850.3,-372.72 850.3,-378.72 844.3,-384.72 838.3,-384.72" />
+<a href="src/03_CHAMPIONSHIP.html#c09" aria-label="C09 Probability processes and algebra study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="670.07" y="-361.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">C09</text>
+<text xml:space="preserve" text-anchor="start" x="670.07" y="-340.5" font-family="Arial" font-weight="bold" font-size="13.00">Probability processes and</text>
+<text xml:space="preserve" text-anchor="start" x="727.86" y="-327.5" font-family="Arial" font-weight="bold" font-size="13.00">algebra</text>
+<text xml:space="preserve" text-anchor="start" x="670.07" y="-309.2" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: R18,R19</text>
+</a></g>
+
+<g id="C-node10" class="node">
+<title>C10</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M539.59,-233.68C539.59,-233.68 374.38,-233.68 374.38,-233.68 368.38,-233.68 362.38,-227.68 362.38,-221.68 362.38,-221.68 362.38,-152.64 362.38,-152.64 362.38,-146.64 368.38,-140.64 374.38,-140.64 374.38,-140.64 539.59,-140.64 539.59,-140.64 545.59,-140.64 551.59,-146.64 551.59,-152.64 551.59,-152.64 551.59,-221.68 551.59,-221.68 551.59,-227.68 545.59,-233.68 539.59,-233.68" />
+<a href="src/03_CHAMPIONSHIP.html#c10" aria-label="C10 Geometric modeling and transformations study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="380.78" y="-210.16" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">C10</text>
+<text xml:space="preserve" text-anchor="start" x="380.78" y="-189.46" font-family="Arial" font-weight="bold" font-size="13.00">Geometric modeling and</text>
+<text xml:space="preserve" text-anchor="start" x="407.51" y="-176.46" font-family="Arial" font-weight="bold" font-size="13.00">transformations</text>
+<text xml:space="preserve" text-anchor="start" x="380.78" y="-158.16" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: R16,R18</text>
+</a></g>
+
+<g id="C-node11" class="node">
+<title>C11</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M195.97,-233.68C195.97,-233.68 12,-233.68 12,-233.68 6,-233.68 0,-227.68 0,-221.68 0,-221.68 0,-152.64 0,-152.64 0,-146.64 6,-140.64 12,-140.64 12,-140.64 195.97,-140.64 195.97,-140.64 201.97,-140.64 207.97,-146.64 207.97,-152.64 207.97,-152.64 207.97,-221.68 207.97,-221.68 207.97,-227.68 201.97,-233.68 195.97,-233.68" />
+<a href="src/03_CHAMPIONSHIP.html#c11" aria-label="C11 Amortization and combined structures study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="18.4" y="-210.16" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">C11</text>
+<text xml:space="preserve" text-anchor="start" x="18.4" y="-189.46" font-family="Arial" font-weight="bold" font-size="13.00">Amortization and combined</text>
+<text xml:space="preserve" text-anchor="start" x="72.2" y="-176.46" font-family="Arial" font-weight="bold" font-size="13.00">structures</text>
+<text xml:space="preserve" text-anchor="start" x="18.4" y="-158.16" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: R07,R09,C01</text>
+</a></g>
+
+<g id="C-node12" class="node">
+<title>C12</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M838.83,-82.64C838.83,-82.64 615.14,-82.64 615.14,-82.64 609.14,-82.64 603.14,-76.64 603.14,-70.64 603.14,-70.64 603.14,-12 603.14,-12 603.14,-6 609.14,0 615.14,0 615.14,0 838.83,0 838.83,0 844.83,0 850.83,-6 850.83,-12 850.83,-12 850.83,-70.64 850.83,-70.64 850.83,-76.64 844.83,-82.64 838.83,-82.64" />
+<a href="src/03_CHAMPIONSHIP.html#c12" aria-label="C12 Championship contest integration study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="621.54" y="-59.12" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">C12</text>
+<text xml:space="preserve" text-anchor="start" x="621.54" y="-38.42" font-family="Arial" font-weight="bold" font-size="13.00">Championship contest integration</text>
+<text xml:space="preserve" text-anchor="start" x="621.54" y="-17.52" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: R20,C01-C11</text>
+</a></g>
+
+
+
+
+
+
+<g id="C-node18" class="node">
+<title>toolkit_C</title>
+<path fill="#ffffff" stroke="#ccd7e2" stroke-dasharray="5,2" d="M823.26,-211.88C823.26,-211.88 660.71,-211.88 660.71,-211.88 654.71,-211.88 648.71,-205.88 648.71,-199.88 648.71,-199.88 648.71,-174.44 648.71,-174.44 648.71,-168.44 654.71,-162.44 660.71,-162.44 660.71,-162.44 823.26,-162.44 823.26,-162.44 829.26,-162.44 835.26,-168.44 835.26,-174.44 835.26,-174.44 835.26,-199.88 835.26,-199.88 835.26,-205.88 829.26,-211.88 823.26,-211.88" />
+<text xml:space="preserve" text-anchor="middle" x="741.99" y="-190.46" font-family="Arial" font-size="11.00" fill="#596c7f">Complete the prerequisite toolkit</text>
+<text xml:space="preserve" text-anchor="middle" x="741.99" y="-177.26" font-family="Arial" font-size="11.00" fill="#596c7f">R20,C01-C11</text>
+</g>
+</g>
+</svg></div></div>
+<p class="references"><a href="src/03_CHAMPIONSHIP.html">Study guide &amp; practice problems</a> · <a href="src/03_c_roadmap.svg">SVG diagram</a></p></section>
+<section aria-labelledby="stage-W"><header class="stage-heading"><p class="eyebrow">STAGE 04</p><h2 id="stage-W">World Finals</h2><p>Selective specialist depth alongside complete contest sets. <span>W01–W06 are electives.</span></p></header>
+<div class="diagram-frame"><div class="diagram-toolbar" hidden><span>Drag when zoomed · Ctrl + scroll to zoom</span><div class="zoom-controls"><button type="button" data-zoom="out" aria-label="Zoom out of World Finals">−</button><output aria-live="polite">100%</output><button type="button" data-zoom="in" aria-label="Zoom into World Finals">+</button><button type="button" data-zoom="reset" aria-label="Fit complete World Finals diagram">Fit</button></div></div>
+<div class="diagram" tabindex="0" role="region" aria-label="World Finals diagram. Zoom to explore; drag or use arrow keys to pan."><svg xmlns="http://www.w3.org/2000/svg" width="765pt" height="579pt" viewBox="0.00 0.00 765.00 579.00" role="group" aria-label="World Finals prerequisite roadmap">
+<style>a { cursor: pointer; } a:hover text, a:focus text { fill: #244f74; text-decoration: underline; }</style><g id="W-graph0" class="graph" transform="scale(1 1) rotate(0) translate(21.6 557.36)">
+<title>World Finals prerequisite roadmap</title>
+<polygon fill="white" stroke="none" points="-21.6,21.6 -21.6,-557.36 743.7,-557.36 743.7,21.6 -21.6,21.6" />
+
+<g id="W-edge4" class="edge">
+<title>W07-&gt;W08</title>
+<path fill="none" stroke="#91a4b8" stroke-width="1.2" d="M576.74,-140.21C576.74,-140.21 576.74,-91.08 576.74,-91.08" />
+<polygon fill="#91a4b8" stroke="#91a4b8" stroke-width="1.2" points="579.02,-91.08 576.74,-84.58 574.47,-91.08 579.02,-91.08" />
+</g>
+
+
+
+
+<g id="W-node1" class="node">
+<title>W01</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M223.49,-530.56C223.49,-530.56 12,-530.56 12,-530.56 6,-530.56 0,-524.56 0,-518.56 0,-518.56 0,-459.92 0,-459.92 0,-453.92 6,-447.92 12,-447.92 12,-447.92 223.49,-447.92 223.49,-447.92 229.49,-447.92 235.49,-453.92 235.49,-459.92 235.49,-459.92 235.49,-518.56 235.49,-518.56 235.49,-524.56 229.49,-530.56 223.49,-530.56" />
+<a href="src/04_WORLD_FINALS.html#w01" aria-label="W01 Dynamic sequences and forests study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="18.4" y="-507.04" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">W01</text>
+<text xml:space="preserve" text-anchor="start" x="18.4" y="-486.34" font-family="Arial" font-weight="bold" font-size="13.00">Dynamic sequences and forests</text>
+<text xml:space="preserve" text-anchor="start" x="18.4" y="-465.44" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: C01,C03</text>
+</a></g>
+
+<g id="W-node2" class="node">
+<title>W02</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M469.65,-535.76C469.65,-535.76 287.84,-535.76 287.84,-535.76 281.84,-535.76 275.84,-529.76 275.84,-523.76 275.84,-523.76 275.84,-454.72 275.84,-454.72 275.84,-448.72 281.84,-442.72 287.84,-442.72 287.84,-442.72 469.65,-442.72 469.65,-442.72 475.65,-442.72 481.65,-448.72 481.65,-454.72 481.65,-454.72 481.65,-523.76 481.65,-523.76 481.65,-529.76 475.65,-535.76 469.65,-535.76" />
+<a href="src/04_WORLD_FINALS.html#w02" aria-label="W02 Advanced optimization and algebraic DP study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="294.24" y="-512.24" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">W02</text>
+<text xml:space="preserve" text-anchor="start" x="294.24" y="-491.54" font-family="Arial" font-weight="bold" font-size="13.00">Advanced optimization and</text>
+<text xml:space="preserve" text-anchor="start" x="339.37" y="-478.54" font-family="Arial" font-weight="bold" font-size="13.00">algebraic DP</text>
+<text xml:space="preserve" text-anchor="start" x="294.24" y="-460.24" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: C04,C08</text>
+</a></g>
+
+<g id="W-node3" class="node">
+<title>W03</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M669.56,-530.56C669.56,-530.56 533.93,-530.56 533.93,-530.56 527.93,-530.56 521.93,-524.56 521.93,-518.56 521.93,-518.56 521.93,-459.92 521.93,-459.92 521.93,-453.92 527.93,-447.92 533.93,-447.92 533.93,-447.92 669.56,-447.92 669.56,-447.92 675.56,-447.92 681.56,-453.92 681.56,-459.92 681.56,-459.92 681.56,-518.56 681.56,-518.56 681.56,-524.56 675.56,-530.56 669.56,-530.56" />
+<a href="src/04_WORLD_FINALS.html#w03" aria-label="W03 Specialist geometry study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="540.33" y="-507.04" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">W03</text>
+<text xml:space="preserve" text-anchor="start" x="540.33" y="-486.34" font-family="Arial" font-weight="bold" font-size="13.00">Specialist geometry</text>
+<text xml:space="preserve" text-anchor="start" x="540.33" y="-465.44" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: C10</text>
+</a></g>
+
+<g id="W-node4" class="node">
+<title>W04</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M191.33,-384.72C191.33,-384.72 44.16,-384.72 44.16,-384.72 38.16,-384.72 32.16,-378.72 32.16,-372.72 32.16,-372.72 32.16,-303.68 32.16,-303.68 32.16,-297.68 38.16,-291.68 44.16,-291.68 44.16,-291.68 191.33,-291.68 191.33,-291.68 197.33,-291.68 203.33,-297.68 203.33,-303.68 203.33,-303.68 203.33,-372.72 203.33,-372.72 203.33,-378.72 197.33,-384.72 191.33,-384.72" />
+<a href="src/04_WORLD_FINALS.html#w04" aria-label="W04 Specialist graphs and optimization study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="50.56" y="-361.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">W04</text>
+<text xml:space="preserve" text-anchor="start" x="50.56" y="-340.5" font-family="Arial" font-weight="bold" font-size="13.00">Specialist graphs and</text>
+<text xml:space="preserve" text-anchor="start" x="79.47" y="-327.5" font-family="Arial" font-weight="bold" font-size="13.00">optimization</text>
+<text xml:space="preserve" text-anchor="start" x="50.56" y="-309.2" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: C07,R11</text>
+</a></g>
+
+<g id="W-node5" class="node">
+<title>W05</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M377.69,-379.52C377.69,-379.52 255.8,-379.52 255.8,-379.52 249.8,-379.52 243.8,-373.52 243.8,-367.52 243.8,-367.52 243.8,-308.88 243.8,-308.88 243.8,-302.88 249.8,-296.88 255.8,-296.88 255.8,-296.88 377.69,-296.88 377.69,-296.88 383.69,-296.88 389.69,-302.88 389.69,-308.88 389.69,-308.88 389.69,-367.52 389.69,-367.52 389.69,-373.52 383.69,-379.52 377.69,-379.52" />
+<a href="src/04_WORLD_FINALS.html#w05" aria-label="W05 Advanced strings study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="262.2" y="-356" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">W05</text>
+<text xml:space="preserve" text-anchor="start" x="262.2" y="-335.3" font-family="Arial" font-weight="bold" font-size="13.00">Advanced strings</text>
+<text xml:space="preserve" text-anchor="start" x="262.2" y="-314.4" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: C06</text>
+</a></g>
+
+<g id="W-node6" class="node">
+<title>W06</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M669.8,-379.52C669.8,-379.52 441.69,-379.52 441.69,-379.52 435.69,-379.52 429.69,-373.52 429.69,-367.52 429.69,-367.52 429.69,-308.88 429.69,-308.88 429.69,-302.88 435.69,-296.88 441.69,-296.88 441.69,-296.88 669.8,-296.88 669.8,-296.88 675.8,-296.88 681.8,-302.88 681.8,-308.88 681.8,-308.88 681.8,-367.52 681.8,-367.52 681.8,-373.52 675.8,-379.52 669.8,-379.52" />
+<a href="src/04_WORLD_FINALS.html#w06" aria-label="W06 Specialist mathematics and games study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="448.09" y="-356" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">W06</text>
+<text xml:space="preserve" text-anchor="start" x="448.09" y="-335.3" font-family="Arial" font-weight="bold" font-size="13.00">Specialist mathematics and games</text>
+<text xml:space="preserve" text-anchor="start" x="448.09" y="-314.4" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: C08,C09,R19</text>
+</a></g>
+
+<g id="W-node7" class="node">
+<title>W07</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M669.02,-233.68C669.02,-233.68 460.46,-233.68 460.46,-233.68 454.46,-233.68 448.46,-227.68 448.46,-221.68 448.46,-221.68 448.46,-152.64 448.46,-152.64 448.46,-146.64 454.46,-140.64 460.46,-140.64 460.46,-140.64 669.02,-140.64 669.02,-140.64 675.02,-140.64 681.02,-146.64 681.02,-152.64 681.02,-152.64 681.02,-221.68 681.02,-221.68 681.02,-227.68 675.02,-233.68 669.02,-233.68" />
+<a href="src/04_WORLD_FINALS.html#w07" aria-label="W07 Interactive and output-sensitive work study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="466.86" y="-210.16" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">W07</text>
+<text xml:space="preserve" text-anchor="start" x="466.86" y="-189.46" font-family="Arial" font-weight="bold" font-size="13.00">Interactive and output-sensitive</text>
+<text xml:space="preserve" text-anchor="start" x="549.57" y="-176.46" font-family="Arial" font-weight="bold" font-size="13.00">work</text>
+<text xml:space="preserve" text-anchor="start" x="466.86" y="-158.16" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: P16,R20</text>
+</a></g>
+
+<g id="W-node8" class="node">
+<title>W08</title>
+<path fill="#f8fafc" stroke="#ccd7e2" d="M657.53,-82.64C657.53,-82.64 495.96,-82.64 495.96,-82.64 489.96,-82.64 483.96,-76.64 483.96,-70.64 483.96,-70.64 483.96,-12 483.96,-12 483.96,-6 489.96,0 495.96,0 495.96,0 657.53,0 657.53,0 663.53,0 669.53,-6 669.53,-12 669.53,-12 669.53,-70.64 669.53,-70.64 669.53,-76.64 663.53,-82.64 657.53,-82.64" />
+<a href="src/04_WORLD_FINALS.html#w08" aria-label="W08 World Finals integration study guide" tabindex="0"><text xml:space="preserve" text-anchor="start" x="502.36" y="-59.12" font-family="Arial" font-weight="bold" font-size="10.00" fill="#326186">W08</text>
+<text xml:space="preserve" text-anchor="start" x="502.36" y="-38.42" font-family="Arial" font-weight="bold" font-size="13.00">World Finals integration</text>
+<text xml:space="preserve" text-anchor="start" x="502.36" y="-17.52" font-family="Arial" font-size="10.00" fill="#596c7f">Requires: C12,W07</text>
+</a></g>
+
+
+
+
+</g>
+</svg></div></div>
+<p class="references"><a href="src/04_WORLD_FINALS.html">Study guide &amp; practice problems</a> · <a href="src/04_w_roadmap.svg">SVG diagram</a></p></section>
+<footer><p>Stage placement is a training recommendation. Prerequisites determine the learning order; module numbers are reference IDs.</p>
+<p><a href="src/06_PAST_PAPERS.html">Past papers</a> · <a href="src/09_TRAINING_ROUTINE.html">Training routine</a></p></footer>
+</main></div><script>'use strict';
+document.querySelectorAll('.diagram-frame').forEach(frame => {
+  const viewport = frame.querySelector('.diagram');
+  const svg = viewport.querySelector('svg');
+  const toolbar = frame.querySelector('.diagram-toolbar');
+  const output = toolbar.querySelector('output');
+  const buttons = [...toolbar.querySelectorAll('button')];
+  const box = svg.viewBox.baseVal;
+  const base = {x: box.x, y: box.y, width: box.width, height: box.height};
+  let view = {...base}, scale = 1, drag = null, printView = null;
+  let suppressClick = false;
+  const maximum = 6;
+  toolbar.hidden = false;
+
+  function render() {
+    view.x = Math.max(base.x, Math.min(base.x + base.width - view.width, view.x));
+    view.y = Math.max(base.y, Math.min(base.y + base.height - view.height, view.y));
+    svg.setAttribute('viewBox', `${view.x} ${view.y} ${view.width} ${view.height}`);
+    output.value = `${Math.round(scale * 100)}%`;
+    viewport.classList.toggle('is-pannable', scale > 1);
+    buttons.find(b => b.dataset.zoom === 'out').disabled = scale <= 1;
+    buttons.find(b => b.dataset.zoom === 'in').disabled = scale >= maximum;
+  }
+  function point(event) {
+    const p = svg.createSVGPoint();
+    p.x = event.clientX; p.y = event.clientY;
+    return p.matrixTransform(svg.getScreenCTM().inverse());
+  }
+  function zoom(next, anchor = {x: view.x + view.width / 2, y: view.y + view.height / 2}) {
+    const old = scale;
+    scale = Math.max(1, Math.min(maximum, next));
+    const ratio = old / scale;
+    view = {x: anchor.x - (anchor.x - view.x) * ratio,
+      y: anchor.y - (anchor.y - view.y) * ratio,
+      width: base.width / scale, height: base.height / scale};
+    render();
+  }
+  function fit() { scale = 1; view = {...base}; render(); }
+  buttons.forEach(button => button.addEventListener('click', () => {
+    if (button.dataset.zoom === 'reset') fit();
+    else zoom(scale * (button.dataset.zoom === 'in' ? 1.25 : 0.8));
+  }));
+
+  viewport.addEventListener('pointerdown', event => {
+    suppressClick = false;
+    if (scale <= 1 || !event.isPrimary || event.button !== 0) return;
+    const matrix = svg.getScreenCTM().inverse();
+    drag = {id: event.pointerId, x: event.clientX, y: event.clientY,
+      view: {...view}, dx: matrix.a, dy: matrix.d, moved: false};
+  });
+  viewport.addEventListener('pointermove', event => {
+    if (!drag || event.pointerId !== drag.id) return;
+    if (!drag.moved) {
+      if (Math.hypot(event.clientX - drag.x, event.clientY - drag.y) < 5) return;
+      drag.moved = true;
+      suppressClick = true;
+      viewport.focus({preventScroll: true});
+      viewport.setPointerCapture(event.pointerId);
+      viewport.classList.add('is-dragging');
+    }
+    event.preventDefault();
+    view.x = drag.view.x + (drag.x - event.clientX) * drag.dx;
+    view.y = drag.view.y + (drag.y - event.clientY) * drag.dy;
+    render();
+  });
+  function stopDrag(event) {
+    if (!drag || event.pointerId !== drag.id) return;
+    drag = null;
+    viewport.classList.remove('is-dragging');
+    if (viewport.hasPointerCapture(event.pointerId)) viewport.releasePointerCapture(event.pointerId);
+  }
+  ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(type => viewport.addEventListener(type, stopDrag));
+  viewport.addEventListener('click', event => {
+    if (suppressClick && event.detail > 0) {
+      event.preventDefault();
+      event.stopPropagation();
+      suppressClick = false;
+    }
+  }, true);
+  viewport.addEventListener('wheel', event => {
+    if (!event.ctrlKey && !event.metaKey) return;
+    event.preventDefault();
+    zoom(scale * Math.exp(-event.deltaY * 0.002), point(event));
+  }, {passive: false});
+  viewport.addEventListener('keydown', event => {
+    if (event.key === '+' || event.key === '=') zoom(scale * 1.25);
+    else if (event.key === '-') zoom(scale * 0.8);
+    else if (event.key === '0' || event.key === 'Escape') fit();
+    else if (scale > 1 && ['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key)) {
+      view.x += (event.key === 'ArrowRight' ? 1 : event.key === 'ArrowLeft' ? -1 : 0) * view.width * 0.08;
+      view.y += (event.key === 'ArrowDown' ? 1 : event.key === 'ArrowUp' ? -1 : 0) * view.height * 0.08;
+      render();
+    } else return;
+    event.preventDefault();
+  });
+  window.addEventListener('beforeprint', () => { printView = {view: {...view}, scale}; fit(); });
+  window.addEventListener('afterprint', () => {
+    if (printView) { view = printView.view; scale = printView.scale; printView = null; render(); }
+  });
+  render();
+});
+</script></body></html>
